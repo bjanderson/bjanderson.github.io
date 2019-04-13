@@ -1,0 +1,49 @@
+
+.navbar {
+  background: rgba(255, 193, 7, 1);
+
+  .navbar-brand {
+    min-height: 3rem;
+    height: 3rem;
+
+    .logo-image {
+      margin-right: 1rem;
+
+      img {
+        @include img-click-bounce(4, 4, 6, #222, 1);
+        margin-top: 0.5rem;
+        max-height: 3rem;
+      }
+    }
+
+    .title {
+      height: 3rem;
+      display: flex;
+      align-items: center;
+      @include text-click-bounce(2, 2, 0, rgba(0, 0, 0, 0.25), 1);
+    }
+  }
+
+  .navbar-menu {
+    a {
+      &.navbar-item {
+        font-style: oblique;
+        font-size: 1.25rem;
+
+        &:hover {
+          background: rgba(255, 193, 7, 1);
+          color: currentColor;
+          text-decoration: underline;
+          text-decoration-skip-ink: auto;
+          text-decoration-style: double;
+        }
+
+        &.active {
+          text-decoration: underline;
+          text-decoration-skip-ink: auto;
+          text-decoration-style: solid;
+        }
+      }
+    }
+  }
+}

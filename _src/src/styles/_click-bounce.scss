@@ -1,0 +1,52 @@
+
+@mixin click-bounce($diff: 1) {
+  cursor: pointer;
+  position: relative;
+
+  &:hover {
+    top: -#{$diff}px;
+
+    &:active {
+      top: #{$diff}px;
+    }
+  }
+}
+
+@mixin img-click-bounce($offsetX, $offsetY, $blurRadius, $color, $diff: 1) {
+  @include click-bounce($diff);
+  filter: drop-shadow(#{$offsetX}px #{$offsetY}px #{$blurRadius}px $color);
+
+  &:hover {
+    filter: drop-shadow(#{$offsetX + $diff}px #{$offsetY + $diff}px #{$blurRadius + $diff}px $color);
+
+    &:active {
+      filter: drop-shadow(#{max(($offsetX - $diff), 0)}px #{max(($offsetY - $diff), 0)}px #{max(($blurRadius - $diff), 0)}px $color);
+    }
+  }
+}
+
+@mixin box-click-bounce($offsetX, $offsetY, $blurRadius, $spreadRadius, $color, $diff: 1) {
+  @include click-bounce($diff);
+  box-shadow: #{$offsetX}px #{$offsetY}px #{$blurRadius}px #{$spreadRadius}px $color;
+
+  &:hover {
+    box-shadow: #{$offsetX + $diff}px #{$offsetY + $diff}px #{$blurRadius + $diff}px #{$spreadRadius + $diff}px $color;
+
+    &:active {
+      box-shadow: #{max(($offsetX - $diff), 0)}px #{max(($offsetY - $diff), 0)}px #{max(($blurRadius - $diff), 0)}px #{max(($spreadRadius - $diff), 0)}px $color;
+    }
+  }
+}
+
+@mixin text-click-bounce($offsetX, $offsetY, $blurRadius, $color, $diff: 1) {
+  @include click-bounce($diff);
+  text-shadow: #{$offsetX}px #{$offsetY}px #{$blurRadius}px $color;
+
+  &:hover {
+    text-shadow: #{$offsetX + $diff}px #{$offsetY + $diff}px #{$blurRadius + $diff}px $color;
+
+    &:active {
+      text-shadow: #{max(($offsetX - $diff), 0)}px #{max(($offsetY - $diff), 0)}px #{max(($blurRadius - $diff), 0)}px $color;
+    }
+  }
+}

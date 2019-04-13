@@ -1,0 +1,62 @@
+$footer-background-color: #333;
+
+@import './node_modules/bulma/bulma.sass';
+
+@import './src/styles/_globals.scss';
+@import './src/styles/_spacing.scss';
+@import './src/styles/_click-bounce.scss';
+
+@import './src/styles/_header.scss';
+@import './src/styles/_footer.scss';
+
+@import './src/styles/_blog.scss';
+@import './src/styles/_blog-post.scss';
+@import './src/styles/_legal.scss';
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html, body {
+  background-color: $footer-background-color;
+  font-family: system-ui;
+  font-size: 16px !important;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  background-color: white;
+  padding: 0.5rem 0;
+}
+
+.page {
+  margin: 0 auto;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.15);
+
+  .content {
+    padding: 0 0.5rem;
+    width: 100%;
+
+    pre {
+      border-radius: 5px;
+      padding: 1em;
+      padding-left: 3.8em;
+
+      code {
+        border-radius: 5px;
+        line-height: 1.5rem;
+      }
+    }
+  }
+}

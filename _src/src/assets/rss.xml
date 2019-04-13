@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+
+<!-- Validate your rss feed at http://www.feedvalidator.org/check.cgi?url=https%3A%2F%2Fpracticalwebdev.com%2Frss.xml -->
+
+<!-- Get guids at https://guidgenerator.com/ -->
+
+<!--
+
+  <item>
+    <title></title>
+    <link>https://practicalwebdev.com/blog/</link>
+    <description></description>
+    <guid isPermaLink="false"></guid>
+  </item>
+
+-->
+
+<channel>
+  <title>PracticalWebDev.com</title>
+  <atom:link href="https://practicalwebdev.com/rss.xml" rel="self" type="application/rss+xml" />
+  <link>https://practicalwebdev.com/</link>
+  <description>PracticalWebDev.com is a website dedicated to sharing practical knowledge about web development.</description>
+
+  <item>
+    <title>Angular: Unit Testing</title>
+    <link>https://practicalwebdev.com/blog/angular-unit-testing.html</link>
+    <description>Make your unit testing easier and faster by dropping Angular's TestBed.</description>
+    <guid isPermaLink="false">f492be2f-8cc5-4fd5-8dc2-47daae2e1ef6</guid>
+  </item>
+
+  <item>
+    <title>JavaScript Models</title>
+    <link>https://practicalwebdev.com/blog/js-models.html</link>
+    <description>The model is the core component of the user interface. It is the one place where you can filter and manage all of the data that passes through your application.</description>
+    <guid isPermaLink="false">18f72d0d-a962-4bc5-accd-fc28078d4f08</guid>
+  </item>
+
+  <item>
+    <title>Introduction to JavaScript</title>
+    <link>https://practicalwebdev.com/blog/intro-to-js.html</link>
+    <description>JavaScript is like any other programming language, and like no other programming language.</description>
+    <guid isPermaLink="false">be383053-0546-4063-bd4a-607470a2e49e</guid>
+  </item>
+
+</channel>
+</rss>

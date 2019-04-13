@@ -1,0 +1,32 @@
+
+footer {
+  &.footer {
+    display: flex;
+    padding: 1rem;
+    flex-wrap: wrap;
+    box-shadow: inset 0px 14px 22px -4px black;/* inset 0px 0px 20px 10px rgba(255, 255, 255, 1); */
+
+    .col {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 0;
+
+      div {
+        white-space: nowrap;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      &.middle {
+        align-items: center;
+
+        img {
+          @include img-click-bounce(1, 1, 2, rgba(0, 0, 0, 0.75), 1);
+        }
+      }
+
+      &.right {
+        align-items: flex-end;
+      }
+    }
+  }
+}

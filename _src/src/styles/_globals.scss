@@ -1,0 +1,57 @@
+
+p {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  padding: 0.5rem 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+}
+
+h1 { font-size: 1.5rem; }
+h2 { font-size: 1.4rem; }
+h3 { font-size: 1.3rem; }
+h4 { font-size: 1.2rem; }
+h5 { font-size: 1.1rem; }
+h6 { font-size: 1.0rem; }
+
+hr {
+  border-bottom: 1px solid lightslategray;
+  margin: 1.5rem;
+}
+
+.profile-img {
+  border-radius: 50%;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.centered-image {
+  @extend .center;
+
+  img {
+    width: 90%;
+  }
+}
+
+.error {
+  background-color: rgba(192, 0, 0, 0.1);
+  color: rgba(192, 0, 0, 1);
+  border-radius: 3px;
+  padding: 0 3px;
+}
+
+.hide {
+  display: none;
+}
+
+.invisible {
+  visibility: hidden;
+}
