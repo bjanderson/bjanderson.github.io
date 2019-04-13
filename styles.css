@@ -6952,6 +6952,8 @@ footer.footer {
     footer.footer .col div {
       white-space: nowrap;
       color: rgba(255, 255, 255, 0.5); }
+    footer.footer .col a:hover {
+      color: orange; }
     footer.footer .col.middle {
       align-items: center; }
       footer.footer .col.middle img {

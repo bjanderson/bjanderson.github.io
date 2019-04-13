@@ -6,7 +6,6 @@ export function clean() {
 }
 
 function emptyDist() {
-  // fse.emptyDirSync('dist');
   const excludeFiles = [
     '../_src',
     '../LICENSE',
@@ -15,8 +14,7 @@ function emptyDist() {
   ];
   let files = glob.sync('../*');
   files = files.filter(f => !excludeFiles.includes(f))
-  console.log('\n\nfiles:\n', files, '\n\n');
   files.forEach(f => {
-    fse.remove(f);
+    fse.removeSync(f);
   });
 }
