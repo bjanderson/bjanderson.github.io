@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>~~DOCUMENT_TITLE</title>
+  <title>UI Architecture | BJ Anderson</title>
 
   <meta name="description" content="Practical advice for developing websites and web applications.">
   <meta name="author" content="BJ Anderson">
@@ -85,7 +85,97 @@
   <section class="section main">
     <div class="container">
       <div name="pwd-poll"></div>
-      ~~DOCUMENT_BODYS
+      <div class="blog-post">
+
+  <div class="blog-post-image">
+    <img src="./blog-post-image.jpg" alt="Blog Post Image">
+
+    <div class="attribution">
+      <a target="_blank"
+        href="https://unsplash.com/@marcojodoin?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge">
+        Marc-Olivier Jodoin | Unsplash.com
+      </a>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <h1>UI Architecture</h1>
+
+    <!--
+    Note to self: describe how architecture evolves as you go from simply requesting and displaying a static html page,
+    through the variations on submitting form data and showing a new or updated page,
+    to the modern single page application.
+    -->
+
+    <h2>Goals</h2>
+
+    <ul>
+      <li>Reliable
+        <ul>
+        <li>Validate input from the user</li>
+        <li>Validate input from the server</li>
+        <li>Set reasonable default values that will not break the code (e.g. no NPEs, no objects where arrays are expected, etc...)</li>
+        <li>Set reasonable default values that will not appear as abnormal to the user (e.g. do not show "undefined" or "NaN", avoid showing true/false, etc...)</li>
+      </ul></li>
+
+      <li>Consistent
+        <ul>
+          <li>Present data to the user in a consistent manner across the application
+            <ul>
+              <li>Dates formatted the same</li>
+              <li>Numbers that are rounded (likely should be rounded everywhere)</li>
+              <li>Full Name (composed of first name, last name, etc...)</li>
+              <li>Addresses (composed of associated parts)</li>
+              <li>Computed values (dates from numbers, high/med/low based on number range, etc...)</li>
+            </ul>
+          </li>
+          <li>Views stay fresh (show updated data)</li>
+          <li>No unnecessary server calls</li>
+        </ul>
+      </li>
+
+      <li>Robust
+        <ul>
+          <li>Invalid data does not break the UI</li>
+          <li>Errors do not break the UI</li>
+          <li>Error messages are presented consistently</li>
+          <li>Help is given as much as possible with errors (fill in required field, refresh the browser, contact support, etc...)</li>
+        </ul>
+      </li>
+
+      <li>Maintainable
+        <ul>
+          <li>Use consistent, understandable patterns throughout the code to improve readability, maintainability, and scalability</li>
+          <li>Modularize/Compartmentalize code to be reusable and do one thing only</li>
+          <li>No monolith structures - break things up into components, and compose components of components</li>
+          <li>Follow the <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank">Don't Repeat Yourself</a> (DRY) principle - don't write the same functionality over and over again throughout your code, put it in one place and let everything that needs it use it from there.</li>
+          <li>Follow the <a href="https://en.wikipedia.org/wiki/Single_responsibility_principle" target="_blank">Single Responsibility Principle</a> (SRP) - functions should do one thing only</li>
+          <li>Follow the <a href="https://en.wikipedia.org/wiki/Law_of_Demeter" target="_blank">Law of Demeter</a> - do not chain function calls, do not return functions from functions, don't talk to strangers</li>
+          <li>Functions should either modify state, or return state - not both</li>
+        </ul>
+      </li>
+
+      <li>Testable
+        <ul>
+          <li>Use dependency injection as much as possible</li>
+          <li>Functions should be short and do one thing only - if you have more than 3 or 4 tests for a function consider breaking it up into smaller functions</li>
+        </ul>
+      </li>
+
+      <li>Secure
+        <ul>
+          <li>See OWASP (<a href="https://www.owasp.org/index.php/Main_Page" target="_blank">https://www.owasp.org/index.php/Main_Page</a>)</li>
+          <li>Validate user input</li>
+          <li>Use proper techniques for averting attacks from the client</li>
+          <li>Don't give too much information in error messages (don't expose your architecture through stack traces, etc...)</li>
+        </ul>
+      </li>
+    </ul>
+
+  </div>
+</div>
+S
     </div>
   </section>
 
