@@ -7063,8 +7063,8 @@ footer.footer {
         z-index: 8; }
     .blog-post .blog-post-image .attribution {
       position: absolute;
-      right: 0;
-      bottom: 0;
+      right: 1rem;
+      bottom: 0.5rem;
       z-index: 9; }
       .blog-post .blog-post-image .attribution:hover {
         z-index: 11; }
