@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Blog | BJ Anderson</title>
+  <title>Angular Component Library | BJ Anderson</title>
 
   <meta name="description" content="Practical advice for developing websites and web applications.">
   <meta name="author" content="BJ Anderson">
@@ -85,36 +85,115 @@
   <section class="section main">
     <div class="container">
       <div name="pwd-poll"></div>
-      <div id="blog_posts">
-    <a href="/new-angular-project" class="blog-post-link">
-    <div class="blog-post-image">
-    <img src="/new-angular-project/blog-post-image.jpg" alt="Blog Post Image">
+      <div class="blog-post">
+
+
+
+  <div class="blog-post-image">
+    <img src="./blog-post-image.jpg" alt="Blog Post Image">
+    <div class="attribution">
+      <a target="_blank"
+        href="https://unsplash.com/@tofi?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge">
+        Tobias Fischer | Unsplash.com
+      </a>
+    </div>
   </div>
-    <p class="title center pt1">New Angular Project</p>
-    <p class="blog-post-description p1">Tips for getting a new Angular project up and running.</p>
-  </a>
-<a href="/npm-packages" class="blog-post-link">
-    <div class="blog-post-image">
-    <img src="/npm-packages/blog-post-image.jpg" alt="Blog Post Image">
+
+  <div class="content">
+    <h1>Angular Component Library</h1>
+
+    <p>
+      Install latest @angular/cli:
+      <pre><code class="language-bash">
+        npm i -g @angular/cli@latest
+      </code></pre>
+    </p>
+
+    <p>
+      Create a new angular project (if you don't have an existing one)
+      <pre><code class="language-bash">
+        ng new my-project --prefix=myprj --style=scss
+      </code></pre>
+    </p>
+
+    <p>
+      (optional) Add Angular Material:
+      <pre><code class="language-bash">
+        ng add @angular/material
+      </code></pre>
+    </p>
+
+    <p>
+      Generate a new library project:
+      <pre><code class="language-bash">
+        ng g library my-project-lib --prefix=myprjlib --style=scss
+      </code></pre>
+    </p>
+
+    <p>
+      (optional) Set the registry of your library to your local npm repo:
+      In package.json add the following to the highest level of the json object:
+      <br>
+      "publishConfig": { "registry":"http://localhost:4873/" },
+    </p>
+
+    <p>
+      Build and deploy your library to test it:
+      <pre><code class="language-bash">
+        ng build my-project-lib
+        cd dist/my-project-lib
+        npm publish
+      </code></pre>
+    </p>
+
+    <p>
+      Create another new angular project as a test environment to import my-project-lib into:
+      <pre><code class="language-bash">
+        ng new my-project-lib-test --prefix=mplt --style=scss
+        cd my-project-lib-test
+      </code></pre>
+    </p>
+
+    <p>
+      npm install my-project-lib from your local npm registry:
+      <pre><code class="language-bash">
+        npm i -S my-project-lib --registry http://localhost:4873/
+      </code></pre>
+    </p>
+
+    <p>
+      Import the basic component from your library into the test project app.module.ts:
+
+      <pre><code class="language-javascript">
+        import { MyProjectLibModule } from 'my-project-lib';
+        ...
+        imports: [
+          ...,
+          MyProjectLibModule
+        ]
+      </code></pre>
+    </p>
+
+    <p>
+      Show the basic component from your library in the test project app.component.html:
+
+      <pre><code class="language-html">
+        ...
+        &lt;myprjlib-my-project-lib&gt;&lt;/myprjlib-my-project-lib&gt;
+      </code></pre>
+    </p>
+
+    <p>
+      Run the test project and verify that the test component works (http://localhost:4200).
+      You should see this where you injected the component into the html page: "my-project-lib works!"
+      <pre><code class="language-bash">
+        npm start
+      </code></pre>
+    </p>
+
   </div>
-    <p class="title center pt1">NPM Packages</p>
-    <p class="blog-post-description p1">How to create and deploy your own npm packages.</p>
-  </a>
-<a href="/js-models" class="blog-post-link">
-    <div class="blog-post-image">
-    <img src="/js-models/blog-post-image.jpg" alt="Blog Post Image">
-  </div>
-    <p class="title center pt1">JavaScript Models</p>
-    <p class="blog-post-description p1">Models are the fundamental building block of any scalable and maintainable JavaScript project. Marvel at their power!</p>
-  </a>
-<a href="/intro-to-js" class="blog-post-link">
-    <div class="blog-post-image">
-    <img src="/intro-to-js/blog-post-image.jpg" alt="Blog Post Image">
-  </div>
-    <p class="title center pt1">Introduction To JavaScript</p>
-    <p class="blog-post-description p1">Welcome to the wide world of JavaScript! Here's a little bit of info to help you understand what you're getting into, and a few tips on where to start first.</p>
-  </a>
-  </div>
+</div>
+
     </div>
   </section>
 
