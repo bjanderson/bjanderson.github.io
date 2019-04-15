@@ -102,30 +102,48 @@
     <h1>NPM Packages</h1>
 
     <p>
-      If you want to build reusable code for the front-end then you probably need to learn how to deploy npm packages to either the public npm repository or you or your company's own private npm repo.
+      If you want to build reusable code for the front-end then you need to learn how to build and deploy npm packages.
+      You can either choose to use the public npm repository or your own private npm repo, but one thing is certain - if you're doing JavaScript development, then npm is going to be involved in the process somewhere.
     </p>
 
     <p>
-      Like everything else we do, once you get the hang of it, it's actually a very easy process.
+      Like everything else we developers do, once you get the hang of it, it's actually a very easy process.
+      And the more you do it, the opportunities you will find for automating things.
+      But first we must walk...
     </p>
 
     <p>
-      For our first npm package we will make a simple utils library of functions that we can use to assign type-safe and null-safe values.
+      For our first npm package we will make a simple utils library.
+      Before we get into the code, we need to decide where the npm package is going to live.
+      Will it be available to the public?
+      Is it proprietary and need to be protected?
+      Are you building something that others can use and depend on?
+      Are you just learning and experimenting?
+      Are you building the next game-changing app and want to keep everything secret?
+    </p>
+
+    <p>
+      I'll walk you through my process as an example, and that should give you enough information so that you can figure out how to do things your way.
+    </p>
+
+    <p>
+      I ultimately intend for my utils library to be public, open-source software.
+      However, I want to experiment a bit and climb the learning curve before I try pushing anything out to the community.
+      So, I'll start by setting up a private npm repo on my computer, and then, when I'm sure my package is ready for prime-time, I'll move it to it's permanent home in the public npm repo.
     </p>
 
     <h2>Create and deploy local packages</h2>
 
+    <h3>Verdaccio</h3>
+
     <p>
-      You might eventually want to release your packages to the public npm repo, but you might want a way to do all of your learning and development in a private space.
-      That's where an application named Verdaccio comes in (<a href="https://github.com/verdaccio/verdaccio">https://github.com/verdaccio/verdaccio</a>).
+      First I'm going to install an application named Verdaccio (<a href="https://github.com/verdaccio/verdaccio">https://github.com/verdaccio/verdaccio</a>).
     </p>
 
     <p>
       You can use Verdaccio as a private repo that your whole team can use, or you can install it on your own machine and use it as a sandbox environment.
       Either way, there's really not much difference in how you use it compared to how you use other private or public npm repos.
     </p>
-
-    <h3>Verdaccio</h3>
 
     <p class="step">
       Install Verdaccio:
@@ -146,6 +164,9 @@
       <pre><code class="language-bash">
         npm adduser --registry http://localhost:4873
       </code></pre>
+
+      When I'm installing Verdaccio on my local machine I use my username and set an easy password.
+      If you use Verdaccio as a private repo for your company's proprietary code, then I would suggest setting up a dedicated account to administer it.
     </p>
 
     <p class="step">
@@ -154,10 +175,22 @@
         npm publish --registry http://localhost:4873
       </code></pre>
 
-      If you want to make sure that your package does not get published to the public npm repo, I recommend adding the publishConfig setting to your package.json file, like so:
+      If you want to make sure that your package does not get published to the public npm repo, I recommend adding the <code class="language-bash">package.json</code> setting to your <code class="language-bash">package.json</code> file, like so:
       <pre><code class="language-text">
+        ##########
+        # package.json
+        ##########
+
         "publishConfig": { "registry": "http://localhost:4873/" }
       </code></pre>
+
+      Note: If you set <code class="language-bash">"private": true</code> in your <code class="language-bash">package.json</code> file then your package won't be deployed anywhere, so make sure to use the <code class="language-bash">package.json</code> setting if you're creating a package that you want to publish to your private repo.
+    </p>
+
+    <p>
+      Also worth noting here is the need to keep your package versions updated.
+      If you try to publish your package with a version number that already exists in your npm repo, the publish command will fail.
+      Thankfully, npm provides a cli command for updating your package version for you, but you can also edit the version number directly in your <code class="language-bash">package.json</code> file if you wish.
     </p>
 
     <p class="step">
@@ -166,8 +199,12 @@
         npm install my-package --registry http://localhost:4873
       </code></pre>
 
-      Or you can create a .npmrc file in your project and put the registry setting in it, then you won't have to use the registry flag when you install your package.
+      Or you can create a <code class="language-bash">.npmrc</code> file in your project and put the registry setting in it, then you won't have to use the registry flag when you install your package.
       <pre><code class="language-text">
+        ##########
+        # .npmrc
+        ##########
+
         registry=http://localhost:4873
       </code></pre>
     </p>
@@ -176,11 +213,53 @@
       Whenever you try to run npm commands in your project, make sure that verdaccio is running or you may get errors saying that your packages can't be found.
     </p>
 
+    <p>
+      Also, I've run into errors when I start a new project that depends on a shared library from my company's private npm repo where <code class="language-bash">npm install</code> fails with strange permissions errors.
+      Unfortunately the error messages can sometimes be unhelpful or even misleading.
+      If you get permissions errors when starting a new project and you are using a private npm repo, make sure you are logged in to the npm repo by running:
+      <pre><code class="language-bash">
+        npm login
+      </code></pre>
+    </p>
+
+    <p>
+      If you don't have login permissions, you may need to exclude your private dependencies from the initial install, and comment out the registry setting in your <code class="language-bash">.npmrc</code> file, install everything from the public npm repo first, and then try installing your private packages again after everything else succeeds.
+    </p>
+
     <h2>Create and deploy public packages</h2>
 
     <p>
       All of these commands work exactly the same for the public npm repo, except that you don't have to set the registry setting anywhere.
-      Commands such as npm install and npm publish all point to that public repo by default.
+      Commands such as <code class="language-bash">npm install</code> and <code class="language-bash">npm publish</code> all point to that public repo by default.
+    </p>
+
+    <h2>package.json scripts</h2>
+
+    <p>
+      All of this building and versioning and publishing can lead to a lot of command typing if we let it.
+      Fortunately, npm gives us a way to automate most of this work with scripts.
+      The following is a snippet from how I like to set up my <code class="language-bash">package.json</code> scripts to handle my package build and deployment process.
+
+      <pre><code class="language-json">
+        "scripts": [
+          "prebuild": "rimraf dist/"
+          "build": "node ./build.js",
+          "prepush": "npm run build",
+          "push": "npm publish --registry http://localhost:4873",
+          "push:major": "npm run version:major && npm run push",
+          "push:minor": "npm run version:minor && npm run push",
+          "push:patch": "npm run version:patch && npm run push",
+          "version:major": "npm version major",
+          "version:minor": "npm version minor",
+          "version:patch": "npm version patch",
+        ]
+      </code></pre>
+
+      Then, whenever I want to push a patch to my package I just run:
+      <pre><code class="language-bash">
+        npm run push:patch
+      </code></pre>
+      and my package is cleaned, built, versioned, and published - all with one command.
     </p>
 
   </div>
