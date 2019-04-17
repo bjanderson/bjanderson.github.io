@@ -117,7 +117,7 @@
       The model is the core component of the user interface.
       It is the one place where you can filter and manage all of the data that passes through your application.
       You can do all of your data validation in the model.
-      And you can set the properties in your models to have reasonable defaults so that you can minimize the amount of null checking and defensive code you will need to write throughout your application, and also prevent showing strange values like null, NaN, undefined, etc... to your users.
+      And you can set the properties in your models to have reasonable defaults so that you can minimize the amount of null checking and defensive code you will need to write throughout your application; and also prevent showing strange values like null, NaN, undefined, etc... to your users.
     </p>
 
     <div class="centered-image mv1">
@@ -144,17 +144,17 @@
       <ul>
         <li>call the server</li>
         <li>control or manipulate the user interface</li>
-        <li>implement logic that requires knowledge of anything that is not part of the model</li>
+        <li>use it for anything that is not directly related to the model</li>
       </ul>
     </p>
 
     <h2>A Model</h2>
     <p>
-      So what might a model look like?
+      So, what might a model look like?
       Let's make a Person model as an example.
     </p>
 
-    <pre><code class="language-javascript line-numbers">
+    <pre><code class="language-javascript">
       class Person {
         constructor(obj) {
           obj = obj != null ? obj : {}
@@ -199,9 +199,9 @@
     </p>
 
     <p class="note">
-      You may wonder why I'm not doing truthy comparisons
-      (<code class="language-javascript">obj == null</code>
-      instead of <code class="language-javascript">obj != null</code>).
+      You may wonder why I'm doing falsy comparisons
+      (<code class="language-javascript">obj != null</code>)
+      instead of truthy comparisons (<code class="language-javascript">obj == null</code>).
       Writing the conditionals this way allows us to put the default values on the outer right edge of the assignment statements, which makes them much easier to find when reading through the code to find out what the default value for a given property is.
     </p>
 
@@ -211,7 +211,7 @@
       If we wanted to validate the input, we could create a function to do that and make that part of the assignment conditional like so:
     </p>
 
-    <pre><code class="language-javascript line-numbers">
+    <pre><code class="language-javascript">
       class Person {
         constructor(obj) {
           ...
@@ -242,7 +242,7 @@
     <p>
       Notice that our try/catch in the isValidDate function does not throw an error.
       It allows a value to be returned from the function even if the input was invalid, but still alerts us to the fact that we saw data that we were not expecting.
-      If you want to stop the app because of this, for instance, if not having a date defined in this model is a deal breaker for your app, then throw an error instead of just logging an error.
+      If you want to stop the app because of this - for instance, if not having a date defined in this model is a deal breaker for your app - then throw an error instead of just logging an error.
     </p>
 
     <p class="note">
@@ -269,7 +269,7 @@
       Instead of writing code to do that formatting everywhere that we want to see it in the UI, we should create a function on the model to do that formatting.
     </p>
 
-    <pre><code class="language-javascript line-numbers">
+    <pre><code class="language-javascript">
       class Person {
         ...
         formatDate(date) {
@@ -346,7 +346,7 @@
       Chances are that this field won't be a string, but it will be an object containing various data about the address.
     </p>
 
-    <pre><code class="language-javascript line-numbers">
+    <pre><code class="language-javascript">
       class Address {
         constructor(obj) {
           obj = obj != null ? obj : {}
@@ -367,7 +367,7 @@
       And our Person constructor will now look like this:
     </p>
 
-    <pre><code class="language-javascript line-numbers">
+    <pre><code class="language-javascript">
       class Person {
         constructor(obj) {
           obj = obj != null ? obj : {}
@@ -397,7 +397,7 @@
       If you trust the input, then assigning the array to your model looks the same as assigning a primitive value to your model:
     </p>
 
-    <pre><code class="language-javascript line-numbers">
+    <pre><code class="language-javascript">
       class Person {
         constructor(obj) {
           ...
@@ -418,7 +418,7 @@
       Enter the getArray function:
     </p>
 
-    <pre><code class="language-javascript line-numbers">
+    <pre><code class="language-javascript">
       class Person {
         ...
 
@@ -426,7 +426,7 @@
           objs = objs != null ? objs : []
           let array = []
 
-          if (objs.constructor === Array) {
+          if (Array.isArray(objs)) {
             array = objs
           } else {
             array = [objs]
@@ -441,7 +441,7 @@
       Now our assignment in the constructor would look like this:
     </p>
 
-    <pre><code class="language-javascript line-numbers">
+    <pre><code class="language-javascript">
       class Person {
         constructor(obj) {
           ...
@@ -465,7 +465,7 @@
       Well, we can build a function to help us with that.
     </p>
 
-    <pre><code class="language-javascript line-numbers">
+    <pre><code class="language-javascript">
       class Person {
         ...
 
@@ -495,7 +495,7 @@
       You might also want to check if each object is actually an instance of the model you are creating so that you don't add a bunch of default instances of the model - say, if there are a lot of nulls in the array of objs.
     </p>
 
-    <pre><code class="language-javascript line-numbers">
+    <pre><code class="language-javascript">
       class Person {
         ...
 
@@ -539,7 +539,7 @@
       We would set that property in our constructor like this:
     </p>
 
-    <pre><code class="language-javascript line-numbers">
+    <pre><code class="language-javascript">
       class Person {
         constructor(obj) {
           ...
@@ -561,7 +561,7 @@
       We can address this case by creating a function that will ensure that we are setting a string no matter what input we are given.
     </p>
 
-    <pre><code class="language-javascript line-numbers">
+    <pre><code class="language-javascript">
       class Person {
         ...
 
@@ -590,7 +590,7 @@
       Then our person constructor would look like this:
     </p>
 
-    <pre><code class="language-javascript line-numbers">
+    <pre><code class="language-javascript">
       class Person {
         constructor(obj) {
           obj = obj != null ? obj : {}
@@ -623,77 +623,75 @@
     </p>
 
     <p class="note">
-      You can see that I am declaring all of my util methods as static because there is no need to create an instance of a utils class just to use these methods.
-      Each function relies only on its inputs.
+      Rather than creating a class to act as an artificial container for all of these methods, it is much more conveneint to simply export each function directly, which will allow us to import and use them directly wherever we need them in our code.
     </p>
 
-    <pre><code class="language-javascript line-numbers">
-      class ModelUtils {
+    <pre><code class="language-javascript">
+      /** utils.js */
 
-        static formatDate(date) {
-          let formattedDate = ''
+      export formatDate(date) {
+        let formattedDate = ''
 
-          try {
-            formattedDate = new Date(date).toLocaleDateString()
-          } catch (err) {
-            console.error('ModelUtils.formatDate - Invalid date: ', date)
-          }
-
-          return formattedDate
+        try {
+          formattedDate = new Date(date).toLocaleDateString()
+        } catch (err) {
+          console.error('ModelUtils.formatDate - Invalid date: ', date)
         }
 
-        static getArray(objs) {
-          objs = objs != null ? objs : []
-          let array = []
+        return formattedDate
+      }
 
-          if (objs.constructor === Array) {
-            array = objs
-          } else {
-            array = [objs]
-          }
+      export getArray(objs) {
+        objs = objs != null ? objs : []
+        let array = []
 
-          return array
+        if (Array.isArray(objs)) {
+          array = objs
+        } else {
+          array = [objs]
         }
 
-        static getArrayOfModels(clazz, objs) {
-          objs = ArrayUtils.getArray(objs)
-          const array = []
+        return array
+      }
 
-          for (const obj of objs) {
-            if (ModelUtils.hasPropertyOf(clazz, obj)) {
-              array.push(new clazz(obj))
-            }
+      export getArrayOfModels(clazz, objs) {
+        objs = ArrayUtils.getArray(objs)
+        const array = []
+
+        for (const obj of objs) {
+          if (ModelUtils.hasPropertyOf(clazz, obj)) {
+            array.push(new clazz(obj))
           }
-
-          return array
         }
 
-        static hasPropertyOf(clazz, obj) {
-          const model = new clazz()
-          const modelKeys = Object.keys(model)
+        return array
+      }
 
-          for (const key of modelKeys) {
-            if(obj.hasOwnProperty(key)) {
-              return true
-            }
+      export hasPropertyOf(clazz, obj) {
+        const model = new clazz()
+        const modelKeys = Object.keys(model)
+
+        for (const key of modelKeys) {
+          if(obj.hasOwnProperty(key)) {
+            return true
           }
-
-          return false
         }
 
-        static isValidDate(date) {
-          let isValid = true
+        return false
+      }
 
-          try {
-            let d = new Date(date)
-            isValid = d.toString() !== 'Invalid Date'
-          } catch (err) {
-            console.error('ModelUtils.isValidDate - Invalid Date: ', date)
-            isValid = false
-          }
+      export isValidDate(date) {
+        let isValid = true
 
-          return isValid
+        try {
+          let d = new Date(date)
+          isValid = d.toString() !== 'Invalid Date'
+        } catch (err) {
+          console.error('ModelUtils.isValidDate - Invalid Date: ', date)
+          isValid = false
         }
+
+        return isValid
       }
     </code></pre>
 
@@ -703,51 +701,59 @@
       Like this:
     </p>
 
-    <pre><code class="language-javascript line-numbers">
-      class ArrayUtils {
-        static getArray(objs) { ... }
+    <pre><code class="language-javascript">
+      /** array.utils.js */
 
-        static getArrayOfModels(clazz, objs) { ... }
-      }
+      export getArray(objs) { ... }
+
+      export getArrayOfModels(clazz, objs) { ... }
     </code></pre>
 
-    <pre><code class="language-javascript line-numbers">
-      class DateUtils {
-        static formatDate(date) { ... }
+    <pre><code class="language-javascript">
+      /** date.utils.js */
 
-        static isValidDate(date) { ... }
-      }
+      export formatDate(date) { ... }
+
+      export isValidDate(date) { ... }
     </code></pre>
 
-    <pre><code class="language-javascript line-numbers">
-      class ModelUtils {
-        static hasPropertyOf(clazz, obj) { ... }
+    <pre><code class="language-javascript">
+      /** model.utils.js */
 
-        static isInstanceOf(clazz, obj) { ... }
-      }
-    </code></pre>
+      export hasPropertyOf(clazz, obj) { ... }
 
-    <p>
-      And finally, we don't have to, but we could bundle these different utility files under one main utility file - like this:
-    </p>
-
-    <pre><code class="language-javascript line-numbers">
-      class Utils {
-        static get array() { return ArrayUtils }
-        static get date() { return DateUtils }
-        static get model() { return ModelUtils }
-      }
+      export isInstanceOf(clazz, obj) { ... }
     </code></pre>
 
     <p>
-      Then we could just import the Utils class wherever we need it and use it like this:
+      And finally, we don't have to, but we could bundle these different utility files under one main utility export file - like this:
     </p>
 
     <pre><code class="language-javascript">
-      Utils.array.getArrayOfModels(Person, obj.friends)
+      /** utils.js */
+
+      export * from './array.utils.js'
+      export * from './date.utils.js'
+      export * from './model.utils.js'
     </code></pre>
 
-    <h3>Update</h3>
+    <p>
+      Then we can import the utils functions wherever we need them and use them like this:
+    </p>
+
+    <pre><code class="language-javascript">
+      import { getArrayOfModels } from './utils'
+
+      class Person {
+        constructor(obj) {
+          obj = obj != null ? obj : {}
+          ...
+          this.friends = getArrayOfModels(Person, obj.friends)
+        }
+      }
+    </code></pre>
+
+    <h3>For your convenience</h3>
 
     <p>
       I created an <a href="https://www.npmjs.com/package/@lernato/common" target="_blank">npm package</a> with all of the model utilities that I commonly use. You can install it by running:
@@ -761,7 +767,7 @@
       And then, using these utilities, our Person model would look this:
     </p>
 
-    <pre><code class="language-javascript line-numbers">
+    <pre><code class="language-javascript">
       import {
         getArrayOfModels,
         getObject,
