@@ -2,6 +2,11 @@
   @extend .page;
   overflow: hidden;
 
+  a:hover {
+    text-decoration: underline;
+    color: darkorange;
+  }
+
   .blog-post-image {
     margin-top: -1rem;
     margin-left: -1rem;

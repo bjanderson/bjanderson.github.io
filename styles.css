@@ -7041,6 +7041,9 @@ footer.footer {
 
 .blog-post {
   overflow: hidden; }
+  .blog-post a:hover {
+    text-decoration: underline;
+    color: darkorange; }
   .blog-post .blog-post-image {
     margin-top: -1rem;
     margin-left: -1rem;
