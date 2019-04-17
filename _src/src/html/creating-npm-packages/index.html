@@ -167,6 +167,57 @@ hidden: false
 
     <h2>Create And Deploy Packages</h2>
 
+    <p>
+      OK.
+      With all of that out of the way, now we can get in to actually creating the package.
+    </p>
+
+    <p>
+      First you need some code to publish.
+      You don't need much, a single file, with a single function in it would suffice for the purposes of this tutorial.
+      Instead of copy and pasting a bunch of code here for use as an example, I'm just going to point you to a project that I already have published, and then explain how I did that in detail.
+      So, take a look at my project called <a href="https://github.com/bjanderson/lernato-common" target="_blank">lernato-common</a> on github.
+      I used TypeScript to create it, but you can easily ignore the TypeScript bits and focus on the JavaScript aspect if you want to.
+      They are similar enough that it should not be a hindrance.
+    </p>
+
+    <p>
+      The first thing I want to point out is how the source code is being exported.
+      If you open the <code class="language-text">src</code> folder and look at the <code class="language-text">index.ts</code> file, you will see that I am simply exporting everything from the other folders.
+      And in each of those folders there's another <code class="language-text">index.ts</code> file where I am simply exporting everything from their respective files.
+      So, the main package file (<code class="language-text">src/index.ts</code>) is just a place where all of the public facing api of the library is exposed.
+    </p>
+
+    <p>
+      With that in mind, I will assume that you have some sort of build process in place whether it be via TypeScript, Webpack, Gulp, or whatever.
+      And I will assume that the final output of your build process will be placed in a folder named <code class="language-text">dist/</code>.
+      If these assumptions are wrong, then you will need to adjust my advice from here forward to match your actual environment.
+    </p>
+
+    <p>
+      I'm making that point because your <code class="language-text">package.json</code> file is going to point to that one file that exports all of your content.
+      In your <code class="language-text">package.json</code> enter a field called <code class="language-text">"main"</code> and point it to your <code class="language-text">dist/index.js</code> file.
+      Doing this will allow you to import everything into other projects from the top level of your package.
+      If you don't do this, then you will have to path you way down into your package to find your imports.
+    </p>
+
+    <p>
+      It's also worth noting here that if you are using TypeScript, there is another field you can put in your <code class="language-text">package.json</code> file to point to your type definitions.
+      The field is called <code class="language-text">"types"</code> and it needs to point to your <code class="language-text">dist/index.d.ts</code> file.
+    </p>
+
+    <p>
+      And the next critical piece of the npm package puzzle is a field named <code class="language-text">"files"</code>.
+      This is an array of the file and folder names that you want to be included in your published npm package.
+      You can exclude things like tests and source code simply by not including those folders in this array.
+      One thing that npm will always publish is your <code class="language-text">package.json</code> file, so you don't have to include that - but you can.
+      Anything else that you want to be included will have to be entered in this array, and anything you don't want included should not be included in this array.
+    </p>
+
+    <p>
+      Please keep in mind that this array has no effect on your source code repository, so everything will still be stored on github (or wherever your source code lives), it just won't be published as part of your npm package.
+    </p>
+
     <h2>package.json scripts</h2>
 
     <p>
