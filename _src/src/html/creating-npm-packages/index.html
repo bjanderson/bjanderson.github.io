@@ -172,62 +172,184 @@ hidden: false
       With all of that out of the way, now we can get in to actually creating the package.
     </p>
 
+    <h3>Bare Minimum</h3>
+
     <p>
-      First you need some code to publish.
-      You don't need much, a single file, with a single function in it would suffice for the purposes of this tutorial.
-      Instead of copy and pasting a bunch of code here for use as an example, I'm just going to point you to a project that I already have published, and then explain how I did that in detail.
-      So, take a look at my project called <a href="https://github.com/bjanderson/lernato-common" target="_blank">lernato-common</a> on github.
-      I used TypeScript to create it, but you can easily ignore the TypeScript bits and focus on the JavaScript aspect if you want to.
-      They are similar enough that it should not be a hindrance.
+      Npm packages don't have to be huge.
+      In fact, the only thing that's absolutely required to create one is a <code class="language-text">package.json</code> file with a name and a version.
+      Technically, everything else is optional.
     </p>
 
     <p>
-      The first thing I want to point out is how the source code is being exported.
-      If you open the <code class="language-text">src</code> folder and look at the <code class="language-text">index.ts</code> file, you will see that I am simply exporting everything from the other folders.
-      And in each of those folders there's another <code class="language-text">index.ts</code> file where I am simply exporting everything from their respective files.
-      So, the main package file (<code class="language-text">src/index.ts</code>) is just a place where all of the public facing api of the library is exposed.
+      So, to show you an example of the bare minimum, here's an example <code class="language-text">package.json</code> file that you could publish as an npm package.
+      <pre><code class="language-javascript">
+        {
+          "name": "unique-package-name",
+          "version": "0.0.1"
+        }
+      </code></pre>
     </p>
 
     <p>
-      With that in mind, I will assume that you have some sort of build process in place whether it be via TypeScript, Webpack, Gulp, or whatever.
-      And I will assume that the final output of your build process will be placed in a folder named <code class="language-text">dist/</code>.
-      If these assumptions are wrong, then you will need to adjust my advice from here forward to match your actual environment.
+      Of course, that is useless, so you will want to add some functionality to your package.
+      For the sake of keeping it easy, I'm just going to use a single file that defines a simple function.
+      I will name the file <code class="language-text">index.js</code>.
+      <pre><code class="language-javascript">
+        /** index.js */
+
+        module.exports = function isString(obj) {
+          return typeof obj === 'string';
+        }
+      </code></pre>
     </p>
 
     <p>
-      I'm making that point because your <code class="language-text">package.json</code> file is going to point to that one file that exports all of your content.
-      In your <code class="language-text">package.json</code> enter a field called <code class="language-text">"main"</code> and point it to your <code class="language-text">dist/index.js</code> file.
-      Doing this will allow you to import everything into other projects from the top level of your package.
-      If you don't do this, then you will have to path your way down into your package to find your imports.
+      Now all we have to do is add that file to our <code class="language-text">package.json</code> file, and we will have a technically complete npm package.
+      <pre><code class="language-javascript">
+        {
+          "name": "unique-package-name",
+          "version": "0.0.1",
+          "main": "index.js"
+        }
+      </code></pre>
     </p>
 
     <p>
-      It's also worth noting here that if you are using TypeScript, there is another field you can put in your <code class="language-text">package.json</code> file to point to your type definitions.
-      The field is called <code class="language-text">"types"</code> and it needs to point to your <code class="language-text">dist/index.d.ts</code> file.
+      Two more things that you should absolutely add to every package you create are a license and a readme.
+      The license tells potential users the limitations that you have (or have not) put on who may use your package, and how they can use it.
+      The readme should provide an overview of what your package does, and instructions on how to use it.
     </p>
 
     <p>
-      And the next critical piece of the npm package puzzle is a field named <code class="language-text">"files"</code>.
-      This is an array of the file and folder names that you want to be included in your published npm package.
-      You can exclude things like tests and source code simply by not including those folders in this array.
-      Npm will also exclude anything that is in your <code class="language-text">.gitignore</code> file.
-      And, you don't have to, but you can also create a <code class="language-text">.npmignore</code> file, which it will also ignore things from.
-      It's worth noting that there are a few things that npm will always publish, and you cannot ignore, such as your <code class="language-text">package.json</code> file, and a few things that it will never publish, such as your <code class="language-text">node_modules</code> folder.
-      If you leave the files array undefined or empty, then npm will include everthing that is not otherwise ignored.
-      I find it easiest to use the files array, though, and specify only what I want npm to publish.
-      This is the meat and potatos of creating your package, so it's worth checking out the docs.
-      <ul>
-        <li><a href="https://docs.npmjs.com/files/package.json#files" target="_blank">files docs</a></li>
-        <li><a href="https://docs.npmjs.com/cli/publish" target="_blank">npm-publish docs</a></li>
-      </ul>
+      The <a href="https://opensource.org/licenses" target="_blank">license</a> should consist of a file named LICENSE, and an additional field in your <code class="language-text">package.json</code> file that is set to the tile of your license - e.g. "MIT".
+      The readme just needs to be a file named <a href="https://en.wikipedia.org/wiki/README" target="_blank">README</a>, which typically contains <a href="https://en.wikipedia.org/wiki/Markdown" target="_blank">Markdown</a>, but could also just contain plain text.
     </p>
 
     <p>
-      Please keep in mind that this array has no effect on your source code repository, so everything will still be stored on github (or wherever your source code lives), it just won't be published as part of your npm package.
+      This might seem like a very minimal example, and it is, but the point was to show you the bare minimum of what an npm package is made up of without any other tooling or project architecture muddying the waters.
     </p>
+
+    <h3>A Bit More Advanced</h3>
+
+    <p>
+      In reality, your project is probably going to be much more complex than the simple example above.
+      But now you know, in the back of your mind at least, what npm is looking for when you publish your package.
+    </p>
+
+    <p>
+      To give a more advanced example of a real world package, I'm going to refer you to one of my own packages called <a href="https://www.npmjs.com/package/@lernato/common" target="_blank">@lernato/common</a>.
+      And here's a link to the source code on github: <a href="https://github.com/bjanderson/lernato-common" target="_blank">lernato-common</a> .
+    </p>
+
+    <p>
+      In reality this is still a pretty minimal project in terms of functionality, but it does add in more of the things you will typically have in your project - such as tests, transpiling, tooling, and a more complex folder structure than the simple example above.
+    </p>
+
+    <p>
+      First of all, there are many files and folders in this project that are necessary in terms of development, but that I don't want to include in my npm package, so we will have to make sure to exclude them when we publish.
+      Also, I'm using TypeScript in this project, but I want to publish this project in a way that it is usable in regular JavaScript also, which means I will have to transpile my code before publishing it.
+      And the last thing I want to point out is that the functionality for this package is contained in several different files and folders, but it is all exported through one top-level <code class="language-text">index.js</code> file.
+    </p>
+
+    <h4>Specify What To Include Or Exclude</h4>
+
+    <p>
+      By default, npm will generally include everything in your project when it publishes it.
+      This includes tests, config files, scripts, etc...
+      It does automatically exclude some things, such as your <code class="language-text">node_modules</code> folder, but you will typically want to trim down the amount of stuff that gets published into your package.
+    </p>
+
+    <p>
+      There are several methods available to define what you want to include in, or exclude from, your package.
+      The method I use is to define the <code class="language-text">"files"</code> array in my package.json.
+      Anything in that array will get included in my published package - given that it's not on the list of things that always get excluded.
+      There are a lot of details surrounding this setting, so it's best if you read the docs for yourself (<a href="https://docs.npmjs.com/files/package.json#files" target="_blank">https://docs.npmjs.com/files/package.json#files</a>).
+      That being said I will mention that there are certain things that always get included in your package, and things that always get excluded from your package (details are in the docs).
+      Npm will also exclude anything that's in your <code class="language-text">.gitignore</code> file.
+      And you can create a <code class="language-text">.npmignore</code> file to define other things you want to exclude.
+    </p>
+
+    <p>
+      You can work out what works best for you, but I find it easier to only define what I want included, which means I don't have to update all the ignore files every time I add a new file or folder that is for development use only.
+    </p>
+
+    <p>
+      And, just to point out the obvious, you should make sure that you are including (or not excluding) the folder that contains the file that your <code class="language-text">"main"</code> field points to in your <code class="language-text">package.json</code> file.
+    </p>
+
+    <h4>Preparing Your Project For Publishing</h4>
+
+    <p>
+      Unless you're brand new to JavaScript development, you know that there are many different tools and transpilers and pre-processors that your code must run through before it can actually run.
+      The general standard is to store your source code in a folder named <code class="language-text">src</code> and your transpiled, processed, executable code in a folder named <code class="language-text">dist</code>.
+      If your code needs to be processed before it can be executed, then you don't want to point your <code class="language-text">package.json</code> <code class="language-text">main</code> field to your <code class="language-text">src/index.js</code>, you want to point it to your <code class="language-text">dist/index.js</code>.
+    </p>
+
+    <p>
+      If, like me, you are using some other fancy language, such as TypeScript, to write your JavaScript, then you might also need to include things like type definitions in your published package.
+      Thankfully, in the case of TypeScript at least, there's a field you can add to your <code class="language-text">package.json</code> called <code class="language-text">types</code>, which is kind of like <code class="language-text">main</code> except it points to your type definitions file - e.g. <code class="language-bash">"types": "dist/index.d.ts"</code>.
+      This allows other projects that use TypeScript to import your package and automatically have all the types defined with it.
+    </p>
+
+    <h4>Package Naming</h4>
+
+    <p>
+      I also want to quickly touch on package naming.
+      Packages named in the format <code class="language-text">@scope/package-name</code> are called scoped packages.
+      You might wonder how to group your packages under a given package scope, like I have done with <code class="language-text">@lernato/common</code>.
+    </p>
+
+    <p>
+      If you have a private repo in Verdaccio then package scopes are applied automatically based on the <code class="language-text">name</code> field in your <code class="language-text">package.json</code> file.
+      But, if you want to have scoped packages in the public npm repo, then you first have to create an organization for your scope on npmjs.com.
+      For example, I had to create an organization named <em>lernato</em> in order for npmjs.com to recogize the @lernato scope in my packages.
+    </p>
+
+    <p>
+      By default, the <code class="language-bash">npm publish</code> command will only allow you to use scoped packages if you have a paid account on npmjs.com.
+      If you want to publish a scoped package with a free account then you have to add the <code class="language-bash">--access public</code> flag to your publish command.
+
+      <pre><code class="language-bash">
+        npm publish --access public
+      </code></pre>
+    </p>
+
+    <h4>Dependencies</h4>
+
+    <p>
+      When someone installs your npm package, npm will also install everything in your <code class="language-javascript">dependencies</code> array in <code class="language-text">package.json</code>.
+      It won't install anything that's in your <code class="language-javascript">devDependencies</code> or <code class="language-javascript">peerDependencies</code> arrays.
+      With that in mind, you should never put anything in your <code class="language-javascript">dependencies</code> array that isn't required by the project that consumes it.
+    </p>
+
+    <p>
+      Taking this topic one step further, if you assume that the consumer of your package will already have a dependency installed you should put it in your package's <code class="language-javascript">peerDependencies</code> and <code class="language-javascript">devDependencies</code> and not in your <code class="language-javascript">dependencies</code> because it will inevitably cause version conflicts for your package's consumers.
+      For example, if you create a package that has angular dependencies, then you can probably assume that the consuming project already has angular installed.
+      If you were to put your angular dependencies in your <code class="language-text">package.json</code> <code class="language-javascript">dependencies</code> then, when the consumer installs your package, they will automatically install the version of angular that's specified in your <code class="language-text">package.json</code>.
+      If they already have angular installed and it's at a different version, they will get errors during the install, and they will get frustrated at you and probably choose not to use your package.
+    </p>
+
+    <p>
+      To avoid this, you should always specify your package's dependencies in your <code class="language-text">package.json</code> <code class="language-javascript">peerDependencies</code>, so that your package's consumer will get a warning if they do not have a compatible version of a dependency installed, but it won't send them down the rabbit hole of version errors.
+      However, what you define in your <code class="language-text">package.json</code> <code class="language-javascript">peerDependencies</code> don't get installed when you run npm install.
+      So, how do you get those dependencies installed so you can develop your library?
+      The best advice I have found on this is to also include your <code class="language-javascript">peerDependencies</code> packages in your <code class="language-javascript">devDependencies</code>.
+      That way they don't get installed by your package's consumer, your package's consumer still gets the version warning from your <code class="language-javascript">peerDependencies</code>, and the packages still get installed in your node_modules folder thanks to them being in your <code class="language-javascript">devDependencies</code>.
+    </p>
+
+    <p>
+      And one final tip.
+      You can, and I think should, lock your dependencies and devDependencies package versions to a specific version, and only upgrade them on purpose.
+      However, you should not lock your peerDependencies down to one specific version, as that will also make your package's consumers unhappy by forcing them to use specific versions of their dependencies.
+      Doing this will also quickly make your package incompatible with other packages that might not be on the same upgrade cycle as you.
+      Let your peerDependencies package versions span the widest range that works, so that you can ensure maximum flexibility for those who use your package.
+    </p>
+
+    <h2>package.json</h2>
 
     <p>
       So, after all that explaining, here is a snippet from the package.json file from my lernato-common project.
+      Note: I didn't have to include the package.json, README.md, and LICENSE files in my files array, but I put them there because it makes it easy for me to remember that they are included in the package, even though npm includes them automatically.
       <pre><code class="language-javascript">
         "name": "@lernato/common",
         "version": "1.0.0",
@@ -241,39 +363,29 @@ hidden: false
         ],
         ...
       </code></pre>
-      So, when you <code class="language-bash">npm install @lernato/common</code>, you only get what is in the files array in your node_modules folder.
+      So, when you <code class="language-bash">npm install @lernato/common</code>, only the things that are in the files array get added to your node_modules folder.
       And when you <code class="language-javascript">import * from '@lernato/common'</code> in your project, you get whatever is exported through the dist/index.js file.
     </p>
 
-    <h3>Package Naming</h3>
-
     <p>
-      I also want to quickly touch on package naming.
-      You might wonder how to group your packages under a given package scope, like I have done with <code class="language-text">@lernato/common</code>.
-      If you have a private repo in Verdaccio, that will happen automatically based on the <code class="language-text">name</code> field in your <code class="language-text">package.json</code> file.
-      But, if you want this to work on the public npm repo, then you first have to create an organization for your scope on npmjs.com.
-      For example, I had to create an organization named <em>lernato</em> in order for npmjs.com to respect the @lernato scope in my packages.
-    </p>
-
-    <h2>package.json scripts</h2>
-
-    <p>
-      All of this building and versioning and publishing can lead to a lot of command typing if we let it.
+      When you are finally ready to publish your package to Verdaccio or npm, you should remember to test it, build it, rev the version, and finally publish it.
+      All of this testing and building and versioning can lead to a lot of command typing if we let it.
       Fortunately, npm gives us a way to automate most of this work with scripts.
       The following is a snippet from how I like to set up my <code class="language-bash">package.json</code> scripts to handle my package build and deployment process.
 
       <pre><code class="language-json">
         "scripts": [
-          "prebuild": "npm test && rimraf dist/"
-          "build": "node ./build.js",
+          "build": "[your build command here]",
+          "prebuild": "npm test && rimraf dist/",
           "prepush": "npm run build",
           "push": "npm publish --registry http://localhost:4873",
           "push:major": "npm run version:major && npm run push",
           "push:minor": "npm run version:minor && npm run push",
           "push:patch": "npm run version:patch && npm run push",
+          "test": "[your test command here]",
           "version:major": "npm version major --no-git-tag-version",
           "version:minor": "npm version minor --no-git-tag-version",
-          "version:patch": "npm version patch --no-git-tag-version",
+          "version:patch": "npm version patch --no-git-tag-version"
         ]
       </code></pre>
 
