@@ -34,8 +34,7 @@ hidden: false
     </p>
 
     <p>
-      For our first npm package we will make a simple utils library.
-      Before we get into the code, we need to decide where the npm package is going to live.
+      Before we get into creating an npm package, we need to decide where it is going to live.
       Will it be available to the public?
       Is it proprietary and need to be protected?
       Or, are you just learning and experimenting?
@@ -101,8 +100,10 @@ hidden: false
         ##########
         # package.json
         ##########
-
-        "publishConfig": { "registry": "http://localhost:4873/" }
+        {
+          "publishConfig": { "registry": "http://localhost:4873/" },
+          ...
+        }
       </code></pre>
 
       Note: If you set <code class="language-bash">"private": true</code> in your <code class="language-bash">package.json</code> file then your package won't be deployed anywhere, so make sure to use the <code class="language-bash">publishConfig</code> setting if you're creating a package that you want to publish to your private repo.
@@ -317,14 +318,16 @@ hidden: false
     <h4>Dependencies</h4>
 
     <p>
-      When someone installs your npm package, npm will also install everything in your <code class="language-javascript">dependencies</code> array in <code class="language-text">package.json</code>.
-      It won't install anything that's in your <code class="language-javascript">devDependencies</code> or <code class="language-javascript">peerDependencies</code> arrays.
-      With that in mind, you should never put anything in your <code class="language-javascript">dependencies</code> array that isn't required by the project that consumes it.
+      When someone installs your npm package, npm will also install everything in your <code class="language-text">package.json</code> <code class="language-javascript">dependencies</code> array, but it won't install anything that's in your <code class="language-javascript">devDependencies</code> or <code class="language-javascript">peerDependencies</code> arrays.
+      With that in mind, you should never put anything in your <code class="language-javascript">dependencies</code> array in your npm packages.
+      You should list all of your packages runtime dependencies as <code class="language-javascript">peerDependencies</code> and specify a valid version range for them.
+      That way you won't force your package's consumers to download things that may conflict with other packages they have installed.
+      If your package's consumer does not have a required peerDependency installed, they will receive a warning from npm advising them what they need to install.
+      Otherwise your package will just use whatever packages they have already installed, and not install anything else for them.
     </p>
 
     <p>
-      Taking this topic one step further, if you assume that the consumer of your package will already have a dependency installed you should put it in your package's <code class="language-javascript">peerDependencies</code> and <code class="language-javascript">devDependencies</code> and not in your <code class="language-javascript">dependencies</code> because it will inevitably cause version conflicts for your package's consumers.
-      For example, if you create a package that has angular dependencies, then you can probably assume that the consuming project already has angular installed.
+      For example, if you create a package that has angular dependencies, then there's a good chance that the consuming project already has angular installed, and probably not the same version as your package.
       If you were to put your angular dependencies in your <code class="language-text">package.json</code> <code class="language-javascript">dependencies</code> then, when the consumer installs your package, they will automatically install the version of angular that's specified in your <code class="language-text">package.json</code>.
       If they already have angular installed and it's at a different version, they will get errors during the install, and they will get frustrated at you and probably choose not to use your package.
     </p>
@@ -332,17 +335,20 @@ hidden: false
     <p>
       To avoid this, you should always specify your package's dependencies in your <code class="language-text">package.json</code> <code class="language-javascript">peerDependencies</code>, so that your package's consumer will get a warning if they do not have a compatible version of a dependency installed, but it won't send them down the rabbit hole of version errors.
       However, what you define in your <code class="language-text">package.json</code> <code class="language-javascript">peerDependencies</code> don't get installed when you run npm install.
-      So, how do you get those dependencies installed so you can develop your library?
+      So, how do you get those dependencies installed on your machine so you can develop your library?
       The best advice I have found on this is to also include your <code class="language-javascript">peerDependencies</code> packages in your <code class="language-javascript">devDependencies</code>.
       That way they don't get installed by your package's consumer, your package's consumer still gets the version warning from your <code class="language-javascript">peerDependencies</code>, and the packages still get installed in your node_modules folder thanks to them being in your <code class="language-javascript">devDependencies</code>.
+      It's not ideal, and there are other tools you can install that will install your peerDependencies for you.
+      I've even written scripts to install my peerDependencies for me.
+      But adding them to my devDependencies is just easier and more reliable.
     </p>
 
     <p>
       And one final tip.
-      You can, and I think should, lock your dependencies and devDependencies package versions to a specific version, and only upgrade them on purpose.
-      However, you should not lock your peerDependencies down to one specific version, as that will also make your package's consumers unhappy by forcing them to use specific versions of their dependencies.
+      You can, and I think should, lock your <code class="language-javascript">dependencies</code> and <code class="language-javascript">devDependencies</code> package versions to a specific version, and only upgrade them on purpose.
+      However, you should not lock your <code class="language-javascript">peerDependencies</code> down to one specific version, as that will also make your package's consumers unhappy by forcing them to use specific versions of their dependencies.
       Doing this will also quickly make your package incompatible with other packages that might not be on the same upgrade cycle as you.
-      Let your peerDependencies package versions span the widest range that works, so that you can ensure maximum flexibility for those who use your package.
+      Let your <code class="language-javascript">peerDependencies</code> package versions span the widest range that works, so that you can ensure maximum flexibility for those who use your package.
     </p>
 
     <h2>package.json</h2>
