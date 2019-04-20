@@ -1,0 +1,171 @@
+---
+title: Replace Karma With Jest
+category: Angular
+description: How to replace Karma with Jest for unit testing your Angular application.
+date: 4/22/2019
+hidden: false
+---
+
+<div class="blog-post">
+
+  <div class="blog-post-image">
+    <img src="./blog-post-image.jpg" alt="Blog Post Image">
+  </div>
+
+  <div class="content">
+    <h1>Replace Karma With Jest</h1>
+
+    <p>
+      If you have never used <a href="https://jestjs.io/" target="_blank">Jest</a> for unit testing before, I highly recommend it.
+      I discovered it a while ago when I started having problems with Karma failing on my CI server for no predictable reason.
+    </p>
+
+    <p>
+      Once I started using Jest, I discovered that it has a lot of <a href="https://jestjs.io/docs/en/cli" target="_blank">nice features</a>, and it has since become my default unit testing framework.
+    </p>
+
+    <p>
+      But, when you start a new Angular project, Karma is baked in, and it can be a bit of a chore to pry it out and replace it with Jest.
+      Well, that is exactly what we're going to do in this article.
+    </p>
+
+    <h2>Remove Karma</h2>
+
+    <p>
+      First we need to get rid of Karma.
+    </p>
+
+    <p>
+      Delete the files: <code class="language-text">src/karma.conf.js</code> and <code class="language-text">src/test.ts</code>
+    </p>
+
+    <p>
+      In <code class="language-text">package.json</code> remove the following from <code class="language-text">devDependencies</code>:
+      <pre><code class="language-javascript">
+        "@types/jasmine": "*",
+        "@types/jasminewd2": "*",
+        "jasmine-core": "*",
+        "jasmine-spec-reporter": "*",
+        "karma": "*",
+        "karma-chrome-launcher": "*",
+        "karma-coverage-istanbul-reporter": "*",
+        "karma-jasmine": "*",
+        "karma-jasmine-html-reporter": "*",
+      </code></pre>
+    </p>
+
+    <h2>Install Jest</h2>
+
+    <p>
+      Add Jest with the following command:
+
+      <pre><code class="language-bash">
+        npm i -D jest @types/jest ts-jest jest-sonar-reporter @angular-builders/jest
+      </code></pre>
+    </p>
+
+    <p>
+      Add a file named <code class="language-text">src/jest.config.js</code>:
+
+      <pre><code class="language-javascript">
+        /** src/jest.config.js */
+
+        module.exports = {
+
+          collectCoverageFrom: [
+            'src/app/**/*.{ts}',
+            '!src/app/**/index.ts',
+            '!src/app/**/*.module.ts'
+          ],
+
+          coverageDirectory: 'coverage',
+
+          coverageReporters: [
+            "json",
+            "lcov",
+            "text-summary"
+          ],
+
+          testPathIgnorePatterns: [
+            '<rootDir>/config/',
+            '<rootDir>/coverage/',
+            '<rootDir>/dist/',
+            '<rootDir>/e2e/',
+            '<rootDir>/jest/',
+            '<rootDir>/node_modules/',
+            '<rootDir>/scripts/',
+            '<rootDir>/server/',
+            '<rootDir>/webpack/',
+            '<rootDir>/src/app/*.(js|scss)',
+          ],
+
+          testMatch: [
+            "<rootDir>/src/app/*.spec.ts",
+            "<rootDir>/src/app/**/*.spec.ts"
+          ],
+
+          testResultsProcessor: 'jest-sonar-reporter',
+
+        };
+      </code></pre>
+    </p>
+
+    <p>
+      And in <code class="language-text">src/tsconfig.spec.json</code>:
+      <ul>
+        <li>replace "jasmine" and "node" with "jest" in the types array</li>
+        <li>add "module": "commonjs" to the compilerOptions</li>
+        <li>remove "test.ts" from the files array</li>
+      </ul>
+
+      So your <code class="language-text">src/tsconfig.spec.json</code> file should look like this:
+      <pre><code class="language-javascript">
+        {
+          "extends": "../tsconfig.json",
+          "compilerOptions": {
+            "outDir": "../out-tsc/spec",
+            "types": [
+              "jest"
+            ],
+            "module": "commonjs"
+          },
+          "files": [
+            "polyfills.ts"
+          ],
+          "include": [
+            "**/*.spec.ts",
+            "**/*.d.ts"
+          ]
+        }
+      </code></pre>
+    </p>
+
+    <p>
+      In <code class="language-text">src/tsconfig.app.json</code> remove "test.ts" from the "exclude" array.
+    </p>
+
+    <p>
+      And finally, edit your <code class="language-text">angular.json</code> file.
+      Change the projects[your-project].architect.test section so it looks like this:
+
+      <pre><code class="language-javascript">
+        "test": {
+          "builder": "@angular-builders/jest:run",
+          "options": {}
+        },
+      </code></pre>
+    </p>
+
+    <p>
+      After all of these changes, it's a good idea to delete your <code class="language-text">node_modules</code> folder and run <code class="language-bash">npm install</code> again.
+    </p>
+
+    <p>
+      And, if all went well, you should be able to run your tests with:
+      <pre><code class="language-bash">
+        npm test
+      </code></pre>
+    </p>
+
+  </div>
+</div>

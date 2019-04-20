@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Replace Karma With Jest | BJ Anderson</title>
+
+  <meta name="description" content="Practical advice for developing websites and web applications.">
+  <meta name="author" content="BJ Anderson">
+
+  <!-- How to generate favicons with GIMP - http://thenewcode.com/467/Creating-Multi-Resolution-Favicons-For-Web-Pages-With-GIMP -->
+  <link rel="icon" href="/favicon.ico?v=0">
+  <!-- <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff"> -->
+
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Permanent+Marker"> -->
+
+  <link rel="stylesheet" href="/vendor/prism/prism.css">
+
+  <link rel="stylesheet" href="/styles.css">
+
+  <script>
+    function toggleActive() {
+      try {
+        document.querySelector('.navbar-burger').classList.toggle('is-active');
+        document.querySelector('.navbar-menu').classList.toggle('is-active');
+      } catch (err) {
+        console.error('Error in toggleActive');
+      }
+    }
+  </script>
+
+</head>
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+
+    <div class="navbar-brand">
+
+      <a class="navbar-item" href="/">
+        <div class="logo-image">
+          <img src="/logo/emoji-64.png" alt="Logo">
+        </div>
+        <span class="title"> BJ Anderson </span>
+      </a>
+
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="headerNavBar" onclick="toggleActive()">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="headerNavBar" class="navbar-menu">
+
+      <div class="navbar-start">
+        <!-- <a class="navbar-item"> Blog </a> -->
+      </div>
+
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://github.com/bjanderson/" target="_blank">Github</a>
+        <a class="navbar-item" href="/about.html"> About </a>
+      </div>
+
+    </div>
+  </nav>
+
+  <section class="section main">
+    <div class="container">
+      <div name="pwd-poll"></div>
+      <div class="blog-post">
+
+  <div class="blog-post-image">
+    <img src="./blog-post-image.jpg" alt="Blog Post Image">
+  </div>
+
+  <div class="content">
+    <h1>Replace Karma With Jest</h1>
+
+    <p>
+      If you have never used <a href="https://jestjs.io/" target="_blank">Jest</a> for unit testing before, I highly recommend it.
+      I discovered it a while ago when I started having problems with Karma failing on my CI server for no predictable reason.
+    </p>
+
+    <p>
+      Once I started using Jest, I discovered that it has a lot of <a href="https://jestjs.io/docs/en/cli" target="_blank">nice features</a>, and it has since become my default unit testing framework.
+    </p>
+
+    <p>
+      But, when you start a new Angular project, Karma is baked in, and it can be a bit of a chore to pry it out and replace it with Jest.
+      Well, that is exactly what we're going to do in this article.
+    </p>
+
+    <h2>Remove Karma</h2>
+
+    <p>
+      First we need to get rid of Karma.
+    </p>
+
+    <p>
+      Delete the files: <code class="language-text">src/karma.conf.js</code> and <code class="language-text">src/test.ts</code>
+    </p>
+
+    <p>
+      In <code class="language-text">package.json</code> remove the following from <code class="language-text">devDependencies</code>:
+      <pre><code class="language-javascript">
+        "@types/jasmine": "*",
+        "@types/jasminewd2": "*",
+        "jasmine-core": "*",
+        "jasmine-spec-reporter": "*",
+        "karma": "*",
+        "karma-chrome-launcher": "*",
+        "karma-coverage-istanbul-reporter": "*",
+        "karma-jasmine": "*",
+        "karma-jasmine-html-reporter": "*",
+      </code></pre>
+    </p>
+
+    <h2>Install Jest</h2>
+
+    <p>
+      Add Jest with the following command:
+
+      <pre><code class="language-bash">
+        npm i -D jest @types/jest ts-jest jest-sonar-reporter @angular-builders/jest
+      </code></pre>
+    </p>
+
+    <p>
+      Add a file named <code class="language-text">src/jest.config.js</code>:
+
+      <pre><code class="language-javascript">
+        /** src/jest.config.js */
+
+        module.exports = {
+
+          collectCoverageFrom: [
+            'src/app/**/*.{ts}',
+            '!src/app/**/index.ts',
+            '!src/app/**/*.module.ts'
+          ],
+
+          coverageDirectory: 'coverage',
+
+          coverageReporters: [
+            "json",
+            "lcov",
+            "text-summary"
+          ],
+
+          testPathIgnorePatterns: [
+            '<rootDir>/config/',
+            '<rootDir>/coverage/',
+            '<rootDir>/dist/',
+            '<rootDir>/e2e/',
+            '<rootDir>/jest/',
+            '<rootDir>/node_modules/',
+            '<rootDir>/scripts/',
+            '<rootDir>/server/',
+            '<rootDir>/webpack/',
+            '<rootDir>/src/app/*.(js|scss)',
+          ],
+
+          testMatch: [
+            "<rootDir>/src/app/*.spec.ts",
+            "<rootDir>/src/app/**/*.spec.ts"
+          ],
+
+          testResultsProcessor: 'jest-sonar-reporter',
+
+        };
+      </code></pre>
+    </p>
+
+    <p>
+      And in <code class="language-text">src/tsconfig.spec.json</code>:
+      <ul>
+        <li>replace "jasmine" and "node" with "jest" in the types array</li>
+        <li>add "module": "commonjs" to the compilerOptions</li>
+        <li>remove "test.ts" from the files array</li>
+      </ul>
+
+      So your <code class="language-text">src/tsconfig.spec.json</code> file should look like this:
+      <pre><code class="language-javascript">
+        {
+          "extends": "../tsconfig.json",
+          "compilerOptions": {
+            "outDir": "../out-tsc/spec",
+            "types": [
+              "jest"
+            ],
+            "module": "commonjs"
+          },
+          "files": [
+            "polyfills.ts"
+          ],
+          "include": [
+            "**/*.spec.ts",
+            "**/*.d.ts"
+          ]
+        }
+      </code></pre>
+    </p>
+
+    <p>
+      In <code class="language-text">src/tsconfig.app.json</code> remove "test.ts" from the "exclude" array.
+    </p>
+
+    <p>
+      And finally, edit your <code class="language-text">angular.json</code> file.
+      Change the projects[your-project].architect.test section so it looks like this:
+
+      <pre><code class="language-javascript">
+        "test": {
+          "builder": "@angular-builders/jest:run",
+          "options": {}
+        },
+      </code></pre>
+    </p>
+
+    <p>
+      After all of these changes, it's a good idea to delete your <code class="language-text">node_modules</code> folder and run <code class="language-bash">npm install</code> again.
+    </p>
+
+    <p>
+      And, if all went well, you should be able to run your tests with:
+      <pre><code class="language-bash">
+        npm test
+      </code></pre>
+    </p>
+
+  </div>
+</div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="col left">
+
+    </div>
+
+    <div class="col middle">
+      <div>
+        <a href="/">bjanderson.github.io</a>
+      </div>
+
+      <div>
+        &copy; 2019 BJ Anderson.
+      </div>
+    </div>
+
+    <div class="col right">
+
+    </div>
+  </footer>
+
+  <script src="/vendor/prism/prism.js"></script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112306194-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-112306194-1');
+  </script>
+
+</body>
+</html>
