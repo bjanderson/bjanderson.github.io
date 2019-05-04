@@ -156,7 +156,7 @@
     <p>
       What if we just treated those dependencies as plain old JavaScript objects.
       What if we dropped the TypeScript from our tests and made all of our dependencies be of type <em>any</em>.
-      Then we could pass in the bare minimum of code (raw JavaScript) to each of our tests, that requres zero wire-up, and we can easily shape it however we want on a test by test basis.
+      Then we could pass in the bare minimum of code (raw JavaScript) to each of our tests, that requres zero wire-up, and we can easily shape it however we want on a test-by-test basis.
     </p>
 
     <h2>Starting From App</h2>
@@ -421,17 +421,7 @@
       describe('AppComponent', () => {
 
         describe('constructor', () => {
-          beforeEach(() => {
-            init();
-          });
-
-          it('should create the app', () => {
-            expect(component).toBeDefined();
-          });
-
-          it('should set the component.title', () => {
-            expect(component.title).toEqual('my-app');
-          });
+          ...
         });
 
         describe('ngOnInit()', () => {
@@ -448,15 +438,7 @@
         });
 
         describe('setTitle()', () => {
-          beforeEach(() => {
-            init();
-          });
-
-          it('sets the title', () => {
-            const newTitle = 'test title';
-            component.setTitle(newTitle);
-            expect(component.title).toEqual(newTitle);
-          });
+          ...
         });
       });
     </code></pre>
@@ -464,7 +446,8 @@
     <p>
       You can see that the beforeEach for our ngOnInit section is now doing something unique for that section.
       I'm using it to override the definition of setTitle on the component, to turn it into a no-op function.
-      I'm doing that beacuse I don't care about what the setTitle function does in my ngOnInit tests - all I care about is if my ngOnInit function calls the setTitle function with the correct parameters.
+      If I did that in a higher-level beforeEach, then I wouldn't be able to test my setTitle function in its describe block since it would always be a no-op funciton.
+      And I'm setting it to a no-op function beacuse I don't care about what the setTitle function does in my ngOnInit tests - all I care about is if my ngOnInit function calls the setTitle function with the correct parameters.
       Whether the setTitle function works correctly or not should be tested in the setTitle section of the tests.
     </p>
 
@@ -502,7 +485,7 @@
 
         ngOnInit(): void {
           this.userService.getUserInfo()
-            .subscribe((userInfo) => {
+            .subscribe((userInfo: UserInfo) => {
               this.setTitle(`Hello ${userInfo.userName}`);
             });
         }
@@ -569,8 +552,7 @@
     </code></pre>
 
     <p>
-      I removed the body of the constructor and setTitle tests in order to de-clutter the view.
-      Now, can you spot the dependency injection here?
+      Can you spot the dependency injection here?
     </p>
 
     <p>
@@ -587,7 +569,7 @@
     </p>
 
     <p>
-      And taking this one step further, what if I wanted to overwrite my mocked UserService function in my test so that I can test what happens when the service returns different values.
+      And taking this one step further, what if I wanted to overwrite the mocked UserService function in my test so that I can test what happens when the service returns different values.
       Well, here's an example of that:
     </p>
 
