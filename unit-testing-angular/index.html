@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Unit Testing Angular | BJ Anderson</title>
+
+  <meta name="description" content="Practical advice for developing websites and web applications.">
+  <meta name="author" content="BJ Anderson">
+
+  <!-- How to generate favicons with GIMP - http://thenewcode.com/467/Creating-Multi-Resolution-Favicons-For-Web-Pages-With-GIMP -->
+  <link rel="icon" href="/favicon.ico?v=0">
+  <!-- <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff"> -->
+
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Permanent+Marker"> -->
+
+  <link rel="stylesheet" href="/vendor/prism/prism.css">
+
+  <link rel="stylesheet" href="/styles.css">
+
+  <script>
+    function toggleActive() {
+      try {
+        document.querySelector('.navbar-burger').classList.toggle('is-active');
+        document.querySelector('.navbar-menu').classList.toggle('is-active');
+      } catch (err) {
+        console.error('Error in toggleActive');
+      }
+    }
+  </script>
+
+</head>
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+
+    <div class="navbar-brand">
+
+      <a class="navbar-item" href="/">
+        <div class="logo-image">
+          <img src="/logo/emoji-64.png" alt="Logo">
+        </div>
+        <span class="title"> BJ Anderson </span>
+      </a>
+
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="headerNavBar" onclick="toggleActive()">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="headerNavBar" class="navbar-menu">
+
+      <div class="navbar-start">
+        <!-- <a class="navbar-item"> Blog </a> -->
+      </div>
+
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://github.com/bjanderson/" target="_blank">Github</a>
+        <a class="navbar-item" href="/about.html"> About </a>
+      </div>
+
+    </div>
+  </nav>
+
+  <section class="section main">
+    <div class="container">
+      <div name="pwd-poll"></div>
+      <div class="blog-post">
+
+  <div class="blog-post-image">
+    <img src="./blog-post-image.jpg" alt="Blog Post Image">
+    <div class="attribution">
+      <a target="_blank"
+        href="https://unsplash.com/@nicolasthomas?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge">
+        Nicolas Thomas | Unsplash.com
+      </a>
+    </div>
+  </div>
+
+  <div class="content">
+    <h1>Unit Testing Angular</h1>
+
+    <p>
+      So, we've <a href="/replace-karma-with-jest">replaced Karma with Jest</a> and we're one step further along the path to speeding up our unit tests.
+      But a framework alone can't make all the difference.
+      It's up to you to write tests that will run as fast as possible.
+      Why?
+      Because if your tests take forever to run, you will run them less often.
+    </p>
+
+    <p>
+      Angular gives us some pretty powerful tools to help us write the most comprehensive unit tests we can with its <a href="https://angular.io/api/core/testing/TestBed" target="_blank">TestBed</a>.
+      And sometimes you might need to use the full power of the TestBed in order to test certain aspects of your project.
+      If you're like me, though, you probably don't spend a lot of time testing your html and css, and mainly stick to testing your JavaScript.
+    </p>
+
+    <p>
+      I'm not saying that you should never test your html or css, but I'm saying that I don't usually find it to be worth the effort to write unit tests for it.
+      If I want to test my html, I usually write end-to-end (e2e) tests for that.
+    </p>
+
+    <p>
+      So, if all I want to do is test my JavaScript, I really don't need the TestBed, and I can cut down the time it takes to run my unit tests by getting rid of it.
+    </p>
+
+    <p>
+      Are you surpised by that last statement?
+      Are you wondering how we will inject our component and service dependencies if we don't use the TestBed?
+      Well, that's what this article is all about.
+    </p>
+
+    <p>
+      Before we get into the details of how to squeeze every ounce of performance out of our unit tests, we need to take a step back and remember some things about the bigger picture.
+      First of all, Angular is a JavaScript framework.
+      We may be using TypeScript to write our code, but TypeScript is just a layer on top of JavaScript too.
+      At the heart of it all is JavaScript, and because of that, we can use JavaScript in it's rawest form to get our tests running as fast as possible.
+    </p>
+
+    <p>
+      What do I mean by using JavaScript in its rawest form?
+      Well, think of a component that depends on a service.
+      That service gets injected into the component by Angular's dependency injection mechanism, which is fantastic for the app, but not for the tests.
+      Why?
+      Well, that service may have dependencies, and those dependencies may have dependencies, and wiring all of that up ourselves would be a nightmare in our application code, so, thank you Angular.
+    </p>
+
+    <p>
+      But, in our tests, we don't want all of those dependencies to be wired up.
+      We want to mock all of them.
+      Well, we actually only want to mock the things we are using, and we want to be able to mock them in a way that suits our tests.
+      That's where the TestBed steps in.
+      The only problem is that the TestBed does a lot of processing while it's going through the motions of wiring up your mock dependencies for you.
+    </p>
+
+    <p>
+      What if we just treated those dependencies as plain old JavaScript objects.
+      What if we dropped the TypeScript from our tests and made all of our dependencies be of type <em>any</em>.
+      Then we could pass in the bare minimum of code (raw JavaScript) to each of our tests, that requres zero wire-up, and we can easily shape it however we want on a test by test basis.
+    </p>
+
+    <h2>Starting From App</h2>
+
+    <p>
+      OK, enough chit-chat.
+      Let's get into some examples.
+      We'll start with the first test you get when you create a new angular project.
+    </p>
+
+    <pre><code class="language-javascript line-numbers">
+      // app.comonent.spec.ts
+
+      import { TestBed, async } from '@angular/core/testing';
+      import { RouterTestingModule } from '@angular/router/testing';
+      import { AppComponent } from './app.component';
+
+      describe('AppComponent', () => {
+        beforeEach(async(() => {
+          TestBed.configureTestingModule({
+            imports: [
+              RouterTestingModule
+            ],
+            declarations: [
+              AppComponent
+            ],
+          }).compileComponents();
+        }));
+
+        it('should create the app', () => {
+          const fixture = TestBed.createComponent(AppComponent);
+          const app = fixture.debugElement.componentInstance;
+          expect(app).toBeTruthy();
+        });
+
+        it(`should have as title 'test-app'`, () => {
+          const fixture = TestBed.createComponent(AppComponent);
+          const app = fixture.debugElement.componentInstance;
+          expect(app.title).toEqual('test-app');
+        });
+
+        it('should render title in a h1 tag', () => {
+          const fixture = TestBed.createComponent(AppComponent);
+          fixture.detectChanges();
+          const compiled = fixture.debugElement.nativeElement;
+          expect(compiled.querySelector('h1').textContent).toContain('Welcome to test-app!');
+        });
+      });
+    </code></pre>
+
+    <p>
+      When you create a new Angular project using the angular-cli it generates an <code class="language-javascript">app.component.ts</code> and an <code class="language-javascript">app.comonent.spec.ts</code>.
+      By default, <code class="language-javascript">app.comonent.spec.ts</code> uses the TestBed for it's tests.
+      And it needs to use it because it is testing things in the HTML.
+      If you want to test things in your html, then you will need to use it too.
+      But if you're just testing your JavaScript, then you really don't need all the extra overhead.
+    </p>
+
+    <p>
+      Now, I'm not trying to come down hard on TestBed.
+      It's a tool that has its uses.
+      I'm just trying to make the point that it's not an absolute requirement for our tests, and that it might be doing more than we want it to most of the time.
+      To see what I mean, take a look at <a href="https://github.com/angular/angular/blob/master/packages/core/testing/src/test_bed.ts" target="_blank">the TestBed source code on github</a>.
+      Specifically, follow the logic of the two functions that the default TestBed setup calls (<code class="language-javascript">configureTestingModule</code> and <code class="language-javascript">compileComponents</code>), and then compare that to the code I'm suggesting we use instead.
+      I will let you be the judge of what runs faster.
+    </p>
+
+    <p>
+      One of the first things I do when I create a new Angular project is change <code class="language-javascript">app.component.spec.ts</code> to look like this.
+    </p>
+
+    <pre><code class="language-javascript line-numbers">
+      // app.comonent.spec.ts
+
+      import { AppComponent } from './app.component';
+
+      let component;
+      function init() {
+        component = new AppComponent();
+      }
+
+      describe('AppComponent', () => {
+
+        describe('constructor', () => {
+          beforeEach(() => {
+            init();
+          });
+
+          it('should create the app', () => {
+            expect(component).toBeDefined();
+          });
+
+          it('should set the component.title', () => {
+            expect(component.title).toEqual('my-app');
+          });
+        });
+
+      });
+    </code></pre>
+
+    <p>
+      Like I said, I don't unit test the html, so that immediately removes two tests from the default test file.
+      Instead I added a test to check that the value of the component's <code class="language-javascript">title</code> property is being set correctly.
+      I have an <code class="language-javascript">init</code> function that creates a new instance of my component before each test run, which creates a new instance of the component directly, without worrying about a bunch of wire-up that I'm not going to use anyways.
+      And my initial tests are easy to understand (at least to me they are).
+    </p>
+
+    <p>
+      There's no magic, there's only the bare minimum amount of code needed for the tests to work.
+    </p>
+
+    <h2>Testing The Component</h2>
+
+    <p>
+      As you can see from the above example, testing properties on the component is as straight forward as it gets.
+      If the component has a property, you can reference it directly in your tests.
+    </p>
+
+    <p>
+      But what about functions?
+      Well, if you think about your component as a JavaScript object, functions are just properties on the object, except they do things instead of just sit there.
+      The thing to keep in mind when it comes to testing functions is to always limit the scope of your tests to just the logic in the function under test.
+      In other words, don't test other functions as part of your test for the function under test.
+      Give those functions their own tests.
+    </p>
+
+    <p>
+      Let's take a look at another simple example, just to visualize the concept.
+    </p>
+
+    <p>
+      Here's our app component that we are going to test.
+    </p>
+
+    <pre><code class="language-javascript line-numbers">
+      // app.component.ts
+
+      import { Component } from '@angular/core';
+
+      @Component({
+        selector: 'app-root',
+        templateUrl: './app.component.html',
+        styleUrls: ['./app.component.scss']
+      })
+      export class AppComponent {
+        title = 'test-app';
+
+        setTitle(title: string): void {
+          this.title = title;
+        }
+      }
+    </code></pre>
+
+    <p>
+      And here's our updated test with a section dedicated to the new function we added.
+    </p>
+
+    <pre><code class="language-javascript line-numbers">
+      // app.component.spec.ts
+
+      import { AppComponent } from './app.component';
+
+      let component;
+      function init() {
+        component = new AppComponent();
+      }
+
+      describe('AppComponent', () => {
+
+        describe('constructor', () => {
+          beforeEach(() => {
+            init();
+          });
+
+          it('should create the app', () => {
+            expect(component).toBeDefined();
+          });
+
+          it('should set the component.title', () => {
+            expect(component.title).toEqual('my-app');
+          });
+        });
+
+        describe('setTitle()', () => {
+          beforeEach(() => {
+            init();
+          });
+
+          it('sets the title', () => {
+            const newTitle = 'test title';
+            component.setTitle(newTitle);
+            expect(component.title).toEqual(newTitle);
+          });
+        });
+      });
+    </code></pre>
+
+    <p>
+      Again, nothing too complicated going on here - and that's the beauty of it!
+    </p>
+
+    <p>
+      You might have noticed that I have two <code class="language-javascript">beforeEach</code> blocks for the two child <code class="language-javascript">describe</code> blocks - (constructor and setTitle).
+      You might think that you can cut down on the code by consolidating those <code class="language-javascript">beforeEach</code> blocks into one under the higher-level <code class="language-javascript">describe</code> block (AppComponent).
+      You wouldn't be wrong, but the reason I keep those <code class="language-javascript">beforeEach</code> blocks where they are is because, when the tests get more complicated, its easier to manage what gets set up for each specific <code class="language-javascript">describe</code> block, than to try to manage all that in the top-level <code class="language-javascript">beforeEach</code>.
+      In this case I could consolidate those two, but I've become accustomed to the convention of keeping a <code class="language-javascript">beforeEach</code> in each low-level <code class="language-javascript">describe</code> block.
+    </p>
+
+    <h3>Functions That Call Other Functions</h3>
+
+    <p>
+      If you are writing small, <a href="https://en.wikipedia.org/wiki/Single_responsibility_principle" target="_blank">SRP</a> functions, like you should be, then you will inevitably have functions that call other functions within your component.
+      And, as I mentioned above, you should limit the scope of your tests to the function that is currently under test.
+      By setting up our tests the way we have been - treating everything as JavaScript objects - it's super easy to mock out the other functions in our component when we are not testing them directly.
+    </p>
+
+    <p>
+      Just for the purposes of this example, let's say we have an ngOnInit function that calls the setTitle function when it runs.
+      Like I said before, we only want to test what's in the scope of the ngOnInit function, and not the result of the setTitle function.
+      Here's how that would look.
+    </p>
+
+    <p>
+      Here's the updated version of our component:
+    </p>
+
+    <pre><code class="language-javascript">
+      // app.component.ts
+
+      import { Component, OnInit } from '@angular/core';
+
+      @Component({
+        selector: 'app-root',
+        templateUrl: './app.component.html',
+        styleUrls: ['./app.component.scss']
+      })
+      export class AppComponent implements OnInit {
+        title = 'test-app';
+
+        ngOnInit(): void {
+          this.setTitle('Hello App');
+        }
+
+        setTitle(title: string): void {
+          this.title = title;
+        }
+      }
+    </code></pre>
+
+    <p>
+      And here's the updated version of our test:
+    </p>
+
+    <pre><code class="language-javascript">
+      import { AppComponent } from './app.component';
+
+      let component;
+      function init() {
+        component = new AppComponent();
+      }
+
+      describe('AppComponent', () => {
+
+        describe('constructor', () => {
+          beforeEach(() => {
+            init();
+          });
+
+          it('should create the app', () => {
+            expect(component).toBeDefined();
+          });
+
+          it('should set the component.title', () => {
+            expect(component.title).toEqual('my-app');
+          });
+        });
+
+        describe('ngOnInit()', () => {
+          beforeEach(() => {
+            init();
+            component.setTitle = () => undefined;
+          });
+
+          it('calls setTitle()', () => {
+            const spy = spyOn(component, 'setTitle').and.callThrough();
+            component.ngOnInit();
+            expect(spy).toHaveBeenCalledWith('Hello App');
+          });
+        });
+
+        describe('setTitle()', () => {
+          beforeEach(() => {
+            init();
+          });
+
+          it('sets the title', () => {
+            const newTitle = 'test title';
+            component.setTitle(newTitle);
+            expect(component.title).toEqual(newTitle);
+          });
+        });
+      });
+    </code></pre>
+
+    <p>
+      You can see that the beforeEach for our ngOnInit section is now doing something unique for that section.
+      I'm using it to override the definition of setTitle on the component, to turn it into a no-op function.
+      I'm doing that beacuse I don't care about what the setTitle function does in my ngOnInit tests - all I care about is if my ngOnInit function calls the setTitle function with the correct parameters.
+      Whether the setTitle function works correctly or not should be tested in the setTitle section of the tests.
+    </p>
+
+    <h2>Injecting Dependencies</h2>
+
+    <p>
+      Admittedly, there's nothing complicated going on in our component at this point, and the whole point of TestBed is to wire up your dependencies for you.
+      So, let's take all of this to the next level and inject a service into our component.
+    </p>
+
+    <p>
+      The first thing most app components are going to do is probably request the user information from an api, so let's do that.
+    </p>
+
+
+    <p>
+      Now our component is starting to look a little more interesting:
+    </p>
+
+    <pre><code class="language-javascript">
+      // app.component.ts
+
+      import { Component, OnInit } from '@angular/core';
+      import { take } from 'rxjs/operators';
+
+      @Component({
+        selector: 'app-root',
+        templateUrl: './app.component.html',
+        styleUrls: ['./app.component.scss']
+      })
+      export class AppComponent implements OnInit {
+        title = 'test-app';
+
+        constructor(private userService: UserService) {}
+
+        ngOnInit(): void {
+          this.userService.getUserInfo()
+            .subscribe((userInfo) => {
+              this.setTitle(`Hello ${userInfo.userName}`);
+            });
+        }
+
+        setTitle(title: string): void {
+          this.title = title;
+        }
+      }
+    </code></pre>
+
+    <p>
+      Normally, I would break all the code in the ngOnInit function into multiple functions (SRP), but I'm leaving it all there so that I don't complicate my explanation of what's going on here.
+    </p>
+
+    <p>
+      And our test file looks like this:
+    </p>
+
+    <pre><code class="language-javascript">
+      // app.component.spec.ts
+
+      import { of } from 'rxjs';
+      import { AppComponent } from './app.component';
+
+      const userInfo = { userName: 'test user name' };
+      const userService: any = {
+        getUserInfo: () => of(userInfo),
+      };
+
+      let component;
+      function init() {
+        component = new AppComponent(userService);
+      }
+
+      describe('AppComponent', () => {
+
+        describe('constructor', () => {
+          ...
+        });
+
+        describe('ngOnInit()', () => {
+          beforeEach(() => {
+            init();
+            component.setTitle = () => undefined;
+          });
+
+          it('calls userService.getUserInfo()', () => {
+            const spy = spyOn(component.userService, 'getUserInfo').and.callThrough();
+            component.ngOnInit();
+            expect(spy).toHaveBeenCalled();
+          });
+
+          it('calls setTitle()', () => {
+            const spy = spyOn(component, 'setTitle').and.callThrough();
+            component.ngOnInit();
+            expect(spy).toHaveBeenCalledWith(`Hello ${userInfo.userName}`);
+          });
+        });
+
+        describe('setTitle()', () => {
+          ...
+        });
+      });
+    </code></pre>
+
+    <p>
+      I removed the body of the constructor and setTitle tests in order to de-clutter the view.
+      Now, can you spot the dependency injection here?
+    </p>
+
+    <p>
+      Take a look at the top of the test file.
+      There's a mock of the userService that only defines the function that our component is using from that service.
+      Since that function returns an observable we are using the RXJS of operator, which creates an observable that returns whatever value you give it.
+      An added bonus of the RXJS of operator is that it runs synchronously so you can test whatever is in your subscribe function without having to worry about asynchronicity.
+    </p>
+
+    <p>
+      Our component constructor takes the UserService in as a parameter, so our test passes our mocked UserService object in as a parameter.
+      Our component only uses one function from the UserService, so our mock only defines that function.
+      And we don't care if the UserService.getUserInfo function works correctly in our component tests because we know that the UserService will cover all of that in its own tests.
+    </p>
+
+    <p>
+      And taking this one step further, what if I wanted to overwrite my mocked UserService function in my test so that I can test what happens when the service returns different values.
+      Well, here's an example of that:
+    </p>
+
+    <pre><code class="language-javascript">
+      // app.component.spec.ts
+
+      ...
+
+      describe('ngOnInit()', () => {
+
+        ...
+
+        it('calls setTitle() with other mock data', () => {
+          const info = {userName: 'a different test user name'};
+          component.userService = { getUserInfo: () => of(info) };
+          const spy = spyOn(component, 'setTitle').and.callThrough();
+          component.ngOnInit();
+          expect(spy).toHaveBeenCalledWith(`Hello ${info.userName}`);
+        });
+
+      ...
+    </code></pre>
+
+    <p>
+      Notice that I'm referencing the component.userService in this test, which allows me to change my mocked userService for that individual test, and that change will be overwritten and set back to it's original value when the beforeEach function calls init and news up my component again.
+      I could also mock that service in my beforeEach block similar to how I mocked the setTitle function if I wanted to change it for all the tests in a given section.
+    </p>
+
+    <h2>Conclusion</h2>
+
+    <p>
+      Well, I hope this has given you a new insight into testing your Angular applications, and hopefully this will help you write tests that literally run in the blink of an eye.
+      Like I said at the beginning, I'm not saying that Angular's TestBed is a bad thing.
+      I'm simply saying that there are much more efficient alternatives available to you if you want them.
+      It's important for us to remember that, at the end of the day, we are working with JavaScript - no matter how many layers it's burried under.
+    </p>
+  </div>
+</div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="col left">
+
+    </div>
+
+    <div class="col middle">
+      <div>
+        <a href="/">bjanderson.github.io</a>
+      </div>
+
+      <div>
+        &copy; 2019 BJ Anderson.
+      </div>
+    </div>
+
+    <div class="col right">
+
+    </div>
+  </footer>
+
+  <script src="/vendor/prism/prism.js"></script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112306194-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-112306194-1');
+  </script>
+
+</body>
+</html>
