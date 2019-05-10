@@ -140,7 +140,7 @@
       Add Jest with the following command:
 
       <pre><code class="language-bash">
-        npm i -D jest @types/jest ts-jest jest-sonar-reporter @angular-builders/jest
+        npm i -D jest @types/jest ts-jest @angular-builders/jest
       </code></pre>
     </p>
 
@@ -153,29 +153,23 @@
         module.exports = {
 
           collectCoverageFrom: [
-            'src/app/**/*.{ts}',
-            '!src/app/**/index.ts',
-            '!src/app/**/*.module.ts'
+            '&lt;rootDir&gt;/src/app/**/*.ts',
+            '!&lt;rootDir&gt;/src/app/**/index.ts',
+            '!&lt;rootDir&gt;/src/app/**/*.module.ts'
           ],
 
           coverageDirectory: 'coverage',
 
           coverageReporters: [
-            "json",
             "lcov",
-            "text-summary"
+            "text-summary",
           ],
 
           testPathIgnorePatterns: [
-            '&lt;rootDir&gt;/config/',
             '&lt;rootDir&gt;/coverage/',
             '&lt;rootDir&gt;/dist/',
             '&lt;rootDir&gt;/e2e/',
-            '&lt;rootDir&gt;/jest/',
             '&lt;rootDir&gt;/node_modules/',
-            '&lt;rootDir&gt;/scripts/',
-            '&lt;rootDir&gt;/server/',
-            '&lt;rootDir&gt;/webpack/',
             '&lt;rootDir&gt;/src/app/*.(js|scss)',
           ],
 
@@ -183,9 +177,6 @@
             "&lt;rootDir&gt;/src/app/*.spec.ts",
             "&lt;rootDir&gt;/src/app/**/*.spec.ts"
           ],
-
-          testResultsProcessor: 'jest-sonar-reporter',
-
         };
       </code></pre>
     </p>
@@ -246,6 +237,27 @@
         npm test
       </code></pre>
     </p>
+
+    <p>
+      You could also add another script to your <code class="language-text">package.json</code> file to conveniently run your tests with code coverage.
+      <pre><code class="language-javascript">
+        ...
+        "scripts": {
+          ...
+          "test:cov": "ng test --coverage"
+        },
+        ...
+      </code></pre>
+    </p>
+
+    <p>
+      Run it with:
+      <pre><code class="language-bash">
+        npm run test:cov
+      </code></pre>
+      And your code coverage report should appear in a folder named <code class="language-text">coverage</code> in the root of your project.
+    </p>
+
 
   </div>
 </div>
