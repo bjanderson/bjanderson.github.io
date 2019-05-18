@@ -81,8 +81,8 @@ hidden: false
           coverageDirectory: 'coverage',
 
           coverageReporters: [
-            "lcov",
-            "text-summary",
+            'lcov',
+            'text-summary'
           ],
 
           testPathIgnorePatterns: [
@@ -90,13 +90,13 @@ hidden: false
             '&lt;rootDir&gt;/dist/',
             '&lt;rootDir&gt;/e2e/',
             '&lt;rootDir&gt;/node_modules/',
-            '&lt;rootDir&gt;/src/app/*.(js|scss)',
+            '&lt;rootDir&gt;/src/app/*.(js|scss)'
           ],
 
           testMatch: [
-            "&lt;rootDir&gt;/src/app/*.spec.ts",
-            "&lt;rootDir&gt;/src/app/**/*.spec.ts"
-          ],
+            '&lt;rootDir&gt;/src/app/*.spec.ts',
+            '&lt;rootDir&gt;/src/app/**/*.spec.ts'
+          ]
         };
       </code></pre>
     </p>
@@ -114,11 +114,11 @@ hidden: false
         {
           "extends": "../tsconfig.json",
           "compilerOptions": {
+            "module": "commonjs",
             "outDir": "../out-tsc/spec",
             "types": [
               "jest"
             ],
-            "module": "commonjs"
           },
           "files": [
             "polyfills.ts"
