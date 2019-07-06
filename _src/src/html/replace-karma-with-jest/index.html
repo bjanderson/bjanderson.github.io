@@ -42,10 +42,6 @@ hidden: false
     <p>
       In <code class="language-text">package.json</code> remove the following from <code class="language-text">devDependencies</code>:
       <pre><code class="language-javascript">
-        "@types/jasmine": "*",
-        "@types/jasminewd2": "*",
-        "jasmine-core": "*",
-        "jasmine-spec-reporter": "*",
         "karma": "*",
         "karma-chrome-launcher": "*",
         "karma-coverage-istanbul-reporter": "*",
@@ -65,10 +61,10 @@ hidden: false
     </p>
 
     <p>
-      Add a file named <code class="language-text">src/jest.config.js</code>:
+      Add a file named <code class="language-text">jest.config.js</code> (in the same folder as package.json):
 
       <pre><code class="language-javascript">
-        /** src/jest.config.js */
+        /** jest.config.js */
 
         module.exports = {
 
@@ -112,10 +108,10 @@ hidden: false
       So your <code class="language-text">src/tsconfig.spec.json</code> file should look like this:
       <pre><code class="language-javascript">
         {
-          "extends": "../tsconfig.json",
+          "extends": "./tsconfig.json",
           "compilerOptions": {
             "module": "commonjs",
-            "outDir": "../out-tsc/spec",
+            "outDir": "./out-tsc/spec",
             "types": [
               "jest"
             ],
