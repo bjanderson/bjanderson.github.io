@@ -3,7 +3,7 @@ import fse from 'fs-extra';
 import glob from 'glob';
 import { getBlogPostsHtml } from './blog';
 import { clean } from './clean';
-import { DOCUMENT_BODY, DOCUMENT_TITLE, WEBSITE_NAME } from './constants';
+import { COPYRIGHT_YEAR, DOCUMENT_BODY, DOCUMENT_TITLE, WEBSITE_NAME } from './constants';
 import { copy } from './copy';
 import { css } from './css';
 import { paths } from './paths';
@@ -48,6 +48,7 @@ function getHtml(frontMatter, file) {
   }
 
   html = html.replace(DOCUMENT_BODY, frontMatter.body);
+  html = html.replace(COPYRIGHT_YEAR, `${new Date().getFullYear()}`);
 
   html = setActiveLink(html, file);
   return html;
