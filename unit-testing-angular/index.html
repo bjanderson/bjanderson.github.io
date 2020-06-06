@@ -76,7 +76,7 @@
       </div>
 
       <div class="navbar-end">
-        <a class="navbar-item" href="https://github.com/bjanderson/" target="_blank">Github</a>
+        <a class="navbar-item" href="https://github.com/bjanderson/" target="_blank" rel="noreferrer noopener">Github</a>
         <a class="navbar-item" href="/about.html"> About </a>
       </div>
 
@@ -91,7 +91,7 @@
   <div class="blog-post-image">
     <img src="./blog-post-image.jpg" alt="Blog Post Image">
     <div class="attribution">
-      <a target="_blank"
+      <a target="_blank" rel="noreferrer noopener"
         href="https://unsplash.com/@nicolasthomas?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge">
         Nicolas Thomas | Unsplash.com
       </a>
@@ -110,7 +110,7 @@
     </p>
 
     <p>
-      Angular gives us some pretty powerful tools to help us write the most comprehensive unit tests we can with its <a href="https://angular.io/api/core/testing/TestBed" target="_blank">TestBed</a>.
+      Angular gives us some pretty powerful tools to help us write the most comprehensive unit tests we can with its <a href="https://angular.io/api/core/testing/TestBed" target="_blank" rel="noreferrer noopener">TestBed</a>.
       And sometimes you might need to use the full power of the TestBed in order to test certain aspects of your project.
       If you're like me, though, you probably don't spend a lot of time testing your html and css, and mainly stick to testing your JavaScript.
     </p>
@@ -219,7 +219,7 @@
       Now, I'm not trying to come down hard on TestBed.
       It's a tool that has its uses.
       I'm just trying to make the point that it's not an absolute requirement for our tests, and that it might be doing more than we want it to most of the time.
-      To see what I mean, take a look at <a href="https://github.com/angular/angular/blob/master/packages/core/testing/src/test_bed.ts" target="_blank">the TestBed source code on github</a>.
+      To see what I mean, take a look at <a href="https://github.com/angular/angular/blob/master/packages/core/testing/src/test_bed.ts" target="_blank" rel="noreferrer noopener">the TestBed source code on github</a>.
       Specifically, follow the logic of the two functions that the default TestBed setup calls (<code class="language-javascript">configureTestingModule</code> and <code class="language-javascript">compileComponents</code>), and then compare that to the code I'm suggesting we use instead.
       I will let you be the judge of what runs faster.
     </p>
@@ -368,7 +368,7 @@
     <h3>Functions That Call Other Functions</h3>
 
     <p>
-      If you are writing small, <a href="https://en.wikipedia.org/wiki/Single_responsibility_principle" target="_blank">SRP</a> functions, like you should be, then you will inevitably have functions that call other functions within your component.
+      If you are writing small, <a href="https://en.wikipedia.org/wiki/Single_responsibility_principle" target="_blank" rel="noreferrer noopener">SRP</a> functions, like you should be, then you will inevitably have functions that call other functions within your component.
       And, as I mentioned above, you should limit the scope of your tests to the function that is currently under test.
       By setting up our tests the way we have been - treating everything as JavaScript objects - it's super easy to mock out the other functions in our component when we are not testing them directly.
     </p>

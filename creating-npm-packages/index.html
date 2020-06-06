@@ -76,7 +76,7 @@
       </div>
 
       <div class="navbar-end">
-        <a class="navbar-item" href="https://github.com/bjanderson/" target="_blank">Github</a>
+        <a class="navbar-item" href="https://github.com/bjanderson/" target="_blank" rel="noreferrer noopener">Github</a>
         <a class="navbar-item" href="/about.html"> About </a>
       </div>
 
@@ -91,7 +91,7 @@
   <div class="blog-post-image">
     <img src="./blog-post-image.jpg" alt="Blog Post Image">
     <div class="attribution">
-      <a target="_blank"
+      <a target="_blank" rel="noreferrer noopener"
         href="https://unsplash.com/@vtrsnts?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge">
         Vítor Santos | Unsplash.com
       </a>
@@ -135,7 +135,7 @@
     <h3>Verdaccio</h3>
 
     <p>
-      First I'm going to install an application named Verdaccio (<a href="https://github.com/verdaccio/verdaccio" target="_blank">https://github.com/verdaccio/verdaccio</a>).
+      First I'm going to install an application named Verdaccio (<a href="https://github.com/verdaccio/verdaccio" target="_blank" rel="noreferrer noopener">https://github.com/verdaccio/verdaccio</a>).
     </p>
 
     <p>
@@ -156,7 +156,7 @@
         verdaccio
       </code></pre>
 
-      You can also check out the <a href="https://verdaccio.org/docs/en/cli" target="_blank">docs</a> for more cli options.
+      You can also check out the <a href="https://verdaccio.org/docs/en/cli" target="_blank" rel="noreferrer noopener">docs</a> for more cli options.
     </p>
 
     <p class="step">
@@ -192,7 +192,7 @@
     <p>
       Also worth noting here is the need to keep your package versions updated.
       If you try to publish your package with a version number that already exists in your npm repo, the publish command will fail.
-      Thankfully, npm provides a <a href="https://docs.npmjs.com/cli/version.html" target="_blank">cli command</a> for updating your package version for you, but you can also edit the version number directly in your <code class="language-bash">package.json</code> file if you wish.
+      Thankfully, npm provides a <a href="https://docs.npmjs.com/cli/version.html" target="_blank" rel="noreferrer noopener">cli command</a> for updating your package version for you, but you can also edit the version number directly in your <code class="language-bash">package.json</code> file if you wish.
     </p>
 
     <p class="step">
@@ -243,7 +243,7 @@
 
     <p>
       All of these commands work exactly the same for the public npm repo, except that you don't have to set the registry setting anywhere.
-      Commands such as <code class="language-bash">npm install</code> and <code class="language-bash">npm publish</code> all point to the public <a href="https://www.npmjs.com/" target="_blank">npmjs.com</a> repo by default.
+      Commands such as <code class="language-bash">npm install</code> and <code class="language-bash">npm publish</code> all point to the public <a href="https://www.npmjs.com/" target="_blank" rel="noreferrer noopener">npmjs.com</a> repo by default.
     </p>
 
     <h2>Create And Deploy Packages</h2>
@@ -302,8 +302,8 @@
     </p>
 
     <p>
-      The <a href="https://opensource.org/licenses" target="_blank">license</a> should consist of a file named LICENSE, and an additional field in your <code class="language-text">package.json</code> file that is set to the tile of your license - e.g. "MIT".
-      The readme just needs to be a file named <a href="https://en.wikipedia.org/wiki/README" target="_blank">README</a>, which typically contains <a href="https://en.wikipedia.org/wiki/Markdown" target="_blank">Markdown</a>, but could also just contain plain text.
+      The <a href="https://opensource.org/licenses" target="_blank" rel="noreferrer noopener">license</a> should consist of a file named LICENSE, and an additional field in your <code class="language-text">package.json</code> file that is set to the tile of your license - e.g. "MIT".
+      The readme just needs to be a file named <a href="https://en.wikipedia.org/wiki/README" target="_blank" rel="noreferrer noopener">README</a>, which typically contains <a href="https://en.wikipedia.org/wiki/Markdown" target="_blank" rel="noreferrer noopener">Markdown</a>, but could also just contain plain text.
     </p>
 
     <p>
@@ -318,8 +318,8 @@
     </p>
 
     <p>
-      To give a more advanced example of a real world package, I'm going to refer you to one of my own packages called <a href="https://www.npmjs.com/package/@lernato/common" target="_blank">@lernato/common</a>.
-      And here's a link to the source code on github: <a href="https://github.com/bjanderson/lernato-common" target="_blank">lernato-common</a> .
+      To give a more advanced example of a real world package, I'm going to refer you to one of my own packages called <a href="https://www.npmjs.com/package/@bj.anderson/utils" target="_blank" rel="noreferrer noopener">@bj.anderson/utils</a>.
+      And here's a link to the source code on github: <a href="https://github.com/bjanderson/utils" target="_blank" rel="noreferrer noopener">utils</a> .
     </p>
 
     <p>
@@ -344,7 +344,7 @@
       There are several methods available to define what you want to include in, or exclude from, your package.
       The method I use is to define the <code class="language-text">"files"</code> array in my package.json.
       Anything in that array will get included in my published package - given that it's not on the list of things that always get excluded.
-      There are a lot of details surrounding this setting, so it's best if you read the docs for yourself (<a href="https://docs.npmjs.com/files/package.json#files" target="_blank">https://docs.npmjs.com/files/package.json#files</a>).
+      There are a lot of details surrounding this setting, so it's best if you read the docs for yourself (<a href="https://docs.npmjs.com/files/package.json#files" target="_blank" rel="noreferrer noopener">https://docs.npmjs.com/files/package.json#files</a>).
       That being said I will mention that there are certain things that always get included in your package, and things that always get excluded from your package (details are in the docs).
       Npm will also exclude anything that's in your <code class="language-text">.gitignore</code> file.
       And you can create a <code class="language-text">.npmignore</code> file to define other things you want to exclude.
@@ -377,13 +377,12 @@
     <p>
       I also want to quickly touch on package naming.
       Packages named in the format <code class="language-text">@scope/package-name</code> are called scoped packages.
-      You might wonder how to group your packages under a given package scope, like I have done with <code class="language-text">@lernato/common</code>.
+      You might wonder how to group your packages under a given package scope, like I have done with <code class="language-text">@bj.anderson/utils</code>.
     </p>
 
     <p>
       If you have a private repo in Verdaccio then package scopes are applied automatically based on the <code class="language-text">name</code> field in your <code class="language-text">package.json</code> file.
       But, if you want to have scoped packages in the public npm repo, then you first have to create an organization for your scope on npmjs.com.
-      For example, I had to create an organization named <em>lernato</em> in order for npmjs.com to recogize the @lernato scope in my packages.
     </p>
 
     <p>
@@ -434,10 +433,10 @@
     <h2>package.json</h2>
 
     <p>
-      So, after all that explaining, here is a snippet from the package.json file from my lernato-common project.
+      So, after all that explaining, here is a snippet from the package.json file from my utils project.
       Note: I didn't have to include the package.json, README.md, and LICENSE files in my files array, but I put them there because it makes it easy for me to remember that they are included in the package, even though npm includes them automatically.
       <pre><code class="language-javascript">
-        "name": "@lernato/common",
+        "name": "@bj.anderson/utils",
         "version": "1.0.0",
         "main": "dist/index.js",
         "types": "dist/index.d.ts",
@@ -449,8 +448,8 @@
         ],
         ...
       </code></pre>
-      So, when you <code class="language-bash">npm install @lernato/common</code>, only the things that are in the files array get added to your node_modules folder.
-      And when you <code class="language-javascript">import * from '@lernato/common'</code> in your project, you get whatever is exported through the dist/index.js file.
+      So, when you <code class="language-bash">npm install @bj.anderson/utils</code>, only the things that are in the files array get added to your node_modules folder.
+      And when you <code class="language-javascript">import * from '@bj.anderson/utils'</code> in your project, you get whatever is exported through the dist/index.js file.
     </p>
 
     <p>
