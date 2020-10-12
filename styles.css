@@ -10491,6 +10491,7 @@ table#blogrolltable {
 }
 table#blogrolltable thead tr th {
   text-align: left;
+  cursor: pointer;
 }
 table#blogrolltable tr {
   vertical-align: middle;
