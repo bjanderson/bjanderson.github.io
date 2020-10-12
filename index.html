@@ -77,7 +77,7 @@
 
       <div class="navbar-end">
         <a class="navbar-item" href="https://github.com/bjanderson/" target="_blank" rel="noreferrer noopener">Github</a>
-        <a class="navbar-item" href="/about.html"> About </a>
+        <!-- <a class="navbar-item" href="/about.html"> About </a> -->
       </div>
 
     </div>
@@ -86,57 +86,28 @@
   <section class="section main">
     <div class="container">
       <div name="pwd-poll"></div>
-      <div id="blog_posts">
-    <a href="/unit-testing-angular" class="blog-post-link">
-    <div class="blog-post-image">
-    <img src="/unit-testing-angular/blog-post-image.jpg" alt="Blog Post Image">
-  </div>
-    <p class="title center pt1">Unit Testing Angular</p>
-    <p class="blog-post-description p1">Tired of waiting forever for your unit tests to run? Here's how to write the most efficient unit tests in Angular.</p>
-  </a>
-<a href="/replace-karma-with-jest" class="blog-post-link">
-    <div class="blog-post-image">
-    <img src="/replace-karma-with-jest/blog-post-image.jpg" alt="Blog Post Image">
-  </div>
-    <p class="title center pt1">Replace Karma With Jest</p>
-    <p class="blog-post-description p1">How to replace Karma with Jest for unit testing your Angular application.</p>
-  </a>
-<a href="/new-angular-project" class="blog-post-link">
-    <div class="blog-post-image">
-    <img src="/new-angular-project/blog-post-image.jpg" alt="Blog Post Image">
-  </div>
-    <p class="title center pt1">New Angular Project</p>
-    <p class="blog-post-description p1">Tips for getting a new Angular project up and running.</p>
-  </a>
-<a href="/creating-npm-packages" class="blog-post-link">
-    <div class="blog-post-image">
-    <img src="/creating-npm-packages/blog-post-image.jpg" alt="Blog Post Image">
-  </div>
-    <p class="title center pt1">Creating NPM Packages</p>
-    <p class="blog-post-description p1">How to create and deploy your own npm packages.</p>
-  </a>
-<a href="/js-models" class="blog-post-link">
-    <div class="blog-post-image">
-    <img src="/js-models/blog-post-image.jpg" alt="Blog Post Image">
-  </div>
-    <p class="title center pt1">JavaScript Models</p>
-    <p class="blog-post-description p1">Models are the fundamental building block of any scalable and maintainable JavaScript project. Marvel at their power!</p>
-  </a>
-<a href="/ui-architecture" class="blog-post-link">
-    <div class="blog-post-image">
-    <img src="/ui-architecture/blog-post-image.jpg" alt="Blog Post Image">
-  </div>
-    <p class="title center pt1">UI Architecture</p>
-    <p class="blog-post-description p1">The fun part is starting a new project from scratch. The hard part is doing it in a way that doesn't come back to haunt you later.</p>
-  </a>
-<a href="/intro-to-js" class="blog-post-link">
-    <div class="blog-post-image">
-    <img src="/intro-to-js/blog-post-image.jpg" alt="Blog Post Image">
-  </div>
-    <p class="title center pt1">Introduction To JavaScript</p>
-    <p class="blog-post-description p1">Welcome to the wide world of JavaScript! Here's a little bit of info to help you understand what you're getting into, and a few tips on where to start first.</p>
-  </a>
-  </div>
+      <input type="text" id="blogrollfilter" placeholder="Filter by Blog Post" onkeyup="filterBlogRoll()">
+
+<table id="blogrolltable">
+  <thead id="blogrolltablehead">
+    <tr>
+      <th onclick="sortColumn('title')" id="titlecolumnheader">
+        Blog Post
+      </th>
+      <th onclick="sortColumn('category')" id="categorycolumnheader">
+        Category
+      </th>
+      <th onclick="sortColumn('date')" id="datecolumnheader">
+        Date
+      </th>
+    </tr>
+  </thead>
+
+  <tbody id="blogrolltablebody"></tbody>
+</table>
+
+<script src="/js/blogroll.js"></script>
+
     </div>
   </section>
 
@@ -163,13 +134,13 @@
   <script src="/vendor/prism/prism.js"></script>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112306194-1"></script>
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112306194-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'UA-112306194-1');
-  </script>
+  </script> -->
 
 </body>
 </html>

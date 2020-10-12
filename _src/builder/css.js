@@ -1,7 +1,7 @@
 import autoprefixer from 'autoprefixer';
 import fse from 'fs-extra';
 import glob from 'glob';
-import sass from 'node-sass';
+import sass from 'sass';
 import postcss from 'postcss';
 import { paths } from './paths';
 

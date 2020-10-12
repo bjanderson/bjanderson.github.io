@@ -1,0 +1,21 @@
+<input type="text" id="blogrollfilter" placeholder="Filter by Blog Post" onkeyup="filterBlogRoll()">
+
+<table id="blogrolltable">
+  <thead id="blogrolltablehead">
+    <tr>
+      <th onclick="sortColumn('title')" id="titlecolumnheader">
+        Blog Post
+      </th>
+      <th onclick="sortColumn('category')" id="categorycolumnheader">
+        Category
+      </th>
+      <th onclick="sortColumn('date')" id="datecolumnheader">
+        Date
+      </th>
+    </tr>
+  </thead>
+
+  <tbody id="blogrolltablebody"></tbody>
+</table>
+
+<script src="/js/blogroll.js"></script>

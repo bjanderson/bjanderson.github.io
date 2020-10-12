@@ -12,15 +12,15 @@
     "watch": "npm-watch"
   },
   "dependencies": {
-    "autoprefixer": "9.7.6",
-    "bulma": "0.8.2",
+    "autoprefixer": "10.0.1",
+    "bulma": "0.9.1",
     "esm": "3.2.25",
-    "front-matter": "3.1.0",
-    "fs-extra": "9.0.0",
+    "front-matter": "4.0.2",
+    "fs-extra": "9.0.1",
     "glob": "7.1.6",
     "lite-server": "2.5.4",
-    "npm-watch": "0.6.0",
-    "postcss": "7.0.29",
-    "sass": "1.26.5"
+    "npm-watch": "0.7.0",
+    "postcss": "8.1.1",
+    "sass": "1.27.0"
   }
 }

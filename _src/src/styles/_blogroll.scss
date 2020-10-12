@@ -1,0 +1,37 @@
+input {
+  &#blogrollfilter {
+    width: 100%;
+  }
+}
+
+table {
+  &#blogrolltable {
+    margin-top: 0.5rem;
+    width: 100%;
+
+    thead {
+      tr {
+        th {
+          text-align: left;
+        }
+      }
+    }
+
+    tr {
+      vertical-align: middle;
+      height: 2rem;
+
+      td {
+        font-size: 1.25rem;
+      }
+    }
+  }
+}
+
+.sort-asc:after {
+  content: "▲";
+}
+
+.sort-desc:after {
+  content: "▼";
+}

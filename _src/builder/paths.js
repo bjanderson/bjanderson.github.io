@@ -7,6 +7,7 @@ const styles = path.resolve(src, 'styles');
 const templates = path.resolve(src, 'templates');
 
 export const paths = {
+  blogrollTemplate: path.resolve(templates, 'blogroll.html'),
   indexTemplate: path.resolve(templates, 'index.html'),
   assets,
   html,

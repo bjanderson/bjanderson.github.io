@@ -1,0 +1,63 @@
+[
+  {
+    "title": "Creating NPM Packages",
+    "category": "NPM",
+    "description": "How to create and deploy your own npm packages.",
+    "date": "4/20/2019",
+    "hidden": false,
+    "file": "/creating-npm-packages/index.html",
+    "link": "/creating-npm-packages"
+  },
+  {
+    "title": "Introduction To JavaScript",
+    "category": "JavaScript",
+    "description": "Welcome to the wide world of JavaScript! Here's a little bit of info to help you understand what you're getting into, and a few tips on where to start first.",
+    "date": "1/5/2018",
+    "file": "/intro-to-js/index.html",
+    "link": "/intro-to-js"
+  },
+  {
+    "title": "JavaScript Models",
+    "category": "JavaScript",
+    "description": "Models are the fundamental building block of any scalable and maintainable JavaScript project. Marvel at their power!",
+    "date": "4/17/2019",
+    "file": "/js-models/index.html",
+    "link": "/js-models"
+  },
+  {
+    "title": "New Angular Project",
+    "category": "Angular",
+    "description": "Tips for getting a new Angular project up and running.",
+    "date": "4/21/2019",
+    "hidden": false,
+    "file": "/new-angular-project/index.html",
+    "link": "/new-angular-project"
+  },
+  {
+    "title": "Replace Karma With Jest",
+    "category": "Angular",
+    "description": "How to replace Karma with Jest for unit testing your Angular application.",
+    "date": "4/22/2019",
+    "hidden": false,
+    "file": "/replace-karma-with-jest/index.html",
+    "link": "/replace-karma-with-jest"
+  },
+  {
+    "title": "UI Architecture",
+    "description": "The fun part is starting a new project from scratch. The hard part is doing it in a way that doesn't come back to haunt you later.",
+    "category": "Architecture",
+    "date": "8/1/2018",
+    "hidden": false,
+    "file": "/ui-architecture/index.html",
+    "link": "/ui-architecture"
+  },
+  {
+    "title": "Unit Testing Angular",
+    "category": "Angular",
+    "description": "Tired of waiting forever for your unit tests to run? Here's how to write the most efficient unit tests in Angular.",
+    "date": "5/1/2019",
+    "hidden": false,
+    "file": "/unit-testing-angular/index.html",
+    "link": "/unit-testing-angular"
+  }
+]

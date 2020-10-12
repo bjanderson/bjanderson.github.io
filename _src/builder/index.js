@@ -11,12 +11,15 @@ import { paths } from './paths';
 const blogPosts = [];
 const indexHtmlFile = glob.sync(paths.indexTemplate)[0];
 const htmlTemplate = fse.readFileSync(indexHtmlFile).toString();
+const blogrollHtmlFile = glob.sync(paths.blogrollTemplate)[0];
+const blogrollTemplate = fse.readFileSync(blogrollHtmlFile).toString();
 
 clean();
 copy();
 processHtml();
 css();
 createBlogPostsHtml();
+createBlogPostsJson();
 
 function processHtml() {
   const files = glob.sync('./src/html/**/*.html');
@@ -67,13 +70,21 @@ function addBlogPost(file, frontMatter) {
 
 function createBlogPostsHtml() {
   const file = '../index.html';
-  const blogPostsHtml = getBlogPostsHtml(blogPosts);
+  // const blogPostsHtml = getBlogPostsHtml(blogPosts);
+  const blogPostsHtml = blogrollTemplate;
+  console.log('blogPostsHtml :>> ', blogPostsHtml);
   const frontMatter = {
     attributes: {title: 'Blog'},
     body: blogPostsHtml
   }
   const html = getHtml(frontMatter, file);
   fse.writeFileSync(file, html);
+}
+
+function createBlogPostsJson() {
+  const file = '../blog-posts.json';
+  const json = JSON.stringify(blogPosts, null, 2);
+  fse.writeFileSync(file, json);
 }
 
 function setActiveLink(html, file) {
