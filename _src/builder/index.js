@@ -1,7 +1,6 @@
 import fm from 'front-matter';
 import fse from 'fs-extra';
 import glob from 'glob';
-import { getBlogPostsHtml } from './blog';
 import { clean } from './clean';
 import { COPYRIGHT_YEAR, DOCUMENT_BODY, DOCUMENT_TITLE, WEBSITE_NAME } from './constants';
 import { copy } from './copy';
@@ -70,9 +69,7 @@ function addBlogPost(file, frontMatter) {
 
 function createBlogPostsHtml() {
   const file = '../index.html';
-  // const blogPostsHtml = getBlogPostsHtml(blogPosts);
   const blogPostsHtml = blogrollTemplate;
-  console.log('blogPostsHtml :>> ', blogPostsHtml);
   const frontMatter = {
     attributes: {title: 'Blog'},
     body: blogPostsHtml

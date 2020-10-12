@@ -10454,25 +10454,6 @@ footer.footer .col.right {
 #blog_posts .blog-post-link.poll .privacy-notice {
   font-size: 0.7rem;
 }
-#blog_posts .blog-post-link .blog-post-image {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-#blog_posts .blog-post-link .blog-post-image::after {
-  display: block;
-  position: relative;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, white 100%);
-  margin-top: -10px;
-  height: 10px;
-  width: 100%;
-  content: "";
-}
-#blog_posts .blog-post-link .blog-post-image img {
-  height: 20rem;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
 #blog_posts .blog-post-link .title {
   font-size: 1.5rem;
   margin: 0;
@@ -10515,51 +10496,6 @@ table#blogrolltable tr td {
 .blog-post a:hover {
   text-decoration: underline;
   color: darkorange;
-}
-.blog-post .blog-post-image {
-  margin-top: -1rem;
-  margin-left: -1rem;
-  margin-right: -1rem;
-  position: relative;
-  display: none;
-}
-.blog-post .blog-post-image::after {
-  display: block;
-  position: relative;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, white 100%);
-  margin-top: -10px;
-  height: 10px;
-  width: 100%;
-  content: "";
-  z-index: 10;
-}
-.blog-post .blog-post-image img {
-  width: 100%;
-  position: relative;
-  z-index: 10;
-}
-.blog-post .blog-post-image img:hover {
-  z-index: 8;
-}
-.blog-post .blog-post-image .attribution {
-  position: absolute;
-  right: 1rem;
-  bottom: 0.5rem;
-  z-index: 9;
-}
-.blog-post .blog-post-image .attribution:hover {
-  z-index: 11;
-}
-.blog-post .blog-post-image .attribution a {
-  background-color: black;
-  color: white;
-  border-radius: 3px;
-  text-decoration: none;
-  padding: 4px 6px;
-  font-size: 12px;
-  font-weight: bold;
-  line-height: 1.2;
-  display: inline-block;
 }
 .blog-post .note {
   background-color: rgba(100, 149, 237, 0.2);

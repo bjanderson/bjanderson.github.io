@@ -8,16 +8,6 @@ hidden: false
 
 <div class="blog-post">
 
-  <div class="blog-post-image">
-    <img src="./blog-post-image.jpg" alt="Blog Post Image">
-    <div class="attribution">
-      <a target="_blank" rel="noreferrer noopener"
-        href="https://unsplash.com/@nicolasthomas?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge">
-        Nicolas Thomas | Unsplash.com
-      </a>
-    </div>
-  </div>
-
   <div class="content">
     <h1>Unit Testing Angular</h1>
 
@@ -32,11 +22,11 @@ hidden: false
     <p>
       Angular gives us some pretty powerful tools to help us write the most comprehensive unit tests we can with its <a href="https://angular.io/api/core/testing/TestBed" target="_blank" rel="noreferrer noopener">TestBed</a>.
       And sometimes you might need to use the full power of the TestBed in order to test certain aspects of your project.
-      If you're like me, though, you probably don't spend a lot of time testing your html and css, and mainly stick to testing your JavaScript.
+      If you're like me, though, you probably don't spend a lot of time unit testing your html and css, and mainly stick to writing unit tests only for JavaScript.
     </p>
 
     <p>
-      I'm not saying that you should never test your html or css, but I'm saying that I don't usually find it to be worth the effort to write unit tests for it.
+      I'm not saying that you should never unit test your html or css, but I'm saying that I don't usually find it to be worth the effort to write unit tests for it.
       If I want to test my html, I usually write end-to-end (e2e) tests for that.
     </p>
 
@@ -45,7 +35,7 @@ hidden: false
     </p>
 
     <p>
-      Are you surpised by that last statement?
+      Are you surprised by that last statement?
       Are you wondering how we will inject our component and service dependencies if we don't use the TestBed?
       Well, that's what this article is all about.
     </p>
