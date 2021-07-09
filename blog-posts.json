@@ -59,5 +59,14 @@
     "hidden": false,
     "file": "/unit-testing-angular/index.html",
     "link": "/unit-testing-angular"
+  },
+  {
+    "title": "Web Development",
+    "category": "General",
+    "description": "My philosophy of web development",
+    "date": "10/15/2020",
+    "hidden": false,
+    "file": "/web-development/index.html",
+    "link": "/web-development"
   }
 ]

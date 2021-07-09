@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Angular Component Library | BJ Anderson</title>
+  <title>Web Development | BJ Anderson</title>
 
   <meta name="description" content="Practical advice for developing websites and web applications.">
   <meta name="author" content="BJ Anderson">
@@ -88,97 +88,46 @@
     <div class="container">
       <div name="pwd-poll"></div>
       <div class="blog-post">
-
   <div class="content">
-    <h1>Angular Component Library</h1>
+    <h1>Web Development</h1>
 
     <p>
-      Install latest @angular/cli:
-      <pre><code class="language-bash">
-        npm i -g @angular/cli@latest
-      </code></pre>
+      Web development, and software development in general, is all about problem solving and pattern recognition.
+      Most of the technical aspects of it are equal parts solving a puzzle and curating an ecosystem.
+      Everything you use when programming are your tools; your programming language, 3rd party libraries, IDE, source code manager, computer, keyboard, chair, whiteboard...
+      Everything you do when programming boils down to you using tools to solve problems.
     </p>
 
     <p>
-      Create a new angular project (if you don't have an existing one)
-      <pre><code class="language-bash">
-        ng new my-project --prefix=myprj --style=scss
-      </code></pre>
+      The path to becoming a good developer goes straight through learning how to use all of those tools.
+      To become a great developer, you must master your tools.
+      Sure, it helps to be smart and have a solid foundation in the theory, but your daily grind is going to largely consist of you using your tools.
+      And all of your smartness is going to be thwarted by frustration if you can't apply it effectively and efficiently.
+      The better you know your tools, the more problems you are going to be able to solve, and the more productive you will be.
     </p>
 
     <p>
-      (optional) Add Angular Material:
-      <pre><code class="language-bash">
-        ng add @angular/material
-      </code></pre>
+      With that in mind, I am going to share with you some of the ways that I use my tools, and how I even create some of my own.
+      My primary programming language is JavaScript.
+      I've been using it since I started programming back in 2006.
+      There are many things I like about JavaScript, but most of all I like its flexibility.
+      It's a prototype language but can be used like an object oriented language.
+      It can be used for anything from simple web pages, to server applications, to desktop apps, and even embedded applications.
+      It can be weakly typed, or you can use TypeScript, and it can be strongly typed.
+      JavaScript can be whatever you want it to be, and it has probably been hacked into all of those things and more over the course of its existence.
     </p>
 
     <p>
-      Generate a new library project:
-      <pre><code class="language-bash">
-        ng g library my-project-lib --prefix=myprjlib --style=scss
-      </code></pre>
+      Given that JavaScript is my primary language, the editor that best supports JavaScript development, IMHO, is Visual Studio Code (VS Code), and that is my daily workhorse.
+      I would say that learning to use your editor, or IDE, is as important as knowing your programming language.
+      In fact, it might even be more important because you can probably use it for several different languages.
+      Apart from the editor, I also use node and npm to manage dependencies and run automated scripts.
+      And behind all that I use Linux as my primary operating system, and with it, the bash shell as my command line interface (CLI).
     </p>
 
     <p>
-      (optional) Set the registry of your library to your local npm repo:
-      In package.json add the following to the highest level of the json object:
-      <br>
-      "publishConfig": { "registry":"http://localhost:4873/" },
-    </p>
-
-    <p>
-      Build and deploy your library to test it:
-      <pre><code class="language-bash">
-        ng build my-project-lib
-        cd dist/my-project-lib
-        npm publish
-      </code></pre>
-    </p>
-
-    <p>
-      Create another new angular project as a test environment to import my-project-lib into:
-      <pre><code class="language-bash">
-        ng new my-project-lib-test --prefix=mplt --style=scss
-        cd my-project-lib-test
-      </code></pre>
-    </p>
-
-    <p>
-      npm install my-project-lib from your local npm registry:
-      <pre><code class="language-bash">
-        npm i -S my-project-lib --registry http://localhost:4873/
-      </code></pre>
-    </p>
-
-    <p>
-      Import the basic component from your library into the test project app.module.ts:
-
-      <pre><code class="language-javascript">
-        import { MyProjectLibModule } from 'my-project-lib';
-        ...
-        imports: [
-          ...,
-          MyProjectLibModule
-        ]
-      </code></pre>
-    </p>
-
-    <p>
-      Show the basic component from your library in the test project app.component.html:
-
-      <pre><code class="language-html">
-        ...
-        &lt;myprjlib-my-project-lib&gt;&lt;/myprjlib-my-project-lib&gt;
-      </code></pre>
-    </p>
-
-    <p>
-      Run the test project and verify that the test component works (http://localhost:4200).
-      You should see this where you injected the component into the html page: "my-project-lib works!"
-      <pre><code class="language-bash">
-        npm start
-      </code></pre>
+      That may or may not sound like a lot of stuff to you, but rest assured that I didn't start out that way.
+      No, I started out writing JavaScript in Notepad, with Internet Explorer 6 running on Windows XP.
     </p>
 
   </div>
