@@ -1,0 +1,57 @@
+@use "./base.scss";
+
+// put your custom CSS here!
+p,
+ul,
+text,
+a,
+tr,
+td,
+li,
+ol,
+ul {
+  -webkit-hyphens: unset !important;
+  hyphens: unset !important;
+}
+
+blockquote p {
+  line-height: 1.2em;
+}
+
+blockquote.bible {
+  white-space: pre-wrap;
+}
+
+blockquote.bible p {
+  margin-block: 0;
+}
+
+blockquote.bible .verse {
+  font-weight: bold;
+}
+
+// buy me a coffee
+a.bmc-btn {
+  min-width: 150px;
+  width: 150px;
+  height: 40px;
+  font-size: 22px;
+  padding: 0 14px;
+  line-height: 20px;
+}
+
+a.bmc-btn svg {
+  height: 20px !important;
+}
+
+@media print {
+  .graph,
+  .graph *,
+  .left.sidebar,
+  .breadcrumb-container,
+  .tags,
+  footer,
+  footer * {
+    display: none !important;
+  }
+}
