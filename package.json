@@ -18,7 +18,7 @@
     "format": "npx prettier . --write",
     "test": "tsx --test",
     "profile": "0x -D prof ./quartz/bootstrap-cli.mjs build --concurrency=1",
-    "build": "npx quartz build",
+    "build": "npx quartz build --output=docs",
     "start": "npm run build -- --serve --port=3000 --wsPort=3001"
   },
   "engines": {
