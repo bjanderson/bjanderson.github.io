@@ -8,25 +8,31 @@ aliases:
 cssclasses:
 ---
 
-The word architecture probably brings to mind blueprints, and large buildings. Architecture deals with the design and planning of complex structures.
+The word architecture probably brings to mind blueprints of large buildings. Architecture deals with the design and planning of complex structures.
 
-Since software is a complex structure, it makes sense to approach its development from an architectural perspective, and that is how I approach it, and how I have tried to lay out this wiki - so that each piece is placed in the correct spot related to all the others.
+Since software is a complex structure, it makes sense to approach its development from an architectural perspective.
 
-[Software architecture](https://en.wikipedia.org/wiki/Software_architecture) in general is a subject that is a bit beyond the scope of this wiki, but I am going to demonstrate it throughout, so you might understand everything better if you are familiar with the concept.
+[Software architecture](https://en.wikipedia.org/wiki/Software_architecture) is the pinnacle of the technical side of [software engineering](https://en.wikipedia.org/wiki/Software_engineering).
 
-Software architecture as it relates to web development is quite broad. You have to consider many things. At a high level these things will include:
+Software architecture as it relates to web development is quite broad. The oft-used title of "Full Stack Developer" hints at the broad scope that web development encompases. A true full-stack developer is, by necessity, a jack-of-all-trades/master-of-none.
 
-- Data Storage
+Website architecture generally covers many areas of expertise, such as:
+
+- Data storage, retrieval and transmission
 - Server configuration
-- Code Infrastructure and Layout
-- UI frameworks
+- Code infrastructure and layout
+- Server programming languages and frameworks
+- UI platforms and frameworks
 - Security
 - Testing
 - Maintenance
+- Deployment
 
-Like I said, in general the subject is a bit beyond the scope of this wiki, but I do recommend that you have some familiarity with it.
+On smaller projects you might find a few "full-stack" developers that fill more than one of these roles, but on larger projects you will typically find a person or even teams of people dedicated to each individual area.
 
-In the spirit of being a bit more specific, here are some goals of UI architecture that I try to achieve:
+I'm a UI (a.k.a. front-end) developer, so I will focus on architecture and engineering from that perspective, and leave the other areas to the Database Administrators, DevOps Engineers, etc... That's not to say that I don't know SQL, or how to set up a server to provide APIs. It's just that there is enough work to do on the front-end that I rarely have time to focus on becomming an expert in all of those other areas - at least to the point that I feel like I should teach anything about them.
+
+That being said, here are some goals of UI architecture that I try to achieve:
 
 - Reliable
   - Validate input from the user
@@ -41,7 +47,8 @@ In the spirit of being a bit more specific, here are some goals of UI architectu
 - Robust
   - Invalid data does not break the UI
   - Errors do not break the UI
-  - Help is given as much as possible with errors (fill in required field, refresh the browser, contact support, etc...)
+  - Help with errors is given as much as possible with good error handling and error messages
+  - Never leave users hanging at a dead end (e.g. have a specialized 404 page)
 - Scalable and Maintainable
   - Use consistent, understandable patterns throughout the code to improve readability, maintainability, and scalability
   - Modularize/Compartmentalize code to be reusable and do one thing only

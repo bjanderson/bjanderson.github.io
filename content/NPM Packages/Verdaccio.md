@@ -90,7 +90,7 @@ Also worth noting here is the need to keep your package versions updated. If you
 
 ## Install Registry Configs
 
-To automatically point npm to your verdaccio server for only your scopes projects, you can create a file named ''//.npmrc//'' in your project and put the registry setting in it, then you won't have to use the registry flag when you install your package.
+To automatically point npm to your verdaccio server for only your scopes projects, you can create a file named `.npmrc` in your project and put the registry setting in it, then you won't have to use the registry flag when you install your package.
 
 ```ini
 @example:registry=http://localhost:4873

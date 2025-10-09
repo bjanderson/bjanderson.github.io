@@ -14,6 +14,20 @@ ul {
   hyphens: unset !important;
 }
 
+// buy me a coffee
+a.bmc-btn {
+  min-width: 150px;
+  width: 150px;
+  height: 40px;
+  font-size: 22px;
+  padding: 0 14px;
+  line-height: 20px;
+}
+
+a.bmc-btn svg {
+  height: 20px !important;
+}
+
 blockquote p {
   line-height: 1.2em;
 }
@@ -30,18 +44,8 @@ blockquote.bible .verse {
   font-weight: bold;
 }
 
-// buy me a coffee
-a.bmc-btn {
-  min-width: 150px;
-  width: 150px;
-  height: 40px;
-  font-size: 22px;
-  padding: 0 14px;
-  line-height: 20px;
-}
-
-a.bmc-btn svg {
-  height: 20px !important;
+code {
+  white-space: pre;
 }
 
 @media print {
@@ -54,4 +58,17 @@ a.bmc-btn svg {
   footer * {
     display: none !important;
   }
+}
+
+.note {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 3px solid rgba(192, 255, 255, 0.9);
+  margin: 0.5rem 0;
+  background-color: rgba(192, 255, 255, 0.3);
+}
+
+[saved-theme="dark"] .note {
+  border: 1px solid rgba(192, 255, 255, 0.3);
+  background-color: rgba(128, 160, 192, 0.05);
 }

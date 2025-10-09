@@ -66,7 +66,7 @@ So now your package.json file would look like this:
 
 The readme file should provide an overview of what your package does, and instructions on how to use it. The readme file just needs to be a file named [README](https://en.wikipedia.org/wiki/README), which typically contains [Markdown](https://en.wikipedia.org/wiki/Markdown), but could also just contain plain text. If you are using Markdown in your readme file, then give it the file extension .md so it will be displayed correctly in Github and npmjs.com. There is no need to add the readme file to your package.json - npm will look for it automatically, it just needs to be located in the same folder as your package.json file.
 
-Finally, you could add extra details to your package that you might want to include so you package doesn't look like it was created by a complete noob, so let's add the author and description fields...
+Finally, you could add [extra details](https://docs.npmjs.com/cli/v11/configuring-npm/package-json) to your package to show that you're a pro. Let's add the author and description fields...
 
 ```json
 {
@@ -74,7 +74,7 @@ Finally, you could add extra details to your package that you might want to incl
   "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
-  "author": "Your Name",
+  "author": "Your Name <your@email.com> (https://your-website.com/)",
   "description": "A description of the purpose this npm package serves"
 }
 ```

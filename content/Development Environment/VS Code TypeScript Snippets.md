@@ -1,6 +1,6 @@
 ---
 title: VS Code TypeScript Snippets
-date: 2025-10-04
+date: 2025-10-01
 description:
 draft: false
 tags:

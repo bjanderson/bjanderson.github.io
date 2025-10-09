@@ -7,7 +7,7 @@ tags:
 aliases:
 cssclasses:
 toc:
-  - content/Introduction To Web Development.md
+  - content/Beginners/Introduction To Web Development.md
 
   - content/Architecture/Architecture.md
   - content/Architecture/JavaScript Models.md
@@ -45,19 +45,13 @@ toc:
   - content/Connect.md
 ---
 
-# Hello
-
 Hello and welcome.
 
-This wiki was built to walk you through my web development process and practice.
+I've been a web developer since 2006, and this blog is about my thoughts, patterns, and processes of doing web development.
 
-There's a lot of information stored in my head that I wanted to share, and this is how I decided to do it.
+Web development, and software development in general, is all about problem solving and pattern recognition. Most of the technical aspects of it are equal parts solving a puzzle and curating an ecosystem. Everything you use when programming are your tools; your programming language, 3rd party libraries, IDE, source code manager, computer, keyboard, desk, chair, whiteboard... Everything you do when programming boils down to you using tools to solve problems.
 
-My intended audience for this site is experienced web developers. With that being said, if you're new to web development I recommend you read [[Introduction To Web Development]] and follow the advice there before diving into anything else on this site. Of course, you are free to read on if you want to - I just wanted to set the bar from the start.
-
-Web development, and software development in general, is all about problem solving and pattern recognition. Most of the technical aspects of it are equal parts solving a puzzle and curating an ecosystem. Everything you use when programming are your tools; your programming language, 3rd party libraries, IDE, source code manager, computer, keyboard, chair, whiteboard... Everything you do when programming boils down to you using tools to solve problems.
-
-The path to becoming a good developer goes straight through learning how to use all of those tools. To become a great developer, you must master your tools. Sure, it helps to be smart and have a solid foundation in the theory, but your daily grind is going to largely consist of you using your tools. And all of your intelligence is going to be thwarted by frustration if you can't apply it effectively and efficiently via your tools. The better you know your tools, the more problems you are going to be able to solve, and the more productive you will be.
+The path to becoming a good developer goes straight through learning how to use all of those tools. To become a great developer, you must master your tools. Sure, it helps to be smart and have a solid foundation in the theory, but your daily grind is going to largely consist of you using your tools. And all of your intelligence is going to be thwarted by frustration if you can't apply it effectively and efficiently via your tools. The better you know your tools, the more problems you are going to be able to solve, and the more efficient and productive you will be.
 
 With that in mind, I am going to share with you some of the ways that I use my tools, and how I even create some tools of my own. My primary programming language is [JavaScript](http://vanilla-js.com/). I've been using it since I started building websites back in 2006. There are many things I like about JavaScript, but most of all I like its flexibility. It's a prototype language but can be used like an object oriented language. It can be used for anything from simple web pages, to server applications, to desktop apps, and even embedded applications. It can be weakly typed, or you can use [TypeScript](https://www.typescriptlang.org/), and it can be strongly typed. JavaScript can be whatever you want it to be, and that's all I want it to be :)
 

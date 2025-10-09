@@ -8,26 +8,30 @@ aliases:
 cssclasses:
 ---
 
-I use [Linux Mint](https://linuxmint.com/) as my daily OS at home. I use Windows as my daily OS at work. And I use both for web development. I don't own a Mac, so I can't say for sure that this guide will work for those, but it shouldn't be too far off if at all.
+I use [Linux Mint](https://linuxmint.com/) as my daily OS at home.
+I use Windows as my daily OS at work.
+And I use both for web development.
+I don't own a Mac, so I can't say for sure that this guide will work for those, but it shouldn't be too far off - if at all.
 
-Whatever operating system you use, I trust that you know your way around it well enough that I don't have to tell you how to install and configure software. With that in mind, I'll give you a high-level rundown of how I have my development environment setup.
+Whatever operating system you use, I trust that you know your way around it well enough that I don't have to tell you how to install and configure software.
+With that in mind, I'll give you a high-level rundown of how I have my development environment setup.
 
 For all practical purposes, it's probably easier if you install Node, Git, and VS Code first, and then use your Bash (Git Bash) terminal to find your config files, and VS Code to edit them.
 
 You can easily find the config files listed below by opening a bash terminal and typing:
 
-`cd
-ls -al`
+    cd
+    ls -al
 
 and look for the files (.bashrc, .gitconfig, .npmrc).
 
 If VS Code is installed, you should be able to open each file with the `code` command.
 
-`code ~/.bashrc`
+    code ~/.bashrc
 
-`code ~/.gitconfig`
+    code ~/.gitconfig
 
-`code ~/.npmrc`
+    code ~/.npmrc
 
 ## [Nodejs](https://nodejs.org/en/)
 
@@ -95,14 +99,6 @@ The installer for VS Code is pretty straight forward too. Just grab the installe
 
 ### Snippets
 
-#### css
-
-![[VS Code CSS Snippets]]
-
-#### scss
-
-![[VS Code SCSS Snippets]]
-
 #### html
 
 ![[VS Code HTML Snippets]]
@@ -114,3 +110,15 @@ The installer for VS Code is pretty straight forward too. Just grab the installe
 #### typescript
 
 ![[VS Code TypeScript Snippets]]
+
+#### css
+
+![[VS Code CSS Snippets]]
+
+#### scss
+
+![[VS Code SCSS Snippets]]
+
+```
+
+```

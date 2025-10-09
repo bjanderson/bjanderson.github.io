@@ -8,7 +8,7 @@ aliases:
 cssclasses:
 ---
 
-Models are data structures that we use to define the shape of our data. You might also know them as objects, as in Object Oriented Programming, but in JavaScript everything is an Object, so it's not clear that we are talking about something specific if we just call them Objects.
+Models are data structures that we use to define the shape of our data. You might also know them as objects, as in Object Oriented Programming, but in JavaScript everything is an Object, so it's not clear that we are talking about something specific if we just call them objects.
 
 The usefulness of the term "model" can be exemplified in it's use in the [Model-View-Controller](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) (MVC) architecture. The model is the part of the software that holds the data that is to be manipulated by the controller, and displayed by the view. There are several other Model-View variants, collectively referred to as MV\*. The core component of all of them is the model. I'm not strictly holding the models I am talking about here to the standards of those various architectures, but I want to point out that the "model" data structure has been a useful part of web architecture for a long time.
 
@@ -48,7 +48,8 @@ class Person {
 }
 ```
 
-This simple model has six properties (address, birthDate, firstName, friends, lastName, and petNames). The constructor takes in an optional object as its only parameter.
+This simple model has six properties (address, birthDate, firstName, friends, lastName, and petNames).
+The constructor takes in an optional object as its only parameter.
 
 - If the obj is undefined or null then each model property is set to its respective default value.
 - If the obj is defined but a specific property on that obj is undefined or null then that respective model property is set to the default value.
@@ -60,12 +61,13 @@ We could set a default value for the obj when we define it as a parameter to the
 
 `constructor(obj = {}) { ... }`
 
-but null counts as a value, so if we ever pass null into the constructor, all of the calls to obj.property will fail. The end result is that we would still have to check if `obj === null`.
+but null counts as a value, so if we ever pass null into the constructor all of the calls to obj.property will fail.
+The end result is that we would still have to check if `obj === null`.
 
 </div>
 
 <div class="note">
-You may wonder why I'm doing falsy comparisons (`obj != null`) instead of truthy comparisons (`obj == null`). Writing the conditionals this way allows us to put the default values on the outer right edge of the assignment statements, which makes them much easier to find when reading through the code to find out what the default value for a given property is.
+You may wonder why I'm doing falsy comparisons (<code>obj != null</code>) instead of truthy comparisons (<code>obj == null</code>). Writing the conditionals this way allows us to put the default values on the outer right edge of the assignment statements, which makes them much easier to find when reading through the code to find out what the default value for a given property is.
 </div>
 
 ## Input Validation
@@ -99,13 +101,24 @@ That way, if the input value is valid it is set on the model, otherwise the mode
 
 Notice that our try/catch in the isValidDate function does not throw an error. It allows a value to be returned from the function even if the input was invalid, but still alerts us to the fact that we saw data that we were not expecting. If you want to stop the app because of this - for instance, if not having a date defined in this model is a deal breaker for your app - then throw an error instead of just logging an error.
 
-### JavaScript Date Defaults
+<div class="note">
+<strong>JavaScript Date Defaults</strong>
 
-Setting a reasonable default value for dates can be tricky, and picking the right one may vary from application to application. If you create a new date with an empty string, or NaN, e.g. x = new Date(""), then x.toString() will return "Invalid Date", and functions like x.getMonth() will return NaN. If you create it with no given input, it will create a date representing the time that the Date was instantiated. If you create it with 0 or null, it will create a date of Jan 1, 1970. And giving it a negative number will just count backwards from Jan 1, 1970.
+Setting a reasonable default value for dates can be tricky, and picking the right one may vary from application to application.
 
-Dates are generally one of the most difficult things to deal with consistently in all cases. We have to take into account things like different time-zones, different possible input formats, different default formats for different locales, etc... Dates are the one piece of data where using a 3rd party library to deal with them is easily justified.
+If you create a new date with an empty string, or NaN, e.g. x = new Date(""), then x.toString() will return "Invalid Date", and functions like x.getMonth() will return NaN.
+
+If you create it with no given input, it will create a date representing the time that the Date was instantiated.
+
+If you create it with 0 or null, it will create a date of Jan 1, 1970.
+
+And giving it a negative number will just count backwards from Jan 1, 1970.
+
+Dates in JavaScript are generally one of the most difficult things to deal with consistently in all cases. We have to take into account things like different time-zones, different possible input formats, different default formats for different locales, etc... Until the ECMAScript standard deals with this problem correctly, dates are the one piece of data where using a 3rd party library to deal with them is easily justified.
 
 One way to ensure that everyone knows exactly what the date should be is to represent it as an ISO formatted string in the UTC timezone (e.g. 2020-12-31T23:59:59.999Z). That way there is no guessing if it is formatted as mmddyyyy, ddmmyyyy, mmddyy, etc... Any special formatting for display should be done at the display, and the date should always be stored as an ISO UTC string. If the date truly is unspecified, the best default value is an empty string - at least that will let your code know that it received something that should not be interpreted as a date - and it can safely be displayed in the UI.
+
+</div>
 
 ## Data Formatting
 
@@ -163,7 +176,7 @@ Adding properties to the model will cost you memory, but reduce your CPU usage s
 
 The best optimization strategies will often use a mix of both. For example, formatting dates can be very CPU expensive relative to the amount of memory it would cost to store the formatted date string. On the other hand, storing a person's full name might cost more in terms of memory than it would in CPU usage to concatenate a couple of strings.
 
-And it should go without saying that if the formatting function could potentially return different values every time it is called (such as containing time stamps, or counts, etc...) then you should not set it as a property on the model, but call the function throughout the rest of your code instead.
+And it should go without saying that if the formatting function could potentially return different values every time it is called (such as containing time stamps, or counts, etc...) then you should always call the formatting function when you need to display its value.
 
 </div>
 
@@ -332,16 +345,13 @@ class Person {
 
 ## Model Utils
 
-    utility
-      - a program or routine designed to perform or facilitate especially routine operations on a computer
+<div class="note">
+  utility - a program or routine designed to perform or facilitate especially routine operations on a computer
+</div>
 
 Inevitably, our models are going to have things in common, like needing to validate and format dates and other inputs, and needing to set arrays of other models. So let's look now at building a common place to put these functions - utils.
 
 We could pull all of our reusable methods out into a single file, like this:
-
-<div class="note">
-Rather than creating a class to act as an artificial container for all of these methods, it is much more convenient to simply export each function directly, which will allow us to import and use them directly wherever we need them in our code.
-</div>
 
 ```javascript
 /** utils.js */
@@ -411,6 +421,10 @@ export isValidDate(date) {
   return isValid
 }
 ```
+
+<div class="note">
+Rather than creating a class to act as an artificial container for all of these methods, it is much more convenient to simply export each function directly, which will allow us to import and use them directly wherever we need them in our code.
+</div>
 
 But, as time goes on, the number of methods in this file could become quite large. So, we could take this one step further and define several different utility files, and let each one focus on one particular type of data. Like this:
 
