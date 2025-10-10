@@ -6,17 +6,64 @@
       <description>Last 20 notes on BJ Anderson</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>JavaScript Services</title>
-    <link>https://bjanderson.github.io/Architecture/JavaScript-Services</link>
-    <guid>https://bjanderson.github.io/Architecture/JavaScript-Services</guid>
+    <title>Components</title>
+    <link>https://bjanderson.github.io/Architecture/Components</link>
+    <guid>https://bjanderson.github.io/Architecture/Components</guid>
+    <description><![CDATA[ &lt;p&gt;Work in progress…&lt;/p&gt;
+&lt;p&gt;If &lt;a href=&quot;../Architecture/Models&quot; class=&quot;internal&quot; data-slug=&quot;Architecture/Models&quot;&gt;Models&lt;/a&gt; are the building blocks of your application, and &lt;a href=&quot;../Architecture/Services&quot; class=&quot;internal&quot; data-slug=&quot;Architecture/Services&quot;&gt;Services&lt;/a&gt; are the plumbing, then Components are everything else inside the building.
+They are the doors you walk through, the windows you look out and open, the refrigerator you browse through, the coffee pot, oven, sink…
+UI components are what you use and interact with on a daily basis, and they are built with models, and powered by services.&lt;/p&gt; ]]></description>
+    <pubDate>Fri, 10 Oct 2025 04:00:00 GMT</pubDate>
+  </item><item>
+    <title>Thinking Like An Architect</title>
+    <link>https://bjanderson.github.io/Architecture/Thinking-Like-An-Architect</link>
+    <guid>https://bjanderson.github.io/Architecture/Thinking-Like-An-Architect</guid>
+    <description><![CDATA[ &lt;p&gt;Work in progress…&lt;/p&gt;
+&lt;p&gt;Learn to think about systems as a whole.&lt;/p&gt;
+&lt;p&gt;As a learning exercise, try to implement the entire suite of IRS Tax forms as an enterprise web application.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Go to the IRS website (&lt;a href=&quot;https://www.irs.gov/forms-instructions&quot; class=&quot;external&quot; target=&quot;_blank&quot;&gt;irs.gov&lt;svg aria-hidden=&quot;true&quot; class=&quot;external-icon&quot; style=&quot;max-width:0.8em;max-height:0.8em&quot; viewBox=&quot;0 0 512 512&quot;&gt;&lt;path d=&quot;M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Look at the tax forms - those are your UI/UX mockups&lt;/li&gt;
+&lt;li&gt;Look at the instructions - those are your application requirements&lt;/li&gt;
+&lt;li&gt;Consider the different user personas - single, married filing jointly, etc…&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Take these as your design documents and think about how you would build this application.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Think about what &lt;a href=&quot;../Architecture/Models&quot; class=&quot;internal&quot; data-slug=&quot;Architecture/Models&quot;&gt;Models&lt;/a&gt; you will need&lt;/li&gt;
+&lt;li&gt;Think about what &lt;a href=&quot;../Architecture/Services&quot; class=&quot;internal&quot; data-slug=&quot;Architecture/Services&quot;&gt;Services&lt;/a&gt; you will need&lt;/li&gt;
+&lt;li&gt;Think about what &lt;a href=&quot;../Architecture/Components&quot; class=&quot;internal&quot; data-slug=&quot;Architecture/Components&quot;&gt;Components&lt;/a&gt; you will need&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Read through the documents and create a rough design of your application.
+You can use pseudo code if it helps, but just try to piece together the main concepts that you will have to build and how they will tie together.&lt;/p&gt;
+&lt;p&gt;If you think this is complicated I want you to understand that this is the clearest and easiest set of requirements and design documents that you are probably ever going to see.
+Developing enterprise applications is never this well thought out ahead of time, but will often rival this amount of complexity. As a software architect you will have to think ahead into the unknown and be able to anticipate these kinds of complexities while your customer/boss is figuring out what they want you to build.&lt;/p&gt;
+&lt;p&gt;When you are starting out on a new project and your boss has asked you to take the lead and start building a new system from scratch that is only going to do one simple thing, you should anaticipate that it’s going to evolve into something that rivals the complexity of the US Tax Code.
+Don’t get frustrated when your boss starts asking you to add one-off edge cases, entirely unrelated functionality, “sometimes” operations, and seemingly superficial oddities - expect that to happen.
+In fact, expect that to be how the entire system is going to be designed from now on.&lt;/p&gt;
+&lt;p&gt;Build your application so that it can absorb these kinds of requests, and still be robust, maintainable, and scalable!&lt;/p&gt;
+&lt;p&gt;And don’t hold yourself to an unrealistic expectation of perfection - because none of us can do this perfectly - just know that you have a firm foundation and a well-though out plan and direction.&lt;/p&gt;
+&lt;p&gt;Become a system builder - no matter what the system is that you are building.&lt;/p&gt; ]]></description>
+    <pubDate>Fri, 10 Oct 2025 04:00:00 GMT</pubDate>
+  </item><item>
+    <title>Services</title>
+    <link>https://bjanderson.github.io/Architecture/Services</link>
+    <guid>https://bjanderson.github.io/Architecture/Services</guid>
     <description><![CDATA[ &lt;p&gt;This article is still a work in progress…&lt;/p&gt;
 &lt;p&gt;Services are the workhorse of your application code. You might also know them as the Controller part of the &lt;a href=&quot;https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller&quot; class=&quot;external&quot; target=&quot;_blank&quot;&gt;Model-View-Controller&lt;svg aria-hidden=&quot;true&quot; class=&quot;external-icon&quot; style=&quot;max-width:0.8em;max-height:0.8em&quot; viewBox=&quot;0 0 512 512&quot;&gt;&lt;path d=&quot;M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt; (MVC) architecture.&lt;/p&gt;
-&lt;p&gt;If models are the building blocks of your application, then services are the plumbing.&lt;/p&gt;
+&lt;p&gt;If &lt;a href=&quot;../Architecture/Models&quot; class=&quot;internal&quot; data-slug=&quot;Architecture/Models&quot;&gt;Models&lt;/a&gt; are the building blocks of your application, then services are the plumbing, the electrical wiring, the internet connection, and the HVAC.
+Think about the house or apartment where you live.
+There are several services that provide all the functionality that you rely on from day to day.
+You have an electric service provider - and how many things do you connect to that, and what services do those things provide to you.
+You have water and sewer service - it’s not glamorous, but it’s essential.
+You have AC and heating - again, it’s behind the scenes, but you don’t want to be without it.
+You have your internet service provider, cell phone service provider, perhaps cable TV service provider, trash pickup service provider, and on, and on…
+These are the things that make your home function, and it wouldn’t be the same without them.
+That’s what services are to your application.&lt;/p&gt;
 &lt;p&gt;They do things like:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;send and retrieve data from server APIs&lt;/li&gt;
 &lt;li&gt;create a central storage places for data in your application&lt;/li&gt;
-&lt;li&gt;provide complex functionality (compared to models) that is reusable throughout the different views of your application&lt;/li&gt;
+&lt;li&gt;provide complex functionality that is reusable throughout the different views of your application&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Services can range in complexity from very simple to very, very complex.
 My goal is to keep them as lean as possible and focused on very specific areas of functionality.
@@ -1005,7 +1052,7 @@ It was an old (older than me) door closer system, with a hydraulic motor, big ol
 &lt;p&gt;The guy who worked on them before me was one of the only people in the world who knew anything about the system.
 He worked on it for 30 years, but passed away.
 Unfortunately for them, he was illiterate so there wasn’t any documentation on how the system worked.
-He had a test bench set up for troublshooting parts that were shipped in from around the world, but nobody even knew how to turn it on.&lt;/p&gt;
+He had a test bench set up for troublshooting broken parts that were shipped in from around the world, but nobody even knew how to turn it on.&lt;/p&gt;
 &lt;p&gt;They asked me if I could figure it out, and I told them to give me a volt meter and a month and I would do my best.
 After a month or so of tinkering with that system I had created a detailed diagram of every circuit and moving part in the whole system.
 I eventually turned that into a full troubleshooting manual, and, as far as I know, it’s still being used around the world to maintain that sytem.&lt;/p&gt;
@@ -1013,109 +1060,71 @@ I eventually turned that into a full troubleshooting manual, and, as far as I kn
 After I fixed their backlog of broken parts I ended up having quite a bit of free time at work.
 My boss told me he viewed my like a firefighter.
 He said you don’t always need them around, but you sure do want them there when you need them.&lt;/p&gt;
-&lt;p&gt;So I started doing handyman stuff around the warehouse we were in.
+&lt;p&gt;So, I started doing handyman stuff around the warehouse we were in.
 Any time anyone needed anything built or fixed or modified, they’d come to me and I’d gladly work on it.
 I also did plenty of studying on the web - exploring whatever topics piqued my interest at the time.
-Eventually I got curious about how the internet worked, and started digging in to every aspect of computers and networks.&lt;/p&gt;
+Eventually I got curious about how the internet worked, and started digging in to every aspect of computers and networks.
+Once I figured out that I could write code that ran in the browser, I got hooked on learning as much as I could about it.
+And so I started tinkering around with writing JavaScript, HTML, and CSS in Notepad and running it in IE6.&lt;/p&gt;
 &lt;p&gt;I eventually asked my boss if I could work part time and go to college full time - and he approved.
 So, at the age of 27, I signed up for community college.
-I initally started going for civil engineering, but my infatuation with the web took over and I switched to computer science.&lt;/p&gt; ]]></description>
+I initally started going for civil engineering, but my infatuation with the web took over and I switched to computer science.&lt;/p&gt;
+&lt;p&gt;In college I won a Student Achievement Award from the Department of Math, Science and Engineering.
+I was also invited to join the Physics Club.
+And I was asked by a professor to be a tutor.&lt;/p&gt;
+&lt;p&gt;And, although I learned a lot from my classes, I think I learned even more from the things I built outside of school.
+There was a team working out of the same warehouse that I worked in that was deploying remote satellite connection equipment around the world.
+Basically it was a satellite connected phone and laptop in a backpack.
+And they needed some tools to both test the connection speed that they were getting (to verify that they were getting what they were paying for), and a way to keep track of their inventory that was being shipped all over the world.&lt;/p&gt;
+&lt;p&gt;I offered to help, and wrote a program using a combination of Java, Powershell, Access, and Excel to collect bandwith speeds and keep track of their equipment.
+The team was impressed, and other people around the warehouse started asking me if I could help them too, which I did.
+That time was unique because everything I did was unexpected, unplanned, and entirely from my own initiative - it was the dream.&lt;/p&gt;
+&lt;p&gt;After I graduated I took a job with a company that worked with satellites.
+The technical interview was exciting because the coding challenges were fun, and the team was happy with my results.
+But the job turned out not to be at all what I was expecting.&lt;/p&gt;
+&lt;p&gt;When I started they wanted to put me on a project that nobody else wanted to touch.
+It was building games for the &lt;a href=&quot;https://www.noradsanta.org/en/&quot; class=&quot;external&quot; target=&quot;_blank&quot;&gt;NORAD Tracks Santa&lt;svg aria-hidden=&quot;true&quot; class=&quot;external-icon&quot; style=&quot;max-width:0.8em;max-height:0.8em&quot; viewBox=&quot;0 0 512 512&quot;&gt;&lt;path d=&quot;M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt; website.
+The site was built with Flash, and they wanted to convert it to “the new” HTML5.
+I agreed to work on the project, and was the only developer assigned to it.
+Every developer in the company was a “Java” developer and didn’t want to touch JavaScript with a 10 foot pole.
+They were almost appologetic when talking to me about working on the project, but I thoroughly enjoyed it.
+I built the whole thing using only vanilla JS (not even JQuery), HTML, and CSS - and I made it work on IE6, Firefox, Chrome, Safari, and Opera.
+The website has changed again since then, but I ended up winning an award for that project, and ever since then I’ve been known as “the UI guy.”&lt;/p&gt;
+&lt;p&gt;I left that job because the government shut down and I didn’t have enough PTO to wait it out.
+The next job I got had me building an inventory and logistics application again - but this time much bigger, for a much bigger client.
+I got to work with many high-ranking people, and wore a suit to work every day.&lt;/p&gt;
+&lt;p&gt;And then I got a call from one of the managers I worked with at my previous job.
+He wanted to start a &lt;a href=&quot;https://directedanalytics.com/&quot; class=&quot;external&quot; target=&quot;_blank&quot;&gt;software company&lt;svg aria-hidden=&quot;true&quot; class=&quot;external-icon&quot; style=&quot;max-width:0.8em;max-height:0.8em&quot; viewBox=&quot;0 0 512 512&quot;&gt;&lt;path d=&quot;M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;, and he wanted me to be their developer.
+I also had my first child during this time, so I was pretty busy.
+I agreed to join the company as one of its five founding members, and got to work designing and building our initial product.&lt;/p&gt;
+&lt;p&gt;It was during this time that I learned the importance of work-life balance.
+I was constantly working, and never had time to spend with my family.
+During one summer my wife got tired of waiting for me to agree to go on vacation and she took my son to Florida with her mom and sister for a week.
+She was texting me pictures of them at the beach while I was trying to avoid getting pulled into management at work, and dealing with constant requirements churn and the weight of being the only developer working with basically 4 managers on the side.
+It got to be too much, and I decided that I was done with the side business, and looked for another job where I could keep writing code day-to-day.&lt;/p&gt;
+&lt;p&gt;I’m no longer affiliated with, or invested in the business.
+I also decided from that point on that I never want to be a manager because I enjoy programming too much.
+And I learned the most important lesson of all during that time - to spend as much time with my family as I can, while still keeping my interests alive with the occasional side project when possible.&lt;/p&gt;
+&lt;p&gt;Over the years I’ve worked with JavaScript as it has evolved from a hacked together scriping language into an organized and maturing standard with an ever growing influence on the world.
+I’ve worked professionally with JQuery, Backbone, Knockout, GWT, EXT, CoffeeScript, React, AngularJS, Angular2+, and probably several others that I can’t think of at the moment.
+I’ve worked as a contractor for several different Departments of the government, on many large-scale applications, with users based all around the world.&lt;/p&gt;
+&lt;p&gt;Personally I’ve tinkered with even more of the frameworks that are out there, but I have always considered myself to be a JavaScript developer - and always considered the frameworks to just be additional “stuff” that’s built from it.
+And I’m not put off by the large and ever growing ecosystem of JavaScript tools and frameworks.
+JavaScript is my favorite programming language precisely because it can be used in so many different ways.
+It’s truly unique because it’s free, able to run on any platform, and has seemingly endless flexibility.&lt;/p&gt;
+&lt;p&gt;As I’ve explored different aspects and experiences of life - and matured in my expectations of myself and the world - I’ve come to consider myself an architect.
+I look for the underlying structure in things, and try to anticipate the needs and stresses that can be placed on that structure.
+In software I’m constantly looking for ways to develop and improve systematic patterns.
+In relationships I’m constantly looking for ways to provide value and support.
+In everything I’m constantly trying to refine and optimize myself - ever exploring, ever experimenting.&lt;/p&gt;
+&lt;p&gt;If you got this far, thank you for reading my story.
+There’s a lot more to it, but I should probably write a book if I’m going to tell it all…&lt;/p&gt;
+&lt;p&gt;Before I go I’ll mention that I have a &lt;a href=&quot;https://www.youtube.com/@BJAnderson&quot; class=&quot;external&quot; target=&quot;_blank&quot;&gt;YouTube channel&lt;svg aria-hidden=&quot;true&quot; class=&quot;external-icon&quot; style=&quot;max-width:0.8em;max-height:0.8em&quot; viewBox=&quot;0 0 512 512&quot;&gt;&lt;path d=&quot;M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;.
+I haven’t posted much to it lately, but I might start if I find there’s an interest in it.&lt;/p&gt;
+&lt;p&gt;I’m also a Christian (though, probably not what would be considered a “typical” Christian), and I have a website with my thoughts on that at &lt;a href=&quot;https://discipleshandbook.com/&quot; class=&quot;external&quot; target=&quot;_blank&quot;&gt;DisciplesHandbook.com&lt;svg aria-hidden=&quot;true&quot; class=&quot;external-icon&quot; style=&quot;max-width:0.8em;max-height:0.8em&quot; viewBox=&quot;0 0 512 512&quot;&gt;&lt;path d=&quot;M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Thanks again, and best wishes,&lt;/p&gt;
+&lt;p&gt;BJ&lt;/p&gt; ]]></description>
     <pubDate>Wed, 01 Oct 2025 04:00:00 GMT</pubDate>
-  </item><item>
-    <title>Connect</title>
-    <link>https://bjanderson.github.io/Connect</link>
-    <guid>https://bjanderson.github.io/Connect</guid>
-    <description><![CDATA[ &lt;p&gt;Interested in keeping up with new content as it’s published?&lt;/p&gt;
-&lt;h2 id=&quot;-rss-feed&quot;&gt;&lt;img src=&quot;./attachments/rss.svg&quot; alt=&quot;rss&quot; style=&quot;height: 1.5rem; margin-bottom: -0.25rem&quot;&gt; RSS Feed&lt;a role=&quot;anchor&quot; aria-hidden tabindex=&quot;-1&quot; data-no-popover href=&quot;#-rss-feed&quot; class=&quot;internal&quot;&gt;&lt;svg width=&quot;18&quot; height=&quot;18&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&quot;&gt;&lt;/path&gt;&lt;path d=&quot;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;You can subscribe to the RSS feed here: &lt;a href=&quot;https://bjanderson.github.io/index.xml&quot; class=&quot;external&quot; target=&quot;_blank&quot;&gt;https://bjanderson.github.io/index.xml&lt;svg aria-hidden=&quot;true&quot; class=&quot;external-icon&quot; style=&quot;max-width:0.8em;max-height:0.8em&quot; viewBox=&quot;0 0 512 512&quot;&gt;&lt;path d=&quot;M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt; ]]></description>
-    <pubDate>Wed, 01 Oct 2025 04:00:00 GMT</pubDate>
-  </item><item>
-    <title>New Angular Project</title>
-    <link>https://bjanderson.github.io/Angular-Projects/New-Angular-Project</link>
-    <guid>https://bjanderson.github.io/Angular-Projects/New-Angular-Project</guid>
-    <description><![CDATA[ &lt;p&gt;If you’re new to Angular, I highly recommend taking a walk through the tutorial at &lt;a href=&quot;https://angular.io/tutorial&quot; class=&quot;external&quot; target=&quot;_blank&quot;&gt;https://angular.io/tutorial&lt;svg aria-hidden=&quot;true&quot; class=&quot;external-icon&quot; style=&quot;max-width:0.8em;max-height:0.8em&quot; viewBox=&quot;0 0 512 512&quot;&gt;&lt;path d=&quot;M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;. The first part of the tutorial is instructions on how to install Node and Angular, and get things running.&lt;/p&gt;
-&lt;p&gt;That being said, this will not be an in-depth article since the tutorial and the Angular docs already do a good job of covering that. I will simply give you a quick overview of how I get a new Angular project started.&lt;/p&gt;
-&lt;p&gt;The first step in starting a new Angular project is to install the Angular cli.&lt;/p&gt;
-&lt;figure data-rehype-pretty-code-figure=&quot;&quot;&gt;&lt;pre tabindex=&quot;0&quot; data-language=&quot;bash&quot; data-theme=&quot;github-light github-dark&quot;&gt;&lt;code data-language=&quot;bash&quot; data-theme=&quot;github-light github-dark&quot; style=&quot;display: grid;&quot;&gt;&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#6F42C1;--shiki-dark:#B392F0&quot;&gt;npm&lt;/span&gt;&lt;span style=&quot;--shiki-light:#032F62;--shiki-dark:#9ECBFF&quot;&gt; i&lt;/span&gt;&lt;span style=&quot;--shiki-light:#005CC5;--shiki-dark:#79B8FF&quot;&gt; -g&lt;/span&gt;&lt;span style=&quot;--shiki-light:#032F62;--shiki-dark:#9ECBFF&quot;&gt; @angular/cli@latest&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-&lt;p&gt;Then you can easily generate a new project using the cli&lt;/p&gt;
-&lt;figure data-rehype-pretty-code-figure=&quot;&quot;&gt;&lt;pre tabindex=&quot;0&quot; data-language=&quot;bash&quot; data-theme=&quot;github-light github-dark&quot;&gt;&lt;code data-language=&quot;bash&quot; data-theme=&quot;github-light github-dark&quot; style=&quot;display: grid;&quot;&gt;&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#6F42C1;--shiki-dark:#B392F0&quot;&gt;ng&lt;/span&gt;&lt;span style=&quot;--shiki-light:#032F62;--shiki-dark:#9ECBFF&quot;&gt; new&lt;/span&gt;&lt;span style=&quot;--shiki-light:#032F62;--shiki-dark:#9ECBFF&quot;&gt; my-project&lt;/span&gt;&lt;span style=&quot;--shiki-light:#005CC5;--shiki-dark:#79B8FF&quot;&gt; --prefix=myprj&lt;/span&gt;&lt;span style=&quot;--shiki-light:#005CC5;--shiki-dark:#79B8FF&quot;&gt; --style=scss&lt;/span&gt;&lt;span style=&quot;--shiki-light:#005CC5;--shiki-dark:#79B8FF&quot;&gt; --routing=true&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-&lt;p&gt;The options tell Angular to set some configuration settings for your project.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;—prefix tells angular that all of your component html tags will be prefixed with myprj-. This will be checked at build time and during linting. You want to set this to something that will differentiate your components from any other angular or third party components in order to avoid naming conflicts for your Angular components.&lt;/li&gt;
-&lt;li&gt;—style tells Angular to use SCSS as the css pre-processor for your project. It will automatically set up the build chain for this and create all of your stylesheets as .scss files.&lt;/li&gt;
-&lt;li&gt;—routing tells angular to generate boiler-plate code for setting up routing for your application.
-There are other options available. You can see the full list in the docs at &lt;a href=&quot;https://angular.io/cli&quot; class=&quot;external&quot; target=&quot;_blank&quot;&gt;https://angular.io/cli&lt;svg aria-hidden=&quot;true&quot; class=&quot;external-icon&quot; style=&quot;max-width:0.8em;max-height:0.8em&quot; viewBox=&quot;0 0 512 512&quot;&gt;&lt;path d=&quot;M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;.
-Once you generate your new project, you can cd into your project directory and run it.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure data-rehype-pretty-code-figure=&quot;&quot;&gt;&lt;pre tabindex=&quot;0&quot; data-language=&quot;bash&quot; data-theme=&quot;github-light github-dark&quot;&gt;&lt;code data-language=&quot;bash&quot; data-theme=&quot;github-light github-dark&quot; style=&quot;display: grid;&quot;&gt;&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#005CC5;--shiki-dark:#79B8FF&quot;&gt;cd&lt;/span&gt;&lt;span style=&quot;--shiki-light:#032F62;--shiki-dark:#9ECBFF&quot;&gt; my-project&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#6F42C1;--shiki-dark:#B392F0&quot;&gt;npm&lt;/span&gt;&lt;span style=&quot;--shiki-light:#032F62;--shiki-dark:#9ECBFF&quot;&gt; start&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-&lt;p&gt;And your project will be hosted at &lt;a href=&quot;http://localhost:4200/&quot; class=&quot;external&quot; target=&quot;_blank&quot;&gt;http://localhost:4200/&lt;svg aria-hidden=&quot;true&quot; class=&quot;external-icon&quot; style=&quot;max-width:0.8em;max-height:0.8em&quot; viewBox=&quot;0 0 512 512&quot;&gt;&lt;path d=&quot;M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;angular-material-and-scss&quot;&gt;Angular Material and SCSS&lt;a role=&quot;anchor&quot; aria-hidden tabindex=&quot;-1&quot; data-no-popover href=&quot;#angular-material-and-scss&quot; class=&quot;internal&quot;&gt;&lt;svg width=&quot;18&quot; height=&quot;18&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&quot;&gt;&lt;/path&gt;&lt;path d=&quot;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;If you plan to use Angular Material then now is the time to install that. Thankfully, Angular offers a convenient way to add it to your project&lt;/p&gt;
-&lt;figure data-rehype-pretty-code-figure=&quot;&quot;&gt;&lt;pre tabindex=&quot;0&quot; data-language=&quot;bash&quot; data-theme=&quot;github-light github-dark&quot;&gt;&lt;code data-language=&quot;bash&quot; data-theme=&quot;github-light github-dark&quot; style=&quot;display: grid;&quot;&gt;&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#6F42C1;--shiki-dark:#B392F0&quot;&gt;ng&lt;/span&gt;&lt;span style=&quot;--shiki-light:#032F62;--shiki-dark:#9ECBFF&quot;&gt; add&lt;/span&gt;&lt;span style=&quot;--shiki-light:#032F62;--shiki-dark:#9ECBFF&quot;&gt; @angular/material&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-&lt;p&gt;I usually answer yes to all the prompts, but feel free to dig in to the details at &lt;a href=&quot;https://material.angular.io/guide/schematics&quot; class=&quot;external&quot; target=&quot;_blank&quot;&gt;https://material.angular.io/guide/schematics&lt;svg aria-hidden=&quot;true&quot; class=&quot;external-icon&quot; style=&quot;max-width:0.8em;max-height:0.8em&quot; viewBox=&quot;0 0 512 512&quot;&gt;&lt;path d=&quot;M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;And I like to set up the Angular Material theme in it’s own top-level file, next to styles.scss. Note, I’m using the deeppurple-amber theme, so make sure to set your primary and accent colors to whatever matches the theme you chose when you added @angular/material.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;src/material.scss&lt;/code&gt;&lt;/p&gt;
-&lt;figure data-rehype-pretty-code-figure=&quot;&quot;&gt;&lt;pre tabindex=&quot;0&quot; data-language=&quot;scss&quot; data-theme=&quot;github-light github-dark&quot;&gt;&lt;code data-language=&quot;scss&quot; data-theme=&quot;github-light github-dark&quot; style=&quot;display: grid;&quot;&gt;&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#D73A49;--shiki-dark:#F97583&quot;&gt;@use&lt;/span&gt;&lt;span style=&quot;--shiki-light:#032F62;--shiki-dark:#9ECBFF&quot;&gt; &quot;@angular/material&quot;&lt;/span&gt;&lt;span style=&quot;--shiki-light:#D73A49;--shiki-dark:#F97583&quot;&gt; as&lt;/span&gt;&lt;span style=&quot;--shiki-light:#E36209;--shiki-dark:#FFAB70&quot;&gt; mat&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;;&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt; &lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#E36209;--shiki-dark:#FFAB70&quot;&gt;$primary&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;--shiki-light:#E36209;--shiki-dark:#FFAB70&quot;&gt;mat&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;.&lt;/span&gt;&lt;span style=&quot;--shiki-light:#005CC5;--shiki-dark:#79B8FF&quot;&gt;define-palette&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;--shiki-light:#E36209;--shiki-dark:#FFAB70&quot;&gt;mat&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;.&lt;/span&gt;&lt;span style=&quot;--shiki-light:#E36209;--shiki-dark:#FFAB70&quot;&gt;$deep-purple-palette&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;, &lt;/span&gt;&lt;span style=&quot;--shiki-light:#005CC5;--shiki-dark:#79B8FF&quot;&gt;500&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;);&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#E36209;--shiki-dark:#FFAB70&quot;&gt;$accent&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;--shiki-light:#E36209;--shiki-dark:#FFAB70&quot;&gt;mat&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;.&lt;/span&gt;&lt;span style=&quot;--shiki-light:#005CC5;--shiki-dark:#79B8FF&quot;&gt;define-palette&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;--shiki-light:#E36209;--shiki-dark:#FFAB70&quot;&gt;mat&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;.&lt;/span&gt;&lt;span style=&quot;--shiki-light:#E36209;--shiki-dark:#FFAB70&quot;&gt;$amber-palette&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;, &lt;/span&gt;&lt;span style=&quot;--shiki-light:#E36209;--shiki-dark:#FFAB70&quot;&gt;A200&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;, &lt;/span&gt;&lt;span style=&quot;--shiki-light:#E36209;--shiki-dark:#FFAB70&quot;&gt;A100&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;, &lt;/span&gt;&lt;span style=&quot;--shiki-light:#E36209;--shiki-dark:#FFAB70&quot;&gt;A400&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;);&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#E36209;--shiki-dark:#FFAB70&quot;&gt;$warn&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;--shiki-light:#E36209;--shiki-dark:#FFAB70&quot;&gt;mat&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;.&lt;/span&gt;&lt;span style=&quot;--shiki-light:#005CC5;--shiki-dark:#79B8FF&quot;&gt;define-palette&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;--shiki-light:#E36209;--shiki-dark:#FFAB70&quot;&gt;mat&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;.&lt;/span&gt;&lt;span style=&quot;--shiki-light:#E36209;--shiki-dark:#FFAB70&quot;&gt;$red-palette&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;);&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt; &lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#E36209;--shiki-dark:#FFAB70&quot;&gt;$theme&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;--shiki-light:#E36209;--shiki-dark:#FFAB70&quot;&gt;mat&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;.&lt;/span&gt;&lt;span style=&quot;--shiki-light:#005CC5;--shiki-dark:#79B8FF&quot;&gt;define-light-theme&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;(&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;  (&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#005CC5;--shiki-dark:#79B8FF&quot;&gt;    color&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;: (&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;      primary: &lt;/span&gt;&lt;span style=&quot;--shiki-light:#E36209;--shiki-dark:#FFAB70&quot;&gt;$primary&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;,&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;      accent: &lt;/span&gt;&lt;span style=&quot;--shiki-light:#E36209;--shiki-dark:#FFAB70&quot;&gt;$accent&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;,&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;      warn: &lt;/span&gt;&lt;span style=&quot;--shiki-light:#E36209;--shiki-dark:#FFAB70&quot;&gt;$warn&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;,&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;    ),&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;    typography: &lt;/span&gt;&lt;span style=&quot;--shiki-light:#E36209;--shiki-dark:#FFAB70&quot;&gt;mat&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;.&lt;/span&gt;&lt;span style=&quot;--shiki-light:#005CC5;--shiki-dark:#79B8FF&quot;&gt;define-typography-config&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;(),&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;    density: &lt;/span&gt;&lt;span style=&quot;--shiki-light:#005CC5;--shiki-dark:#79B8FF&quot;&gt;0&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;,&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;  )&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;);&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-&lt;p&gt;Then make sure to include your material.scss file in the styles array in your angular.json file.&lt;/p&gt;
-&lt;figure data-rehype-pretty-code-figure=&quot;&quot;&gt;&lt;pre tabindex=&quot;0&quot; data-language=&quot;json&quot; data-theme=&quot;github-light github-dark&quot;&gt;&lt;code data-language=&quot;json&quot; data-theme=&quot;github-light github-dark&quot; style=&quot;display: grid;&quot;&gt;&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#032F62;--shiki-dark:#9ECBFF&quot;&gt;&quot;styles&quot;&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;: [&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#032F62;--shiki-dark:#9ECBFF&quot;&gt;  &quot;@angular/material/prebuilt-themes/deeppurple-amber.css&quot;&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;,&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#032F62;--shiki-dark:#9ECBFF&quot;&gt;  &quot;src/material.scss&quot;&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;,&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#032F62;--shiki-dark:#9ECBFF&quot;&gt;  &quot;src/styles.scss&quot;&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;],&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-&lt;p&gt;I also create a folder to keep all of my global styles in, and in that folder I create another folder dedicated to my global Angular Material style overrides.&lt;/p&gt;
-&lt;p&gt;You can create these folders with this command:&lt;/p&gt;
-&lt;figure data-rehype-pretty-code-figure=&quot;&quot;&gt;&lt;pre tabindex=&quot;0&quot; data-language=&quot;bash&quot; data-theme=&quot;github-light github-dark&quot;&gt;&lt;code data-language=&quot;bash&quot; data-theme=&quot;github-light github-dark&quot; style=&quot;display: grid;&quot;&gt;&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#6F42C1;--shiki-dark:#B392F0&quot;&gt;mkdir&lt;/span&gt;&lt;span style=&quot;--shiki-light:#005CC5;--shiki-dark:#79B8FF&quot;&gt; -p&lt;/span&gt;&lt;span style=&quot;--shiki-light:#032F62;--shiki-dark:#9ECBFF&quot;&gt; src/styles/material-overrides&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-&lt;p&gt;Then I move all the contents of the styles.scss file into a file named _dom.scss in the styles folder.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;src/styles/_dom.scss&lt;/code&gt;&lt;/p&gt;
-&lt;figure data-rehype-pretty-code-figure=&quot;&quot;&gt;&lt;pre tabindex=&quot;0&quot; data-language=&quot;scss&quot; data-theme=&quot;github-light github-dark&quot;&gt;&lt;code data-language=&quot;scss&quot; data-theme=&quot;github-light github-dark&quot; style=&quot;display: grid;&quot;&gt;&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#22863A;--shiki-dark:#85E89D&quot;&gt;html&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;,&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#22863A;--shiki-dark:#85E89D&quot;&gt;body&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt; {&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#005CC5;--shiki-dark:#79B8FF&quot;&gt;  height&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;--shiki-light:#005CC5;--shiki-dark:#79B8FF&quot;&gt;100&lt;/span&gt;&lt;span style=&quot;--shiki-light:#D73A49;--shiki-dark:#F97583&quot;&gt;%&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;;&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;}&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt; &lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#22863A;--shiki-dark:#85E89D&quot;&gt;body&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt; {&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#005CC5;--shiki-dark:#79B8FF&quot;&gt;  margin&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;--shiki-light:#005CC5;--shiki-dark:#79B8FF&quot;&gt;0&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;;&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#005CC5;--shiki-dark:#79B8FF&quot;&gt;  font-family&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;: Roboto, &lt;/span&gt;&lt;span style=&quot;--shiki-light:#032F62;--shiki-dark:#9ECBFF&quot;&gt;&quot;Helvetica Neue&quot;&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;, &lt;/span&gt;&lt;span style=&quot;--shiki-light:#005CC5;--shiki-dark:#79B8FF&quot;&gt;sans-serif&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;;&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-&lt;p&gt;And then import that back into the styles.scss file.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;src/styles.scss&lt;/code&gt;&lt;/p&gt;
-&lt;figure data-rehype-pretty-code-figure=&quot;&quot;&gt;&lt;pre tabindex=&quot;0&quot; data-language=&quot;scss&quot; data-theme=&quot;github-light github-dark&quot;&gt;&lt;code data-language=&quot;scss&quot; data-theme=&quot;github-light github-dark&quot; style=&quot;display: grid;&quot;&gt;&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#D73A49;--shiki-dark:#F97583&quot;&gt;@import&lt;/span&gt;&lt;span style=&quot;--shiki-light:#032F62;--shiki-dark:#9ECBFF&quot;&gt; &quot;src/styles/_dom.scss&quot;&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-&lt;p&gt;And in the material-overrides folder I will create a file for each Angular Material Component and override its default styles in there so they apply globally to my app.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;src/styles/material-overrides/_mat-icon.scss&lt;/code&gt;&lt;/p&gt;
-&lt;figure data-rehype-pretty-code-figure=&quot;&quot;&gt;&lt;pre tabindex=&quot;0&quot; data-language=&quot;scss&quot; data-theme=&quot;github-light github-dark&quot;&gt;&lt;code data-language=&quot;scss&quot; data-theme=&quot;github-light github-dark&quot; style=&quot;display: grid;&quot;&gt;&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#22863A;--shiki-dark:#85E89D&quot;&gt;mat-icon&lt;/span&gt;&lt;span style=&quot;--shiki-light:#6F42C1;--shiki-dark:#B392F0&quot;&gt;.mat-icon&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt; {&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#005CC5;--shiki-dark:#79B8FF&quot;&gt;  margin&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;--shiki-light:#005CC5;--shiki-dark:#79B8FF&quot;&gt;0&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;;&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-&lt;p&gt;Notice: you have to make the css selector more specific than Angular Material’s for it to work. This is easily done by prefixing the tag to the css class.&lt;/p&gt;
-&lt;p&gt;Then I create a file to gather all my material overrides into one place.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;src/styles/material-overrides/_material-overrides.scss&lt;/code&gt;&lt;/p&gt;
-&lt;figure data-rehype-pretty-code-figure=&quot;&quot;&gt;&lt;pre tabindex=&quot;0&quot; data-language=&quot;scss&quot; data-theme=&quot;github-light github-dark&quot;&gt;&lt;code data-language=&quot;scss&quot; data-theme=&quot;github-light github-dark&quot; style=&quot;display: grid;&quot;&gt;&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#D73A49;--shiki-dark:#F97583&quot;&gt;@import&lt;/span&gt;&lt;span style=&quot;--shiki-light:#032F62;--shiki-dark:#9ECBFF&quot;&gt; &quot;src/styles/material-overrides/_mat-icon.scss&quot;&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-&lt;p&gt;And then I import that back into the styles.scss file.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;src/styles.scss&lt;/code&gt;&lt;/p&gt;
-&lt;figure data-rehype-pretty-code-figure=&quot;&quot;&gt;&lt;pre tabindex=&quot;0&quot; data-language=&quot;scss&quot; data-theme=&quot;github-light github-dark&quot;&gt;&lt;code data-language=&quot;scss&quot; data-theme=&quot;github-light github-dark&quot; style=&quot;display: grid;&quot;&gt;&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#D73A49;--shiki-dark:#F97583&quot;&gt;@import&lt;/span&gt;&lt;span style=&quot;--shiki-light:#032F62;--shiki-dark:#9ECBFF&quot;&gt; &quot;src/styles/material-overrides/_mat-overrides.scss&quot;&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;;&lt;/span&gt;&lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt; &lt;/span&gt;
-&lt;span data-line=&quot;&quot;&gt;&lt;span style=&quot;--shiki-light:#D73A49;--shiki-dark:#F97583&quot;&gt;@import&lt;/span&gt;&lt;span style=&quot;--shiki-light:#032F62;--shiki-dark:#9ECBFF&quot;&gt; &quot;src/styles/_dom.scss&quot;&lt;/span&gt;&lt;span style=&quot;--shiki-light:#24292E;--shiki-dark:#E1E4E8&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-&lt;p&gt;Now you should have a good foundation for building out your application styles.&lt;/p&gt;
-&lt;h2 id=&quot;thats-it&quot;&gt;That’s it&lt;a role=&quot;anchor&quot; aria-hidden tabindex=&quot;-1&quot; data-no-popover href=&quot;#thats-it&quot; class=&quot;internal&quot;&gt;&lt;svg width=&quot;18&quot; height=&quot;18&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&quot;&gt;&lt;/path&gt;&lt;path d=&quot;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;From here, you can start building your application. If you want to take advantage of Angular CLI’s built in schematics check out the docs at &lt;a href=&quot;https://angular.io/cli/generate&quot; class=&quot;external&quot; target=&quot;_blank&quot;&gt;https://angular.io/cli/generate&lt;svg aria-hidden=&quot;true&quot; class=&quot;external-icon&quot; style=&quot;max-width:0.8em;max-height:0.8em&quot; viewBox=&quot;0 0 512 512&quot;&gt;&lt;path d=&quot;M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;And, don’t forget to take a look inside the package.json file to see what commands are configured out of the box. There are commands for building, linting, testing, and more.&lt;/p&gt;
-&lt;p&gt;And with that you have a fresh default Angular project.&lt;/p&gt; ]]></description>
-    <pubDate>Tue, 30 Sep 2025 04:00:00 GMT</pubDate>
   </item>
     </channel>
   </rss>

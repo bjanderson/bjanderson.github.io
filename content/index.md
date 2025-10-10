@@ -10,8 +10,10 @@ toc:
   - content/Beginners/Introduction To Web Development.md
 
   - content/Architecture/Architecture.md
-  - content/Architecture/JavaScript Models.md
-  - content/Architecture/JavaScript Services.md
+  - content/Architecture/Models.md
+  - content/Architecture/Services.md
+  - content/Architecture/Components.md
+  - content/Architecture/Thinking Like An Architect.md
 
   - content/Development Environment/Development Environment Setup.md
   - content/Development Environment/npmrc.md

@@ -1,5 +1,5 @@
 ---
-title: JavaScript Models
+title: Models
 date: 2018-07-04
 description:
 draft: false

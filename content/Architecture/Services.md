@@ -1,5 +1,5 @@
 ---
-title: JavaScript Services
+title: Services
 date: 2025-10-09
 description:
 draft: false
@@ -12,13 +12,21 @@ This article is still a work in progress...
 
 Services are the workhorse of your application code. You might also know them as the Controller part of the [Model-View-Controller](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) (MVC) architecture.
 
-If models are the building blocks of your application, then services are the plumbing.
+If [[Models]] are the building blocks of your application, then services are the plumbing, the electrical wiring, the internet connection, and the HVAC.
+Think about the house or apartment where you live.
+There are several services that provide all the functionality that you rely on from day to day.
+You have an electric service provider - and how many things do you connect to that, and what services do those things provide to you.
+You have water and sewer service - it's not glamorous, but it's essential.
+You have AC and heating - again, it's behind the scenes, but you don't want to be without it.
+You have your internet service provider, cell phone service provider, perhaps cable TV service provider, trash pickup service provider, and on, and on...
+These are the things that make your home function, and it wouldn't be the same without them.
+That's what services are to your application.
 
 They do things like:
 
 - send and retrieve data from server APIs
 - create a central storage places for data in your application
-- provide complex functionality (compared to models) that is reusable throughout the different views of your application
+- provide complex functionality that is reusable throughout the different views of your application
 
 Services can range in complexity from very simple to very, very complex.
 My goal is to keep them as lean as possible and focused on very specific areas of functionality.
