@@ -10,7 +10,10 @@
     "build": "node -r esm builder/index.js",
     "start": "lite-server dist/",
     "watch": "npm-watch"
-  }/*,
+  }
+}
+
+/*,
   "dependencies": {
     "autoprefixer": "10.4.2",
     "bulma": "0.9.3",
@@ -23,4 +26,3 @@
     "postcss": "8.4.6",
     "sass": "1.49.7"
   }*/
-}
