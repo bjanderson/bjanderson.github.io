@@ -38,11 +38,11 @@ So, what might a model look like? Let's make a Person model as an example.
 class Person {
   constructor(obj) {
     obj = obj != null ? obj : {}
-    this.address = obj.address != null ? obj.address : ""
-    this.birthDate = obj.birthDate != null ? obj.birthDate : ""
-    this.firstName = obj.firstName != null ? obj.firstName : ""
+    this.address = obj.address != null ? obj.address : ''
+    this.birthDate = obj.birthDate != null ? obj.birthDate : ''
+    this.firstName = obj.firstName != null ? obj.firstName : ''
     this.friends = obj.friends != null ? obj.friends : []
-    this.lastName = obj.lastName != null ? obj.lastName : ""
+    this.lastName = obj.lastName != null ? obj.lastName : ''
     this.petNames = obj.petNames != null ? obj.petNames : []
   }
 }
@@ -190,10 +190,10 @@ Let's take our person.address field for example. Chances are that this field won
 class Address {
   constructor(obj) {
     obj = obj != null ? obj : {}
-    this.city = obj.city != null ? obj.city : ""
-    this.state = obj.state != null ? obj.state : ""
-    this.street = obj.street != null ? obj.street : ""
-    this.zipCode = obj.zipCode != null ? obj.zipCode : ""
+    this.city = obj.city != null ? obj.city : ''
+    this.state = obj.state != null ? obj.state : ''
+    this.street = obj.street != null ? obj.street : ''
+    this.zipCode = obj.zipCode != null ? obj.zipCode : ''
     this.fullAddress = this.getFullAddress()
   }
 
@@ -457,9 +457,9 @@ And finally, we don't have to, but we could bundle these different utility files
 ```javascript
 /** utils.js */
 
-export * from "./array.utils.js"
-export * from "./date.utils.js"
-export * from "./model.utils.js"
+export * from './array.utils.js'
+export * from './date.utils.js'
+export * from './model.utils.js'
 ```
 
 Then we can import the utils functions wherever we need them and use them like this:
@@ -538,13 +538,13 @@ As an example of how to use those utils - our Person model would look like this:
 ```javascript
 // person.model.js
 
-import { getArrayOfModels, getDate, getObject, getString } from "@bjanderson/utils"
+import { getArrayOfModels, getDate, getObject, getString } from '@bjanderson/utils'
 
 class Person {
   constructor(o) {
     const obj = getObject(o)
     this.address = new Address(obj.address)
-    this.birthDate = getDate(obj.birthDate, "")
+    this.birthDate = getDate(obj.birthDate, '')
     this.firstName = getString(obj.firstName)
     this.friends = getArrayOfModels(Person, obj.friends)
     this.lastName = getString(obj.lastName)

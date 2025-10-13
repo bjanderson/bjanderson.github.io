@@ -8,8 +8,6 @@ aliases:
 cssclasses:
 ---
 
-This article is still a work in progress...
-
 Services are the workhorse of your application code. You might also know them as the Controller part of the [Model-View-Controller](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) (MVC) architecture.
 
 If [[Models]] are the building blocks of your application, then services are the plumbing, the electrical wiring, the internet connection, and the HVAC.
@@ -26,15 +24,16 @@ They do things like:
 
 - send and retrieve data from server APIs
 - create a central storage places for data in your application
-- provide complex functionality that is reusable throughout the different views of your application
+- encapsulate complex functionality and make it reusable throughout your application
+- provide clean dependency injection for simplified testing and maintenance
 
-Services can range in complexity from very simple to very, very complex.
+Services can range in complexity from very simple to extremely complex.
 My goal is always to keep them as lean as possible and focused on very specific areas of functionality.
-But some applications end up requiring a central "orchestration" type of service that acts as a sort of general manager, or central interface, where the bulk of the application data is manipulated and stored.
+However, some applications end up requiring a central "orchestration" type of service that acts as a sort of general manager, or central interface, where the bulk of the application data is manipulated and stored.
 
 Just like models can contain other models, services can be composed of other services.
 And that leads me to one of the main concepts you will need to understand when it comes to services - [Dependency Injection](https://en.wikipedia.org/wiki/Dependency_injection).
-That means that you provide instances of any dependencies to the service constructor - as opposed to, say, you newing up an instance of a dependency within the service constructor.
+That means that you provide instances of any dependencies to the class constructor - as opposed to, say, you newing up an instance of a dependency within the class constructor.
 This concept is at the heart of making your application scaleable, maintainable, and testable.
 
 Since JavaScript programs live primarily in the global scope, it's easy to create services as [singletons](https://en.wikipedia.org/wiki/Singleton_pattern) that are always available to the whole application.
@@ -60,13 +59,13 @@ I like to follow the convention of naming my service files with the ending of `.
 ```javascript
 // io.service.js
 
-import { readFileSync } from "fs"
+import { readFileSync } from 'fs'
 
 export class IOService {
   constructor() {}
 
   getFileContents(fileName) {
-    return readFileSync(fileName, { encoding: "utf8" })
+    return readFileSync(fileName, { encoding: 'utf8' })
   }
 }
 ```
@@ -86,11 +85,11 @@ The script that uses the service to read that file will be named `index.js`. It 
 ```javascript
 // index.js
 
-import { IOService } from "./io.service.js"
+import { IOService } from './io.service.js'
 
 const ioService = new IOService()
 
-const fileName = "test-file.txt"
+const fileName = 'test-file.txt'
 const fileContents = ioService.getFileContents(fileName)
 
 console.log(fileContents)
@@ -121,7 +120,7 @@ I'll call the new service the NodeEnvService: `node-env.service.js`.
 ```javascript
 // node-env.service.js
 
-import { readFileSync } from "fs"
+import { readFileSync } from 'fs'
 
 export class NodeEnvService {
   constructor() {
@@ -141,7 +140,7 @@ export class IOService {
   }
 
   getFileContents(fileName) {
-    return this.nodeEnvService.readFileSync(fileName, { encoding: "utf8" })
+    return this.nodeEnvService.readFileSync(fileName, { encoding: 'utf8' })
   }
 }
 ```
@@ -151,14 +150,14 @@ And we'll update our `index.js` script to create an instance of NodeEnvService a
 ```javascript
 // index.js
 
-import { IOService } from "./io.service.js"
-import { NodeEnvService } from "./node-env.service.js"
+import { IOService } from './io.service.js'
+import { NodeEnvService } from './node-env.service.js'
 
 const nodeEnvService = new NodeEnvService()
 
 const ioService = new IOService(nodeEnvService)
 
-const fileName = "test-file.txt"
+const fileName = 'test-file.txt'
 const fileContents = ioService.getFileContents(fileName)
 
 console.log(fileContents)
@@ -189,7 +188,7 @@ This service needs to access the static `process.argv` in order to get the fileN
 ```javascript
 // node-env.service.js
 
-import { readFileSync } from "fs"
+import { readFileSync } from 'fs'
 
 export class NodeEnvService {
   constructor() {
@@ -204,9 +203,9 @@ And then we will create an instance of the CLIService in our index.js script, an
 ```javascript
 // index.js
 
-import { CLIService } from "./cli.service.js"
-import { IOService } from "./io.service.js"
-import { NodeEnvService } from "./node-env.service.js"
+import { CLIService } from './cli.service.js'
+import { IOService } from './io.service.js'
+import { NodeEnvService } from './node-env.service.js'
 
 const nodeEnvService = new NodeEnvService()
 
@@ -253,9 +252,9 @@ Now we can take the "application code" out of the `index.js` file and replace it
 ```javascript
 // index.js
 
-import { CLIService } from "./cli.service.js"
-import { IOService } from "./io.service.js"
-import { NodeEnvService } from "./node-env.service.js"
+import { CLIService } from './cli.service.js'
+import { IOService } from './io.service.js'
+import { NodeEnvService } from './node-env.service.js'
 
 const nodeEnvService = new NodeEnvService()
 
@@ -271,4 +270,175 @@ And since it takes the services in as dependencies to the constructor all of tho
 
 ## Testing
 
-When using dependency injection, you can mock out all the service's dependencies, so that you do not have to account for things like api access or database access within your tests.
+I'm going to use jasmine to create some examples of how to test services, so you will want to set up a package.json file and install jasmine.
+
+    npm init -y
+    npm i -D jasmine
+    npx jasmine init
+
+Now let's create a spec file for our IOService: `spec/io.service.spec.ts`
+
+```javascript
+// spec/io.service.spec.ts
+
+import { IOService } from '../io.service.js'
+
+const nodeEnvService = {
+  readFileSync: () => 'test readFileSync',
+}
+
+let service
+function init() {
+  service = new IOService(nodeEnvService)
+}
+
+describe('IOService', () => {
+  describe('constructor', () => {
+    beforeEach(() => {
+      init()
+    })
+
+    it('creates an instance of the service', () => {
+      expect(service).toBeDefined()
+    })
+  })
+
+  describe('getFileContents', () => {
+    beforeEach(() => {
+      init()
+    })
+
+    it('has a function named getFileContents', () => {
+      expect(typeof service.getFileContents).toEqual('function')
+    })
+
+    it('calls nodeEnvService.readFileSync', () => {
+      const spy = spyOn(nodeEnvService, 'readFileSync').and.callThrough()
+      const fileName = 'test-file'
+      service.getFileContents(fileName)
+      expect(spy).toHaveBeenCalledWith(fileName, { encoding: 'utf8' })
+    })
+  })
+})
+```
+
+Remember to change the test script in `package.json` to `"test": "jasmine"`, and you can run the tests with the command `npm test`.
+
+When using dependency injection you can mock out all the service's dependencies, so that you do not have to account for things like api, database, or file system access within your tests.
+In this case I mocked out the nodeEnvService instance so that the IOService tests do not rely on the fs library.
+I replaced the readFileSync function with a function that returns a string.
+I don't have to completly replicate the functionality of the readFilySync function or verify that it works correctly.
+I will trust the tests for the class that it lives in to take care of that.
+
+The IOService spec has some setup code where it re-initializes the service instance before each test.
+And it does some simple sanity checks to make sure the service instance was actually created, and that the service actually has the expected function.
+Then it checks that the function calls the readFileSync function from the nodeEnvService.
+And finally it checks that the function returns the result from nodeEnvService.readFileSync.
+
+This service is now well tested.
+
+But, of course, there are ways we could optimize things.
+
+Instead of mocking out the nodeEnvService in our io.service.spec.js file, we can move that mock into its own file.
+That way if we have any other tests that require a mock of the nodeEnvService, it will be reusable for those tests and we won't have to reinvent the boilerplate.
+
+And do you see how we had to create a spy on the nodeEnvService.readFileSync function to test that it was called.
+Well, we can create a generic version of that too, so that we can reuse it in other tests as well.
+
+So let's create a new folder for our mocks to live in the spec folder, and add a mock file for the nodeEnvService: `spec/mocks/node-env.service.mock.ts`
+
+```javascript
+// spec/mocks/node-env.service.mock.js
+
+export const nodeEnvService = {
+  readFileSync: () => 'test readFileSync',
+}
+
+export function callsreadFileSync(testSubject, calledWith) {
+  it('calls nodeEnvService.readFileSync', () => {
+    const spy = spyOn(nodeEnvService, 'readFileSync').and.callThrough()
+
+    testSubject()
+
+    if (calledWith?.length > 0) {
+      expect(spy).toHaveBeenCalledWith(...calledWith)
+    } else {
+      expect(spy).toHaveBeenCalled()
+    }
+  })
+}
+```
+
+And we can update our `io.service.spec.js` file to use the mocked nodeEnvService.
+
+```javascript
+// spec/io.service.spec.ts
+
+import { IOService } from '../io.service.js'
+import { callsreadFileSync, nodeEnvService } from './mocks/node-env.service.mock.js'
+
+let service
+function init() {
+  service = new IOService(nodeEnvService)
+}
+
+describe('IOService', () => {
+  describe('constructor', () => {
+    beforeEach(() => {
+      init()
+    })
+
+    it('creates an instance of the service', () => {
+      expect(service).toBeDefined()
+    })
+  })
+
+  describe('getFileContents', () => {
+    beforeEach(() => {
+      init()
+    })
+
+    it('has a function named getFileContents', () => {
+      expect(typeof service.getFileContents).toEqual('function')
+    })
+
+    callsreadFileSync(() => {
+      const fileName = 'test-file'
+      service.getFileContents(fileName)
+    }, ['test-file', { encoding: 'utf8' }])
+
+    it('returns the response from nodeEnvService.readFileSync', () => {
+      const fileName = 'test-file'
+      const result = service.getFileContents(fileName)
+      expect(result).toEqual('test readFileSync')
+    })
+  })
+})
+```
+
+The callsreadFileSync function in the mocked nodeEnvService takes in a testSubject function that it calls.
+In the io.service.spec.js file this is a fat-arrow function that just calls the service function being tested.
+And it also passes in the optional calledWith parameter as an array.
+
+It might take a minute to wrap your head around this, but once you get it you will see how simple it actually is, and it's way better than creating a bunch of mock boilerplate in all of your spec files across your entire application.
+
+We can test the CLIService and the App class the same way, but the NodeEnvService and the index.js file are special cases that I'm going to ignore for now.
+You could probably go deeper into Jasmine's module mocking capabilities to test them, but that's beyond the scope of this article.
+
+Try to write tests in this style for the CLIService and App.
+Remember to add the argv array to node-env.service.mock.js so you can reuse that mock in cli.service.spec.js.
+
+You can find my final version of everything on [Github](https://github.com/bjanderson/bjanderson.github.io/tree/master/demo-code/services).
+
+---
+
+## Conclusion
+
+Services play a major role in any application.
+They make it possible to keep your code lean, maintainable, and scalable.
+And they deserve to be treated with a high level of care and intentionality.
+
+No matter what framework you might be using, the concept of services should fit well within your application architecture.
+Even if you have to refactor your application to incorporate them, it is well worth the effort.
+
+Services form a [SOLID](https://en.wikipedia.org/wiki/SOLID) foundation for any application.

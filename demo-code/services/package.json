@@ -1,0 +1,16 @@
+{
+  "name": "services",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "keywords": [],
+  "author": "BJ Anderson",
+  "license": "MIT",
+  "devDependencies": {
+    "jasmine": "5.12.0"
+  }
+}

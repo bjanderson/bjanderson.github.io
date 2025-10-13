@@ -6,6 +6,6 @@ export class IOService {
   }
 
   getFileContents(fileName) {
-    return this.nodeEnvService.readFileSync(fileName, { encoding: "utf8" })
+    return this.nodeEnvService.readFileSync(fileName, { encoding: 'utf8' })
   }
 }
