@@ -8,8 +8,6 @@ aliases:
 cssclasses:
 ---
 
-Work in progress...
-
 Learn to think about systems as a whole.
 
 As a learning exercise, try to implement the entire suite of IRS Tax forms as an enterprise web application.
