@@ -322,7 +322,8 @@ describe('IOService', () => {
 })
 ```
 
-Remember to change the test script in `package.json` to `"test": "jasmine"`, and you can run the tests with the command `npm test`.
+Make sure to add `"type": "module"` to `package.json`, and change the test script to `"test": "jasmine"`.
+Then you can run the tests with the command `npm test`.
 
 When using dependency injection you can mock out all the service's dependencies, so that you do not have to account for things like api, database, or file system access within your tests.
 In this case I mocked out the nodeEnvService instance so that the IOService tests do not rely on the fs library.
