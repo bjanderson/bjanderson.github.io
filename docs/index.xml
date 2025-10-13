@@ -6,66 +6,6 @@
       <description>Last 20 notes on BJ Anderson</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>Components</title>
-    <link>https://bjanderson.github.io/Architecture/Components</link>
-    <guid>https://bjanderson.github.io/Architecture/Components</guid>
-    <description><![CDATA[ &lt;p&gt;Work in progress…&lt;/p&gt;
-&lt;p&gt;If &lt;a href=&quot;../Architecture/Models&quot; class=&quot;internal&quot; data-slug=&quot;Architecture/Models&quot;&gt;Models&lt;/a&gt; are the building blocks of your application, and &lt;a href=&quot;../Architecture/Services&quot; class=&quot;internal&quot; data-slug=&quot;Architecture/Services&quot;&gt;Services&lt;/a&gt; are the plumbing, then Components are everything else inside the building.
-They are the doors you walk through, the windows you look out and open, the refrigerator you browse through, the coffee pot, oven, sink…
-UI components are what you use and interact with on a daily basis.
-They are built with models, and powered by services.&lt;/p&gt;
-&lt;p&gt;Components provide the user interface and user experience of UI/UX development.
-They are the user facing input/output surface of your application.&lt;/p&gt;
-&lt;p&gt;Components will be used, misused, attacked, criticized, and complimented…&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;They must provide intended functionality, but they must also withstand any and all unintended uses.&lt;/li&gt;
-&lt;li&gt;They must be sized correctly - especially given the wide range of screen sizes they might be displayed on.&lt;/li&gt;
-&lt;li&gt;They must be colored correctly - especially for those who cannot see the full spectrum of colors.&lt;/li&gt;
-&lt;li&gt;They must be accessible to those who can’t see what you see, hear what you hear, or do what you do.&lt;/li&gt;
-&lt;li&gt;They must be intuitive and/or well-explained so users know how to use them.&lt;/li&gt;
-&lt;li&gt;They must be interesting enough to keep users engaged - and definitely not frustrating enough to drive them away&lt;/li&gt;
-&lt;li&gt;They must be all things to all people.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Components are where the languages of the web meld together.
-They are where HTML, CSS, and JavaScript combine to make magic happen.
-And it is your job to be the magician!&lt;/p&gt;
-&lt;p&gt;There are too many &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements&quot; class=&quot;external&quot; target=&quot;_blank&quot;&gt;HTML elements&lt;svg aria-hidden=&quot;true&quot; class=&quot;external-icon&quot; style=&quot;max-width:0.8em;max-height:0.8em&quot; viewBox=&quot;0 0 512 512&quot;&gt;&lt;path d=&quot;M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt; to talk about them all in this article, but they form the foundation for all components.&lt;/p&gt;
-&lt;p&gt;One thing that should certainly apply to all of the components in your application is consistency.
-Unless you are intentionally building a randomized user experience, you should make sure that your application has a standardized user experience.
-That doesn’t me it has to meet the standard of any other application, just that it should meet the standard of the rest of your application.&lt;/p&gt;
-&lt;p&gt;You don’t want one screen to be black text on a white background, and the next to be white text on a black background, etc…&lt;/p&gt;
-&lt;p&gt;Consistency comes from having a good structure of reusable styles, and reusable components.&lt;/p&gt; ]]></description>
-    <pubDate>Fri, 10 Oct 2025 04:00:00 GMT</pubDate>
-  </item><item>
-    <title>Thinking Like An Architect</title>
-    <link>https://bjanderson.github.io/Architecture/Thinking-Like-An-Architect</link>
-    <guid>https://bjanderson.github.io/Architecture/Thinking-Like-An-Architect</guid>
-    <description><![CDATA[ &lt;p&gt;Learn to think about systems as a whole.&lt;/p&gt;
-&lt;p&gt;As a learning exercise, try to implement the entire suite of IRS Tax forms as an enterprise web application.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Go to the IRS website (&lt;a href=&quot;https://www.irs.gov/forms-instructions&quot; class=&quot;external&quot; target=&quot;_blank&quot;&gt;irs.gov&lt;svg aria-hidden=&quot;true&quot; class=&quot;external-icon&quot; style=&quot;max-width:0.8em;max-height:0.8em&quot; viewBox=&quot;0 0 512 512&quot;&gt;&lt;path d=&quot;M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;).&lt;/li&gt;
-&lt;li&gt;Look at the tax forms - those are your UI/UX mockups&lt;/li&gt;
-&lt;li&gt;Look at the instructions - those are your application requirements&lt;/li&gt;
-&lt;li&gt;Consider the different user personas - single, married filing jointly, etc…&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Take these as your design documents and think about how you would build this application.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Think about what &lt;a href=&quot;../Architecture/Models&quot; class=&quot;internal&quot; data-slug=&quot;Architecture/Models&quot;&gt;Models&lt;/a&gt; you will need&lt;/li&gt;
-&lt;li&gt;Think about what &lt;a href=&quot;../Architecture/Services&quot; class=&quot;internal&quot; data-slug=&quot;Architecture/Services&quot;&gt;Services&lt;/a&gt; you will need&lt;/li&gt;
-&lt;li&gt;Think about what &lt;a href=&quot;../Architecture/Components&quot; class=&quot;internal&quot; data-slug=&quot;Architecture/Components&quot;&gt;Components&lt;/a&gt; you will need&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Read through the documents and create a rough design of your application.
-You can use pseudo code if it helps, but just try to piece together the main concepts that you will have to build and how they will tie together.&lt;/p&gt;
-&lt;p&gt;If you think this is complicated I want you to understand that this is the clearest and easiest set of requirements and design documents that you are probably ever going to see.
-Developing enterprise applications is never this well thought out ahead of time, but will often rival this amount of complexity. As a software architect you will have to think ahead into the unknown and be able to anticipate these kinds of complexities while your customer/boss is figuring out what they want you to build.&lt;/p&gt;
-&lt;p&gt;When you are starting out on a new project and your boss has asked you to take the lead and start building a new system from scratch that is only going to do one simple thing, you should anaticipate that it’s going to evolve into something that rivals the complexity of the US Tax Code.
-Don’t get frustrated when your boss starts asking you to add one-off edge cases, entirely unrelated functionality, “sometimes” operations, and seemingly superficial oddities - expect that to happen.
-In fact, expect that to be how the entire system is going to be designed from now on.&lt;/p&gt;
-&lt;p&gt;Build your application so that it can absorb these kinds of requests, and still be robust, maintainable, and scalable!&lt;/p&gt;
-&lt;p&gt;And don’t hold yourself to an unrealistic expectation of perfection - because none of us can do this perfectly - just know that you have a firm foundation and a well-though out plan and direction.&lt;/p&gt;
-&lt;p&gt;Become a system builder - no matter what the system is that you are building.&lt;/p&gt; ]]></description>
-    <pubDate>Fri, 10 Oct 2025 04:00:00 GMT</pubDate>
-  </item><item>
     <title>Services</title>
     <link>https://bjanderson.github.io/Architecture/Services</link>
     <guid>https://bjanderson.github.io/Architecture/Services</guid>
@@ -406,7 +346,67 @@ And they deserve to be treated with a high level of care and intentionality.&lt;
 &lt;p&gt;No matter what framework you might be using, the concept of services should fit well within your application architecture.
 Even if you have to refactor your application to incorporate them, it is well worth the effort.&lt;/p&gt;
 &lt;p&gt;Services form a &lt;a href=&quot;https://en.wikipedia.org/wiki/SOLID&quot; class=&quot;external&quot; target=&quot;_blank&quot;&gt;SOLID&lt;svg aria-hidden=&quot;true&quot; class=&quot;external-icon&quot; style=&quot;max-width:0.8em;max-height:0.8em&quot; viewBox=&quot;0 0 512 512&quot;&gt;&lt;path d=&quot;M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt; foundation for any application.&lt;/p&gt; ]]></description>
-    <pubDate>Thu, 09 Oct 2025 04:00:00 GMT</pubDate>
+    <pubDate>Mon, 13 Oct 2025 04:00:00 GMT</pubDate>
+  </item><item>
+    <title>Components</title>
+    <link>https://bjanderson.github.io/Architecture/Components</link>
+    <guid>https://bjanderson.github.io/Architecture/Components</guid>
+    <description><![CDATA[ &lt;p&gt;Work in progress…&lt;/p&gt;
+&lt;p&gt;If &lt;a href=&quot;../Architecture/Models&quot; class=&quot;internal&quot; data-slug=&quot;Architecture/Models&quot;&gt;Models&lt;/a&gt; are the building blocks of your application, and &lt;a href=&quot;../Architecture/Services&quot; class=&quot;internal&quot; data-slug=&quot;Architecture/Services&quot;&gt;Services&lt;/a&gt; are the plumbing, then Components are everything else inside the building.
+They are the doors you walk through, the windows you look out and open, the refrigerator you browse through, the coffee pot, oven, sink…
+UI components are what you use and interact with on a daily basis.
+They are built with models, and powered by services.&lt;/p&gt;
+&lt;p&gt;Components provide the user interface and user experience of UI/UX development.
+They are the user facing input/output surface of your application.&lt;/p&gt;
+&lt;p&gt;Components will be used, misused, attacked, criticized, and complimented…&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;They must provide intended functionality, but they must also withstand any and all unintended uses.&lt;/li&gt;
+&lt;li&gt;They must be sized correctly - especially given the wide range of screen sizes they might be displayed on.&lt;/li&gt;
+&lt;li&gt;They must be colored correctly - especially for those who cannot see the full spectrum of colors.&lt;/li&gt;
+&lt;li&gt;They must be accessible to those who can’t see what you see, hear what you hear, or do what you do.&lt;/li&gt;
+&lt;li&gt;They must be intuitive and/or well-explained so users know how to use them.&lt;/li&gt;
+&lt;li&gt;They must be interesting enough to keep users engaged - and definitely not frustrating enough to drive them away&lt;/li&gt;
+&lt;li&gt;They must be all things to all people.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Components are where the languages of the web meld together.
+They are where HTML, CSS, and JavaScript combine to make magic happen.
+And it is your job to be the magician!&lt;/p&gt;
+&lt;p&gt;There are too many &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements&quot; class=&quot;external&quot; target=&quot;_blank&quot;&gt;HTML elements&lt;svg aria-hidden=&quot;true&quot; class=&quot;external-icon&quot; style=&quot;max-width:0.8em;max-height:0.8em&quot; viewBox=&quot;0 0 512 512&quot;&gt;&lt;path d=&quot;M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt; to talk about them all in this article, but they form the foundation for all components.&lt;/p&gt;
+&lt;p&gt;One thing that should certainly apply to all of the components in your application is consistency.
+Unless you are intentionally building a randomized user experience, you should make sure that your application has a standardized user experience.
+That doesn’t me it has to meet the standard of any other application, just that it should meet the standard of the rest of your application.&lt;/p&gt;
+&lt;p&gt;You don’t want one screen to be black text on a white background, and the next to be white text on a black background, etc…&lt;/p&gt;
+&lt;p&gt;Consistency comes from having a good structure of reusable styles, and reusable components.&lt;/p&gt; ]]></description>
+    <pubDate>Fri, 10 Oct 2025 04:00:00 GMT</pubDate>
+  </item><item>
+    <title>Thinking Like An Architect</title>
+    <link>https://bjanderson.github.io/Architecture/Thinking-Like-An-Architect</link>
+    <guid>https://bjanderson.github.io/Architecture/Thinking-Like-An-Architect</guid>
+    <description><![CDATA[ &lt;p&gt;Learn to think about systems as a whole.&lt;/p&gt;
+&lt;p&gt;As a learning exercise, try to implement the entire suite of IRS Tax forms as an enterprise web application.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Go to the IRS website (&lt;a href=&quot;https://www.irs.gov/forms-instructions&quot; class=&quot;external&quot; target=&quot;_blank&quot;&gt;irs.gov&lt;svg aria-hidden=&quot;true&quot; class=&quot;external-icon&quot; style=&quot;max-width:0.8em;max-height:0.8em&quot; viewBox=&quot;0 0 512 512&quot;&gt;&lt;path d=&quot;M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Look at the tax forms - those are your UI/UX mockups&lt;/li&gt;
+&lt;li&gt;Look at the instructions - those are your application requirements&lt;/li&gt;
+&lt;li&gt;Consider the different user personas - single, married filing jointly, etc…&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Take these as your design documents and think about how you would build this application.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Think about what &lt;a href=&quot;../Architecture/Models&quot; class=&quot;internal&quot; data-slug=&quot;Architecture/Models&quot;&gt;Models&lt;/a&gt; you will need&lt;/li&gt;
+&lt;li&gt;Think about what &lt;a href=&quot;../Architecture/Services&quot; class=&quot;internal&quot; data-slug=&quot;Architecture/Services&quot;&gt;Services&lt;/a&gt; you will need&lt;/li&gt;
+&lt;li&gt;Think about what &lt;a href=&quot;../Architecture/Components&quot; class=&quot;internal&quot; data-slug=&quot;Architecture/Components&quot;&gt;Components&lt;/a&gt; you will need&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Read through the documents and create a rough design of your application.
+You can use pseudo code if it helps, but just try to piece together the main concepts that you will have to build and how they will tie together.&lt;/p&gt;
+&lt;p&gt;If you think this is complicated I want you to understand that this is the clearest and easiest set of requirements and design documents that you are probably ever going to see.
+Developing enterprise applications is never this well thought out ahead of time, but will often rival this amount of complexity. As a software architect you will have to think ahead into the unknown and be able to anticipate these kinds of complexities while your customer/boss is figuring out what they want you to build.&lt;/p&gt;
+&lt;p&gt;When you are starting out on a new project and your boss has asked you to take the lead and start building a new system from scratch that is only going to do one simple thing, you should anaticipate that it’s going to evolve into something that rivals the complexity of the US Tax Code.
+Don’t get frustrated when your boss starts asking you to add one-off edge cases, entirely unrelated functionality, “sometimes” operations, and seemingly superficial oddities - expect that to happen.
+In fact, expect that to be how the entire system is going to be designed from now on.&lt;/p&gt;
+&lt;p&gt;Build your application so that it can absorb these kinds of requests, and still be robust, maintainable, and scalable!&lt;/p&gt;
+&lt;p&gt;And don’t hold yourself to an unrealistic expectation of perfection - because none of us can do this perfectly - just know that you have a firm foundation and a well-though out plan and direction.&lt;/p&gt;
+&lt;p&gt;Become a system builder - no matter what the system is that you are building.&lt;/p&gt; ]]></description>
+    <pubDate>Fri, 10 Oct 2025 04:00:00 GMT</pubDate>
   </item><item>
     <title>Introduction To Web Development</title>
     <link>https://bjanderson.github.io/Beginners/Introduction-To-Web-Development</link>
