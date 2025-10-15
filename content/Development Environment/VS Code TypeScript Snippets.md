@@ -26,12 +26,12 @@ cssclasses:
   },
 
   "import": {
-    "prefix": "bimport",
+    "prefix": "import",
     "body": ["import { $2 } from '$1';$0"]
   },
 
   "export": {
-    "prefix": "bexport",
+    "prefix": "export",
     "body": ["export * from '$1';$0"]
   },
 
