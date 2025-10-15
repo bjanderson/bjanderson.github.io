@@ -355,7 +355,7 @@ export const nodeEnvService = {
   readFileSync: () => 'test readFileSync',
 }
 
-export function callsreadFileSync(testSubject, calledWith) {
+export const callsreadFileSync = (testSubject, calledWith) => {
   it('calls nodeEnvService.readFileSync', () => {
     const spy = spyOn(nodeEnvService, 'readFileSync').and.callThrough()
 
