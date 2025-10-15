@@ -10,6 +10,114 @@ cssclasses:
 
 ```json
 {
+  "filter": {
+    "prefix": "filter",
+    "body": ["${TM_SELECTED_TEXT}.filter((v,i,a) => a.indexOf(v) === i)"]
+  },
+
+  "sort": {
+    "prefix": "sort",
+    "body": ["${TM_SELECTED_TEXT}.sort((a,b) => a.localeCompare(b))"]
+  },
+
+  "noop": {
+    "prefix": "noop",
+    "body": ["() => undefined"]
+  },
+
+  "import": {
+    "prefix": "bimport",
+    "body": ["import { $2 } from '$1';$0"]
+  },
+
+  "export": {
+    "prefix": "bexport",
+    "body": ["export * from '$1';$0"]
+  },
+
+  "mockservice": {
+    "prefix": "mockservice",
+    "body": ["const $0: any = {", "  $0: () => undefined,", "};"]
+  },
+
+  "import-angular-core-mock": {
+    "prefix": "import-angular-core-mock",
+    "body": ["import '../../../mocks/@angular/core/core.mock';"]
+  },
+
+  "describe test": {
+    "prefix": "describetest",
+    "body": [
+      "describe('$1', () => {",
+      "  beforeEach(() => {",
+      "    init();",
+      "  });",
+      "",
+      "  it('has a function named $1', () => {",
+      "    expect(typeof ${2|component,service|}.$1).toEqual('function');",
+      "  });",
+      "",
+      "  it('returns expected', () => {",
+      "    const expected = '';",
+      "    const result = ${2|component,service|}.$1();",
+      "    expect(result).toEqual(expected);",
+      "  });",
+      "});"
+    ]
+  },
+
+  "it test": {
+    "prefix": "ittest",
+    "body": [
+      "it('returns expected', () => {",
+      "  const expected = '';",
+      "  const result = ${2|component,service|}.$1();",
+      "  expect(result).toEqual(expected);",
+      "});"
+    ]
+  },
+
+  "it test spy": {
+    "prefix": "itspy",
+    "body": [
+      "it('calls $1', () => {",
+      "  const spy = spyOn(${2|component,service|}, '$1').and.callThrough();",
+      "  const arg = 'test arg';",
+      "  const request = new Request({ arg });",
+      "  ${2|component,service|}.$3(request);",
+      "  expect(spy).toHaveBeenCalledWith(arg);",
+      "});"
+    ]
+  },
+
+  "mock function spy from clipboard": {
+    "prefix": "mockfunctionspy",
+    "body": [
+      "export const calls${CLIPBOARD/^(\\S+)\\s+(.*)$/${1:/capitalize}/g}${CLIPBOARD/^(.*?)\\s+(.*)/${2:/capitalize}/g} = (testSubject, calledWith) => {",
+      "  it('calls ${CLIPBOARD/^(\\S+)\\s+(.*)$/$1/g}.${CLIPBOARD/^(.*?)\\s+//g}', () => {",
+      "    const spy = spyOn(${CLIPBOARD/^(\\S+)\\s+(.*)$/$1/g}, '${CLIPBOARD/^(.*?)\\s+//g}').and.callThrough();",
+      "    testSubject();",
+      "    callsSpy(spy, calledWith);",
+      "  });",
+      "};"
+    ],
+    "description": "copy a service name and a function name (multi-cursor) to the clipboard and run this snippet to create a mock test from them"
+  },
+
+  "mock selected function spy": {
+    "prefix": "mockselectedfunctionspy",
+    "body": [
+      "export const callsSvc${TM_SELECTED_TEXT/^(.*?);/${1:/capitalize}/g} = (testSubject, calledWith) => {",
+      "  it('calls svc.${TM_SELECTED_TEXT/^(.*?);/$1/g}', () => {",
+      "    const spy = spyOn(svc, '${TM_SELECTED_TEXT/^(.*?);/$1/g}').and.callThrough();",
+      "    testSubject();",
+      "    callsSpy(spy, calledWith);",
+      "  });",
+      "};"
+    ],
+    "description": "highlight a function name and type mockselectedfunctionspy to run this snippet and create a mock test from the highlighted text"
+  },
+
   "Create Server Model": {
     "prefix": "smodel",
     "body": [
@@ -29,91 +137,21 @@ cssclasses:
   },
 
   "Print to console": {
-    "prefix": "llog",
+    "prefix": "clog",
     "body": ["console.log('$0');"],
     "description": "Log output to console"
   },
 
   "Print vlaue to console": {
-    "prefix": "ccl",
+    "prefix": "clvalue",
     "body": ["console.log('$0: ', $0);"],
     "description": "Log value to console"
   },
 
   "Print error to console": {
-    "prefix": "lerror",
+    "prefix": "clerror",
     "body": ["console.error(`ERROR : $1 : ${$0}`);"],
     "description": "Log error to console"
-  },
-
-  "initialize model object": {
-    "prefix": "ob",
-    "body": ["obj = getObject(obj);"],
-    "description": "initialize a model object"
-  },
-
-  "noop": {
-    "prefix": "noop",
-    "body": ["() => undefined"],
-    "description": "noop"
-  },
-
-  "import": {
-    "prefix": "bimport",
-    "body": ["import { $2 } from '$1';$0"],
-    "description": "import"
-  },
-
-  "export": {
-    "prefix": "bexport",
-    "body": ["export * from '$1';$0"],
-    "description": "export"
-  },
-
-  "describe test": {
-    "prefix": "desc",
-    "body": [
-      "describe('$0()', () => {",
-      "  beforeEach(() => {",
-      "    init();",
-      "  });",
-      "",
-      "  it('is a function', () => {",
-      "    expect(typeof component.$0).toEqual('function');",
-      "  });",
-      "});"
-    ],
-    "description": "describe test"
-  },
-
-  "create test": {
-    "prefix": "itt",
-    "body": [
-      "it('$0', () => {",
-      "  const expected = {};",
-      "  const result = {};",
-      "  expect(result).toEqual(expected);",
-      "});"
-    ],
-    "description": "create test"
-  },
-
-  "create test with spy": {
-    "prefix": "ittspy",
-    "body": [
-      "it('calls $0()', () => {",
-      "  const spy = jest.spyOn(component, '$0');",
-      "  component.();",
-      "  expect(spy).toHaveBeenCalled();",
-      "});"
-    ],
-    "description": "create test with spy"
-  },
-
-  "create init function": {
-    "prefix": "finit",
-    "body": ["function init() {", "  $0", "}"],
-    "description": "create init function"
   },
 
   "ngOnDestroy unsubscribe": {
@@ -129,9 +167,9 @@ cssclasses:
   },
 
   "new class": {
-    "prefix": "exportclass",
+    "prefix": "newclass",
     "body": [
-      "import { getObject, getString } from '@bartleyanderson/utils';",
+      "import { getObject, getString } from '@bjanderson/utils';",
       "",
       "export class $0 {",
       "",
@@ -144,18 +182,6 @@ cssclasses:
       "}"
     ],
     "description": "new class"
-  },
-
-  "mockservice": {
-    "prefix": "mockservice",
-    "body": ["const $0: any = {", "  $0: () => undefined,", "};"],
-    "description": "mock test service"
-  },
-
-  "filter": {
-    "prefix": "filter",
-    "body": ["filter((v,i,a) => a.indexOf(v) === i)"],
-    "description": "filter unique values in an array"
   }
 }
 ```
