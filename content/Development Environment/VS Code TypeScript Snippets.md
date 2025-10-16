@@ -10,9 +10,14 @@ cssclasses:
 
 ```json
 {
-  "filter": {
-    "prefix": "filter",
+  "filterunique": {
+    "prefix": "filterunique",
     "body": ["${TM_SELECTED_TEXT}.filter((v,i,a) => a.indexOf(v) === i)"]
+  },
+
+  "filteruniqueobject": {
+    "prefix": "filteruniqueobject",
+    "body": ["${TM_SELECTED_TEXT}.filter((v,i,a) => a.findIndex((x) => x.id === v.id) === i)"]
   },
 
   "sort": {
@@ -93,7 +98,7 @@ cssclasses:
   "mock function spy from clipboard": {
     "prefix": "mockfunctionspy",
     "body": [
-      "export const calls${CLIPBOARD/^(\\S+)\\s+(.*)$/${1:/capitalize}/g}${CLIPBOARD/^(.*?)\\s+(.*)/${2:/capitalize}/g} = (testSubject, calledWith) => {",
+      "export const calls${CLIPBOARD/^(\\S+)\\s+(.*)$/${1:/capitalize}/g}${CLIPBOARD/^(.*?)\\s+(.*)/${2:/capitalize}/g} = (testSubject: () => unknown, calledWith?: unknown[]) => {",
       "  it('calls ${CLIPBOARD/^(\\S+)\\s+(.*)$/$1/g}.${CLIPBOARD/^(.*?)\\s+//g}', () => {",
       "    const spy = spyOn(${CLIPBOARD/^(\\S+)\\s+(.*)$/$1/g}, '${CLIPBOARD/^(.*?)\\s+//g}').and.callThrough();",
       "    testSubject();",
@@ -107,7 +112,7 @@ cssclasses:
   "mock selected function spy": {
     "prefix": "mockselectedfunctionspy",
     "body": [
-      "export const callsSvc${TM_SELECTED_TEXT/^(.*?);/${1:/capitalize}/g} = (testSubject, calledWith) => {",
+      "export const callsSvc${TM_SELECTED_TEXT/^(.*?);/${1:/capitalize}/g} = (testSubject: () => unknown, calledWith?: unknown[]) => {",
       "  it('calls svc.${TM_SELECTED_TEXT/^(.*?);/$1/g}', () => {",
       "    const spy = spyOn(svc, '${TM_SELECTED_TEXT/^(.*?);/$1/g}').and.callThrough();",
       "    testSubject();",
