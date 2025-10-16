@@ -112,9 +112,9 @@ cssclasses:
   "mock selected function spy": {
     "prefix": "mockselectedfunctionspy",
     "body": [
-      "export const callsSvc${TM_SELECTED_TEXT/^(.*?);/${1:/capitalize}/g} = (testSubject: () => unknown, calledWith?: unknown[]) => {",
-      "  it('calls svc.${TM_SELECTED_TEXT/^(.*?);/$1/g}', () => {",
-      "    const spy = spyOn(svc, '${TM_SELECTED_TEXT/^(.*?);/$1/g}').and.callThrough();",
+      "export const callsSvc${TM_SELECTED_TEXT/(.*)/${1:/capitalize}/g} = (testSubject: () => unknown, calledWith?: unknown[]) => {",
+      "  it('calls svc.${TM_SELECTED_TEXT/(.*)/$1/g}', () => {",
+      "    const spy = spyOn(svc, '${TM_SELECTED_TEXT/(.*)/$1/g}').and.callThrough();",
       "    testSubject();",
       "    callsSpy(spy, calledWith);",
       "  });",
